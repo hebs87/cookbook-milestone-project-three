@@ -4,11 +4,11 @@ from flask import Flask
 # Instance of Flask
 app = Flask(__name__)
 
-@app.route('/')
+@app.route()
 def hello():
     return "Hello World"
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
-            debug=True)
+            debug=False)
