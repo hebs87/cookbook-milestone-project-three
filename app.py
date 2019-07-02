@@ -10,14 +10,22 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = 'onlineCookbook'
 app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
-# Instanse of PyMongo
+# Instance of PyMongo
 mongo = PyMongo(app)
+
+# DB collection variables
+recipes_coll = mongo.db.recipes
+rating_coll = mongo.db.ratings
+categories_coll = mongo.db.categories
+serves_coll = mongo.db.serves
+time_coll = mongo.db.time
+users_coll = mongo.db.userLogin
 
 @app.route('/')
 
 @app.route('/get_recipes')
 def get_recipes():
-    return render_template("recipes.html", recipes=mongo.db.recipes.find())
+    return render_template("recipes.html", recipes=recipes_coll.find())
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
