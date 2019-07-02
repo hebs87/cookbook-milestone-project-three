@@ -22,6 +22,8 @@ time_coll = mongo.db.time
 users_coll = mongo.db.userLogin
 
 @app.route('/')
+def base():
+    return render_template("base.html")
 
 @app.route('/get_recipes')
 def get_recipes():
