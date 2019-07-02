@@ -21,55 +21,96 @@
 
 <body>
 
-    <!--Main Nav-->
-    <nav class="nav-extended">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/favicon.png') }}" alt="Delicious Desserts Chef Logo" lazyload="on">
-            Delicious Dishes!</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-                <i class="fas fa-bars"></i>
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="#">
-                        <i class="fas fa-home" aria-hidden="true"></i>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-utensils" aria-hidden="true"></i>Browse
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    <!--HEADER-->
 
-    <!--Mobile Side Nav-->
-    <ul class="sidenav" id="mobile-demo">
-        <li>
-            <h4>Delicious Dishes!</h4>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fas fa-home" aria-hidden="true"></i>Home
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fas fa-utensils" aria-hidden="true"></i>Browse
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
-            </a>
-        </li>
-    </ul>
+    <header>
+        <!--NAVBAR-->
+        <!--Main Nav-->
+        <nav class="nav-extended">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/favicon.png') }}" alt="Delicious Desserts Chef Logo" lazyload="on">
+                    Delicious Dishes!
+                </a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-home" aria-hidden="true">Home</i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-utensils" aria-hidden="true"></i>Browse
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!--End Main Nav-->
+        <!--Mobile Side Nav-->
+        <ul class="sidenav" id="mobile-demo">
+            <li>
+                <h4>Delicious Dishes!</h4>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-home" aria-hidden="true"></i>Home
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-utensils" aria-hidden="true"></i>Browse
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+                </a>
+            </li>
+        </ul>
+        <!--End Mobile Side Nav-->
+        <!--END NAVBAR-->
+
+    </header>
+
+    <!--END HEADER-->
+
+    <!--MAIN CONTENT-->
+
+    <main>
+        {% block content %} {% endblock %}
+    </main>
+
+    <!--END MAIN CONTENT-->
+
+    <!--FOOTER-->
+
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row center-align">
+                <div class="col l6 s12">
+                    &copy; <strong>Delicious Dishes!</strong>
+                </div>
+                <div class="col 16 s12">
+                    <a href="https://github.com/hebs87/cookbook-milestone-project-three" target="_blank" rel="noopener" aria-label="GitHub - hebs87">
+                        <i class="fab fa-github-square material-icons" title="hebs87" aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/sunny-hebbar-0b3008174/" target="_blank" rel="noopener" aria-label="LinkedIn - Sunny-Hebbar">
+                        <i class="fab fa-linkedin material-icons" title="Sunny-Hebbar" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!--END FOOTER-->
 
     <!--Script tag for jQuery-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
