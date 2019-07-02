@@ -2,26 +2,25 @@
 <html lang="en">
 
 <head>
-    
+
     <!--Link for Favicon-->
     <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='img/favicon.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Delicious Dishes!</title>
-    
+
     <!--Link for Materialize-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Link for FontAwesome-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!--Link for custom CSS sheet-->
-    
+
 
 </head>
 
 <body>
-    
+
     <!--Main Nav-->
     <nav class="nav-extended">
         <div class="nav-wrapper">
@@ -33,38 +32,51 @@
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <a href="#">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-home" aria-hidden="true"></i>
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-utensils"></i>Browse
+                        <i class="fas fa-utensils" aria-hidden="true"></i>Browse
                     </a>
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fas fa-sign-in-alt"></i>Login | Register
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
-    
+
     <!--Mobile Side Nav-->
     <ul class="sidenav" id="mobile-demo">
-        <li><h4>Delicious Dishes!</h4></li>
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+        <li>
+            <h4>Delicious Dishes!</h4>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-home" aria-hidden="true"></i>Home
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-utensils" aria-hidden="true"></i>Browse
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+            </a>
+        </li>
     </ul>
 
     <!--Script tag for jQuery-->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!--Script tag for Materialize-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Script tag for custom JS file-->
-    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
 
