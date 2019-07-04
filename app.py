@@ -30,9 +30,13 @@ users_coll = mongo.db.userLogin
 def index():
     return render_template("index.html")
 
-@app.route('/login')
+@app.route('/login_register')
+def login_register():
+    return render_template("login_register.html")
+    
+@app.route('/login', methods=["GET", "POST"])
 def login():
-    return ''
+    return render_template("login_register.html")
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -79,10 +83,7 @@ def register():
         session['user'] = new_username
         message = "Welcome " + new_username + ", you will now be logged in"
         return message
-    
-@app.route('/get_recipes')
-def get_recipes():
-    return render_template("recipes.html", recipes=recipes_coll.find())
+    return render_template("login_register.html")
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),

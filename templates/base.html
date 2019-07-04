@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-light btn modal-trigger" href="#login-modal">
+                        <a class="waves-effect waves-light btn modal-trigger" href="{{ url_for('login_register') }}">
                             <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
                         </a>
                     </li>
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect waves-light btn modal-trigger" href="#login-modal">
+                <a class="waves-effect waves-light btn modal-trigger" href="{{ url_for('login_register') }}">
                     <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
                 </a>
             </li>
@@ -123,82 +123,6 @@
     </footer>
 
     <!--END FOOTER-->
-
-    <!--MODALS-->
-
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <!--Login and register tabs-->
-            <ul class="tabs tabs-fixed-width z-depth-1">
-                <li class="tab">
-                    <a class="active" href="#login">Login</a>
-                </li>
-                <li class="tab">
-                    <a href="#register">Register</a>
-                </li>
-            </ul>
-
-            <!--Login form-->
-            <div id="login" class="col s12">
-                <div class="row">
-                    <form class="col s12" method="GET" action="">
-                        <div class="row">
-                            <!--Username-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-user prefix" aria-hidden="true"></i>
-                                <input id="username" name="username" type="text" class="form-control validate" minlength="6" maxlength="15" required>
-                                <label for="username">Username</label>
-                            </div>
-                            <!--Password-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-user prefix" aria-hidden="true"></i>
-                                <input id="password" name="password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <!--Login Button-->
-                            <button class="btn waves-effect waves-light" type="submit" name="login">
-                                Login
-                                <i class="fas fa-sign-in-alt"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            <!--Register form-->
-            <div id="register" class="col s12">
-                <div class="row">
-                    <form class="col s12" method="POST" action="{{ url_for('register', _anchor='register') }}">
-                        <div class="row">
-                            <!--Username-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-user prefix" aria-hidden="true"></i>
-                                <input id="new_username" name="new_username" type="text" class="form-control validate" minlength="6" maxlength="15" required>
-                                <label for="new_username">Username</label>
-                            </div>
-                            <!--Password-->
-                            <div class="input-field col s12">
-                                <i class="fas fa-user prefix" aria-hidden="true"></i>
-                                <input id="new_password" name="new_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
-                                <label for="password">Password</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <!--Register Button-->
-                            <button class="btn waves-effect waves-light" type="submit" name="register">
-                                Register
-                                <i class="fas fa-user-plus"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!--END MODALS-->
 
     <!--Script tag for jQuery-->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
