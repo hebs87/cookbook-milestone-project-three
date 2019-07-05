@@ -28,7 +28,7 @@
         <!--Main Nav-->
         <nav class="nav-extended">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo"><img src="{{ url_for('static', filename='img/favicon.png') }}" alt="Delicious Desserts Chef Logo" lazyload="on">
+                <a href="{{ url_for('index') }}" class="brand-logo"><img src="{{ url_for('static', filename='img/favicon.png') }}" alt="Delicious Dishes Chef Logo" lazyload="on">
                     Delicious Dishes!
                 </a>
                 <a href="#" data-target="mobile-demo" class="sidenav-trigger">
@@ -36,7 +36,7 @@
                 </a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li>
-                        <a href="#">
+                        <a href="{{ url_for('index') }}">
                             <i class="fas fa-home" aria-hidden="true">Home</i>
                         </a>
                     </li>
@@ -45,11 +45,31 @@
                             <i class="fas fa-utensils" aria-hidden="true"></i>Browse
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ url_for('login_register') }}">
-                            <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
-                        </a>
-                    </li>
+                    <!--Additional options if user is logged in-->
+                    {% if session.user %}
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('logout') }}">
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout
+                            </a>
+                        </li>
+                    <!--If there is no user in session-->
+                    {% else %}
+                        <li>
+                            <a href="{{ url_for('login_register') }}">
+                                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+                            </a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -57,10 +77,11 @@
         <!--Mobile Side Nav-->
         <ul class="sidenav" id="mobile-demo">
             <li>
-                <h4>Delicious Dishes!</h4>
-            </li>
+                <a href="{{ url_for('index') }}" class="brand-logo">
+                    <h4>Delicious Dishes!</h4>
+                </a>
             <li>
-                <a href="#">
+                <a href="{{ url_for('index') }}">
                     <i class="fas fa-home" aria-hidden="true"></i>Home
                 </a>
             </li>
@@ -69,11 +90,31 @@
                     <i class="fas fa-utensils" aria-hidden="true"></i>Browse
                 </a>
             </li>
-            <li>
-                <a href="{{ url_for('login_register') }}">
-                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
-                </a>
-            </li>
+            <!--Additional options if user is logged in-->
+            {% if session.user %}
+                <li>
+                    <a href="#">
+                        <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('logout') }}">
+                        <i class="fas fa-sign-out-alt" aria-hidden="true"></i>Logout
+                    </a>
+                </li>
+            <!--If there is no user in session-->
+            {% else %}
+                <li>
+                    <a href="{{ url_for('login_register') }}">
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+                    </a>
+                </li>
+            {% endif %}
         </ul>
         <!--End Mobile Side Nav-->
         <!--END NAVBAR-->
