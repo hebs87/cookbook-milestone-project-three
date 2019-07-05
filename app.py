@@ -49,7 +49,7 @@ def login():
         
         # Check if username exists and user's password matches the hashed password
         if existing_user and check_password_hash(existing_user["password"], password):
-            flash(Markup("Welcome back" + username + ", you're now logged in!"))
+            flash(Markup("Welcome back " + username + ", you're now logged in!"))
             session['user'] = username
             return redirect(url_for('index'))
         # If either the username or password don't match, generic flash message is displayed
@@ -104,7 +104,26 @@ def register():
         session['user'] = new_username
         flash(Markup("Welcome " + new_username + ", you're now logged in!"))
         return redirect(url_for('index'))
+    
     return render_template("login_register.html")
+
+@app.route('/logout')
+def logout():
+    '''
+    Remove the session cookie and end the user session
+    '''
+    session.pop('user', None)
+    flash(Markup("You were successfully logged out"))
+    return redirect(url_for('index'))
+
+@app.before_request
+def before_request():
+    '''
+    Checks if the user is logged in before each request
+    '''
+    g.user = None
+    if 'user' in session:
+        g.user = session['user']
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
