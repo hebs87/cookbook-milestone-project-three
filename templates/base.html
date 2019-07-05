@@ -46,7 +46,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="waves-effect waves-light btn modal-trigger" href="{{ url_for('login_register') }}">
+                        <a href="{{ url_for('login_register') }}">
                             <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
                         </a>
                     </li>
@@ -70,7 +70,7 @@
                 </a>
             </li>
             <li>
-                <a class="waves-effect waves-light btn modal-trigger" href="{{ url_for('login_register') }}">
+                <a href="{{ url_for('login_register') }}">
                     <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
                 </a>
             </li>
@@ -86,7 +86,7 @@
 
     <main>
         
-        <!--Flashed messages to appear at the top of the viewport, below the nav-->
+        <!--Flashed messages to appear at the top of the page, below the Navbar-->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 <ul class="flashes center-align">

@@ -36,6 +36,27 @@ def login_register():
     
 @app.route('/login', methods=["GET", "POST"])
 def login():
+    '''
+    Login
+    Checks that the user exists, and that user's password matches the
+    hased password in the database
+    '''
+    if request.method == "POST":
+        
+        username = request.form.get('username').lower()
+        password = request.form.get("password")
+        existing_user = users_coll.find_one({"username": username})
+        
+        # Check if username exists and user's password matches the hashed password
+        if existing_user and check_password_hash(existing_user["password"], password):
+            flash(Markup("Welcome back" + username + ", you're now logged in!"))
+            session['user'] = username
+            return redirect(url_for('index'))
+        # If either the username or password don't match, generic flash message is displayed
+        else:
+            flash(Markup("It appears those details don't match what we have, please try again."))
+            return redirect(url_for('login'))
+            
     return render_template("login_register.html")
 
 @app.route('/register', methods=["GET", "POST"])
@@ -75,7 +96,7 @@ def register():
             flash(Markup("Sorry, " + new_username + " is already taken! Please choose another one!"))
             return redirect(url_for('register'))
         
-        # If all checks pass, add user to the database
+        # If all checks pass, add user to the database and hash the password
         users_coll.insert_one({
             "username": new_username,
             "password": generate_password_hash(new_password)
