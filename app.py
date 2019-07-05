@@ -54,26 +54,26 @@ def register():
         # Check username and password are alphanumeric
         for letter in new_username:
             if not letter.isalnum():
-                message = "Usernames must be alphanumeric only. Please try another one."
-                return message
+                flash(Markup("Usernames must be alphanumeric only. Please try another one."))
+                return redirect(url_for('register'))
         for letter in new_password:
             if not letter.isalnum():
-                message = "Passwords must be alphanumeric only. Please try another one."
-                return message
+                flash(Markup("Passwords must be alphanumeric only. Please try another one."))
+                return redirect(url_for('register'))
         
         # Check username and password are between 6-15 characters
         if len(new_username) < 5 or len(new_username) > 15:
-            message = "Usernames must be between 5 and 15 characters. Please try again."
-            return message
+            flash(Markup("Usernames must be between 5 and 15 characters. Please try again."))
+            return redirect(url_for('register'))
         if len(new_password) < 5 or len(new_password) > 15:
-            message = "Passwords must be between 5 and 15 characters. Please try again."
-            return message
+            flash(Markup("Passwords must be between 5 and 15 characters. Please try again."))
+            return redirect(url_for('register'))
         
         # Check if username already exists
         existing_user = users_coll.find_one({"username": new_username})
         if existing_user:
-            message = "Sorry, " + new_username + " is already taken! Please choose another one!"
-            return message
+            flash(Markup("Sorry, " + new_username + " is already taken! Please choose another one!"))
+            return redirect(url_for('register'))
         
         # If all checks pass, add user to the database
         users_coll.insert_one({
@@ -81,8 +81,8 @@ def register():
             "password": generate_password_hash(new_password)
         })
         session['user'] = new_username
-        message = "Welcome " + new_username + ", you will now be logged in"
-        return message
+        flash(Markup("Welcome " + new_username + ", you're now logged in!"))
+        return redirect(url_for('index'))
     return render_template("login_register.html")
 
 if __name__ == '__main__':
