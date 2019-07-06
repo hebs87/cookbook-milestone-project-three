@@ -3,13 +3,49 @@
 
 
 <div class="row center-align">
+    
+    <!--WELCOME MESSAGE-->
     <div class="col s12">
-        <!--Welcome message-->
         <h1 class="title">Welcome{% if session.user %}, {{ session['user']|capitalize }}{% endif %}!</h1>
     </div>
+
+    <!--HOME PAGE IMAGE-->
     <div class="col s8 offset-s2">
         <img class="responsive-img" src="{{ url_for('static', filename='img/home-image.jpg') }}">
-    <div>
+    </div>
+
+    <!--BROWSE, PROFILE, AND ADD BUTTONS-->
+    <!--Options if user is logged in-->
+    {% if session.user %}
+        <div class="col s6 m4">
+            <a href="#" class="waves-effect waves-light btn">
+                <i class="fas fa-utensils" aria-hidden="true"></i>Browse
+            </a>
+        </div>
+        <div class="col s6 m4">
+            <a href="#" class="waves-effect waves-light btn">
+                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+            </a>
+        </div>
+        <div class="col s6 offset-s3 m4">
+            <a href="" class="waves-effect waves-light btn">
+                <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
+            </a>
+        </div>
+    <!--If there is no user in session-->
+    {% else %}
+        <div class="col s6 m4 offset-m2">
+            <a href="#" class="waves-effect waves-light btn">
+                <i class="fas fa-utensils" aria-hidden="true"></i>Browse
+            </a>
+        </div>
+        <div class="col s6 m4">
+            <a href="{{ url_for('login_register') }}" class="waves-effect waves-light btn">
+                <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login | Register
+            </a>
+        </div>
+    {% endif %}
+
 </div>
 
 {% endblock %}
