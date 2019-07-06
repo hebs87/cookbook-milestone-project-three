@@ -23,7 +23,7 @@
 
     <!--HEADER-->
 
-    <header>
+    <header class="container-fluid">
         <!--NAVBAR-->
         <!--Main Nav-->
         <nav class="nav-extended">
@@ -126,19 +126,21 @@
     <!--MAIN CONTENT-->
 
     <main>
-        
-        <!--Flashed messages to appear at the top of the page, below the Navbar-->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class="flashes center-align">
-                    {% for message in messages %}
-                    <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-        
-        {% block content %} {% endblock %}
+        <div class="container">
+            <!--Flashed messages to appear at the top of the page, below the Navbar-->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul class="flashes center-align">
+                        {% for message in messages %}
+                        <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            
+            <!--Main content-->
+            {% block content %} {% endblock %}
+        </div>
     </main>
 
     <!--END MAIN CONTENT-->
