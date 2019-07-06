@@ -22,7 +22,6 @@
 <body>
 
     <!--HEADER-->
-
     <header class="container-fluid">
         <!--NAVBAR-->
         <!--Main Nav-->
@@ -53,7 +52,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#">
+                            <a href="{{ url_for('add_recipe') }}">
                                 <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
                             </a>
                         </li>
@@ -98,7 +97,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ url_for('add_recipe') }}">
                         <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
                     </a>
                 </li>
@@ -120,11 +119,9 @@
         <!--END NAVBAR-->
 
     </header>
-
     <!--END HEADER-->
 
     <!--MAIN CONTENT-->
-
     <main>
         <div class="container">
             <!--Flashed messages to appear at the top of the page, below the Navbar-->
@@ -142,11 +139,9 @@
             {% block content %} {% endblock %}
         </div>
     </main>
-
     <!--END MAIN CONTENT-->
 
     <!--FOOTER-->
-
     <footer class="page-footer">
         <div class="container">
             <div class="row center-align">
@@ -164,7 +159,6 @@
             </div>
         </div>
     </footer>
-
     <!--END FOOTER-->
 
     <!--Script tag for jQuery-->

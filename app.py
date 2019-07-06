@@ -25,11 +25,12 @@ serves_coll = mongo.db.serves
 time_coll = mongo.db.time
 users_coll = mongo.db.userLogin
 
-# User login sessions/logout
+# Route to index.html
 @app.route('/')
 def index():
     return render_template("index.html")
 
+# User login sessions/logout
 @app.route('/login_register')
 def login_register():
     return render_template("login_register.html")
@@ -124,6 +125,11 @@ def before_request():
     g.user = None
     if 'user' in session:
         g.user = session['user']
+
+# Route to add_recipe.html
+@app.route('/add_recipe')
+def add_recipe():
+    return render_template("add_recipe.html")
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),

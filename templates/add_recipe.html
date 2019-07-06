@@ -1,0 +1,71 @@
+{% extends "base.html" %} {% block content %}
+
+<!--Page Title-->
+<div class="row center-align">
+    <div class="col s12">
+        <h1 class="title"> Add A Recipe!</h1>
+    </div>
+</div>
+
+<!--ADD RECIPE FORM WITH NESTED CARDS FOR RELEVANT SECTIONS-->
+<div class="row center-align">
+    <form method="GET" action="">
+
+        <!--Recipe Details Card-->
+        <div class="row card z-depth-1">
+            <!--Card Title-->
+            <h3><i class="fas fa-list-ul"></i>Recipe Details</h3>
+            <!--Recipe Name Field-->
+            <div class="input-field col s12">
+                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" required>
+                <label for="name"></label>
+            </div>
+            <!--Prep Time Select-->
+            <div class="input-field col s12 m6">
+                <select id="prep_time" name="prep_time" class="form-control validate" required>
+                    <option value="" disabled selected>Preparation Time</option>
+                    <option value="">1</option>
+                </select>
+            </div>
+            <!--Cook Time Select-->
+            <div class="input-field col s12 m6">
+                <select id="cook_time" name="cook_time" class="form-control validate" required>
+                    <option value="" disabled selected>Cooking Time</option>
+                    <option value="">1</option>
+                </select>
+            </div>
+            <!--Serves Select-->
+            <div class="input-field col s12 m6">
+                <select id="serves" name="serves" class="form-control validate" required>
+                    <option value="" disabled selected>Serves</option>
+                    <option value="">1</option>
+                </select>
+            </div>
+            <!--Rating Select-->
+            <div class="input-field col s12 m6">
+                <select id="rating" name="rating" class="form-control validate" required>
+                    <option value="" disabled selected>Rating</option>
+                    <option value="">1</option>
+                </select>
+            </div>
+            <!--Author Field-->
+            <div class="input-field col s12">
+                <input id="author" name="Author" type="text" placeholder="Who created it?" class="form-control validate" required>
+            </div>
+            <!--Image File Input-->
+            <div class="file-field input-field col s12">
+                <div class="btn">
+                    <i class="far fa-image"></i>
+                    <input type="file" name="img">
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" name="file_path" placeholder="Add an image" type="text">
+                </div>
+            </div>
+        </div>
+        
+
+    </form>
+</div>
+
+{% endblock %}
