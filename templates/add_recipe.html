@@ -9,8 +9,9 @@
 
 <!--ADD RECIPE FORM WITH NESTED CARDS FOR RELEVANT SECTIONS-->
 <div class="row center-align">
-    <form method="GET" action="">
-
+    <!--enctype attribute used in form tag, as image file is being uploaded-->
+    <form method="POST" action="{{ url_for('insert_recipe') }}" enctype="multipart/form-data">
+        
         <!--Recipe Details Card-->
         <div class="row card z-depth-1">
             <!--Card Title-->
@@ -59,7 +60,7 @@
             </div>
             <!--Author Field-->
             <div class="input-field col s12">
-                <input id="author" name="Author" type="text" placeholder="Who created it?" class="form-control validate" required>
+                <input id="author" name="author" type="text" placeholder="Who created it?" class="form-control validate" required>
             </div>
             <!--Image File Input-->
             <div class="file-field input-field col s12">

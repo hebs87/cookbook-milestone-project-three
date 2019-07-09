@@ -4,10 +4,16 @@ from flask import Flask, render_template, redirect, request, session, g, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import check_password_hash, generate_password_hash
-from datetime import datetime
+from datetime import date
+from flask_uploads import UploadSet, configure_uploads, IMAGES
 
 # Instance of Flask
 app = Flask(__name__)
+
+# Config for storing uploaded images
+images = UploadSet('images', IMAGES)
+app.config["UPLOADED_IMAGES_DEST"] = "static/img"
+configure_uploads(app, images)
 
 # Config Flask app and connect to database
 app.config["MONGO_DBNAME"] = 'onlineCookbook'
@@ -104,7 +110,6 @@ cuisines_list = cuisines_dropdown()
 main_ing_list = main_ing_dropdown()
 
 # Other helper functions (called multiple times in other functions)
-
 
 # Route to index.html
 @app.route('/')
@@ -221,6 +226,58 @@ def add_recipe():
         occasions=occasions_list,
         cuisines=cuisines_list,
         main_ing=main_ing_list)
+
+@app.route('/insert_recipe', methods=["GET", "POST"])
+def insert_recipe():
+    '''
+    Insert the new recipe entry into the database
+    '''
+    if request.method == 'POST':
+        # Check if user has submitted an recipe
+        if 'img' in request.files:
+            # If user has submitted an image,
+            # save to location and upload relative file path to database
+            file_name = images.save(request.files['img'])
+            file_path = "..static/img/" + file_name
+        else:
+            # If no image, stock image file path will be stored in database
+            file_path = "..static/img/no-image-available.jpg"
+        
+        # Get today's date
+        today = date.today()
+        today_date = today.strftime("%d %B %Y")
+        
+        # Get session user details
+        user = session['user'].lower()
+        user_id = users_coll.find_one({"username": user})["_id"]
+        
+        insert = {
+            "name": request.form.get("name").lower(),
+            "rating_values": request.form.getlist("rating"),
+            "prep_time": request.form.get("prep_time").lower(),
+            "cook_time": request.form.get("cook_time").lower(),
+            "serves": request.form.get("serves").lower(),
+            "ingredients": request.form.getlist("ingredients"),
+            "instructions": request.form.getlist("instructions"),
+            "type": request.form.get("type").lower(),
+            "occasion": request.form.get("occasion").lower(),
+            "cuisine": request.form.get("cuisine").lower(),
+            "main_ing": request.form.get("main_ing").lower(),
+            "author": request.form.get("author").lower(),
+            "img": file_path,
+            "added_by": user_id,
+            "added_date": today_date,
+            "views": 0,
+            "deleted": False
+        }
+        
+        # Insert recipe dict into the database
+        recipes_coll.insert_one(insert)
+        
+        # Flash message confirmation that recipe has been successfully added
+        flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
+        
+        return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
