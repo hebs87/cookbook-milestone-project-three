@@ -24,10 +24,6 @@ rating_coll = mongo.db.rating
 categories_coll = mongo.db.categories
 serves_coll = mongo.db.serves
 time_coll = mongo.db.time
-types_coll = mongo.db.types
-occasions_coll = mongo.db.occasions
-cuisines_coll = mongo.db.cuisines
-main_ing_coll = mongo.db.main_ing
 users_coll = mongo.db.userLogin
 
 # Functions for drop down menus (called multiple times in other functions)
@@ -58,50 +54,35 @@ def serves_dropdown():
         s for serves in serves_coll.find()
         for s in serves.get("serves")]
 
-def types_dropdown():
+def categories_dropdown():
     '''
-    Drop down menu for types values
-    Accesses types array within the types database
-    '''
-    return [
-        t for types in types_coll.find()
-        for t in types.get("types")]
-
-def occasions_dropdown():
-    '''
-    Drop down menu for occasions values
-    Accesses occasions array within the occasions database
+    Drop down menu for categories values (type, occasion, cuisine & main_ing)
+    These are arrays that are nested within the categories object in the database
+    The function builds a list for each of the four types of category.
     '''
     return [
-        o for occ in occasions_coll.find()
-        for o in occ.get("occasions")]
-
-def cuisines_dropdown():
-    '''
-    Drop down menu for cusines values
-    Accesses cusines array within the cusines database
-    '''
-    return [
-        c for cuisine in cuisines_coll.find()
-        for c in cuisine.get("cuisines")]
-
-def main_ing_dropdown():
-    '''
-    Drop down menu for main_ing values
-    Accesses main_ing array within the main_ing database
-    '''
-    return [
-        m for main in main_ing_coll.find()
-        for m in main.get("main_ing")]
+        c for cat in categories_coll.find()
+        for c in cat.get("categories")]
+    # cat = []
+    # for c in categories_coll.find():
+    #     cat.append(c)
+    # value = []
+    # for c in cat:
+    #     if c["cat_type"] == cat_type:
+    #         new_cat = (c["cat_name"])
+    #         value.append(new_cat)
+    # return value
 
 # Other global variables (called in multiple functions)
 rating_list = rating_dropdown()
 time_list = time_dropdown()
 serves_list = serves_dropdown()
-types_list = types_dropdown()
-occasions_list = occasions_dropdown()
-cuisines_list = cuisines_dropdown()
-main_ing_list = main_ing_dropdown()
+categories_list = categories_dropdown()
+print=
+# type_list = categories_dropdown("type")
+# occasion_list = categories_dropdown("occasion")
+# cuisine_list = categories_dropdown("cuisine")
+# main_ing_list = categories_dropdown("main_ing")
 
 # Other helper functions (called multiple times in other functions)
 
@@ -217,10 +198,7 @@ def add_recipe():
         rating=rating_list,
         time=time_list,
         serves=serves_list,
-        types=types_list,
-        occasions=occasions_list,
-        cuisines=cuisines_list,
-        main_ing=main_ing_list)
+        category=categories_list)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
