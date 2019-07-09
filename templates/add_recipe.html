@@ -24,7 +24,10 @@
             <div class="input-field col s12 m6">
                 <select id="prep_time" name="prep_time" class="form-control validate" required>
                     <option value="" disabled selected>Preparation Time</option>
-                    <option value="">1</option>
+                    <!--Loop through time_list and inject data into the drop down menu-->
+                    {% for t in time %}
+                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <!--Cook Time Select-->

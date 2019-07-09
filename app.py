@@ -1,9 +1,10 @@
-import os, json, math
+import os, json, math, html
 import re
 from flask import Flask, render_template, redirect, request, session, g, url_for, flash, Markup
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import check_password_hash, generate_password_hash
+from datetime import datetime
 
 # Instance of Flask
 app = Flask(__name__)
@@ -19,11 +20,57 @@ mongo = PyMongo(app)
 
 # DB collection variables
 recipes_coll = mongo.db.recipes
-rating_coll = mongo.db.ratings
+rating_coll = mongo.db.rating
 categories_coll = mongo.db.categories
 serves_coll = mongo.db.serves
 time_coll = mongo.db.time
 users_coll = mongo.db.userLogin
+
+# Functions for drop down menus (called multiple times in other functions)
+def rating_dropdown():
+    '''
+    Drop down menu for rating values
+    Accesses rating array within the rating database
+    '''
+    return [
+        r for rating in rating_coll.find()
+        for r in rating.get("rating")]
+
+def time_dropdown():
+    '''
+    Drop down menu for time values (prep time and cook time)
+    Accesses time array within the rating database
+    '''
+    return [
+        t for time in time_coll.find()
+        for t in time.get("time")]
+
+def serves_dropdown():
+    '''
+    Drop down menu for time values (prep time and cook time)
+    Accesses time array within the rating database
+    '''
+    return [
+        s for serves in serves_coll.find()
+        for s in serves.get("serves")]
+
+def categories_dropdown():
+    '''
+    Drop down menu for time values (prep time and cook time)
+    Accesses time array within the rating database
+    '''
+    return sorted([
+        c for cat in categories_coll.find()
+        for c in cat.get("categories")])
+
+# Other global variables (called in multiple functions)
+rating_list = rating_dropdown()
+time_list = time_dropdown()
+serves_list = serves_dropdown()
+categories_list = categories_dropdown()
+
+# Other helper functions (called multiple times in other functions)
+
 
 # Route to index.html
 @app.route('/')
@@ -129,7 +176,16 @@ def before_request():
 # Route to add_recipe.html
 @app.route('/add_recipe')
 def add_recipe():
-    return render_template("add_recipe.html")
+    '''
+    Return the add_recipe.html template and inject the data into drop down menus
+    '''
+    return render_template("add_recipe.html",
+        rating=rating_list,
+        time=time_list,
+        serves=serves_list,
+        category=categories_list)
+
+
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
