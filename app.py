@@ -64,50 +64,59 @@ def serves_dropdown():
         s for serves in serves_coll.find()
         for s in serves.get("serves")]
 
-def types_dropdown():
-    '''
-    Drop down menu for types values
-    Accesses types array within the types database
-    '''
-    return [
-        t for types in types_coll.find()
-        for t in types.get("types")]
+# def types_dropdown():
+#     '''
+#     Drop down menu for types values
+#     Accesses types array within the types database
+#     '''
+#     return [
+#         t for types in types_coll.find()
+#         for t in types.get("types")]
 
-def occasions_dropdown():
-    '''
-    Drop down menu for occasions values
-    Accesses occasions array within the occasions database
-    '''
-    return [
-        o for occ in occasions_coll.find()
-        for o in occ.get("occasions")]
+# def occasions_dropdown():
+#     '''
+#     Drop down menu for occasions values
+#     Accesses occasions array within the occasions database
+#     '''
+#     return [
+#         o for occ in occasions_coll.find()
+#         for o in occ.get("occasions")]
 
-def cuisines_dropdown():
-    '''
-    Drop down menu for cusines values
-    Accesses cusines array within the cusines database
-    '''
-    return [
-        c for cuisine in cuisines_coll.find()
-        for c in cuisine.get("cuisines")]
+# def cuisines_dropdown():
+#     '''
+#     Drop down menu for cusines values
+#     Accesses cusines array within the cusines database
+#     '''
+#     return [
+#         c for cuisine in cuisines_coll.find()
+#         for c in cuisine.get("cuisines")]
 
-def main_ing_dropdown():
-    '''
-    Drop down menu for main_ing values
-    Accesses main_ing array within the main_ing database
-    '''
-    return [
-        m for main in main_ing_coll.find()
-        for m in main.get("main_ing")]
+# def main_ing_dropdown():
+#     '''
+#     Drop down menu for main_ing values
+#     Accesses main_ing array within the main_ing database
+#     '''
+#     return [
+#         m for main in main_ing_coll.find()
+#         for m in main.get("main_ing")]
 
+def categories_dropdown(key, val):
+    '''
+    Drop down menu for categories values (type, occasion, cuisine & main_ing
+    These are arrays that are nested within the categories object in the database
+    The function uses the key, val parameters to access the relevant nested array
+    '''
+    for c in categories_coll.find():
+        return c[key][val]
+    
 # Other global variables (called in multiple functions)
 rating_list = rating_dropdown()
 time_list = time_dropdown()
 serves_list = serves_dropdown()
-types_list = types_dropdown()
-occasions_list = occasions_dropdown()
-cuisines_list = cuisines_dropdown()
-main_ing_list = main_ing_dropdown()
+types_list = categories_dropdown('categories', 'type')
+occasions_list = categories_dropdown('categories', 'occasion')
+cuisines_list = categories_dropdown('categories', 'cuisine')
+main_ing_list = categories_dropdown('categories', 'main_ing')
 
 # Other helper functions (called multiple times in other functions)
 
