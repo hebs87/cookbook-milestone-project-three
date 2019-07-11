@@ -15,10 +15,11 @@
     </div>
 
     <!--BROWSE, PROFILE, AND ADD BUTTONS-->
-    <!--Options if user is logged in-->
+    <!--Options if user is logged in
+    Buttons are different sizes/layouts depending on whether user is logged in/out-->
     {% if session.user %}
         <div class="col s6 m4">
-            <a href="#" class="waves-effect waves-light btn">
+            <a href="{{ url_for('get_recipes') }}" class="waves-effect waves-light btn">
                 <i class="fas fa-utensils" aria-hidden="true"></i>Browse
             </a>
         </div>
@@ -35,7 +36,7 @@
     <!--If there is no user in session-->
     {% else %}
         <div class="col s6 m4 offset-m2">
-            <a href="#" class="waves-effect waves-light btn">
+            <a href="{{ url_for('get_recipes') }}" class="waves-effect waves-light btn">
                 <i class="fas fa-utensils" aria-hidden="true"></i>Browse
             </a>
         </div>

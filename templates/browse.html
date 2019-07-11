@@ -1,6 +1,49 @@
 {% extends "base.html" %}
 {% block content %}
 
+<!--Page Title-->
+<div class="row center-align">
+    <div class="col s12">
+        <h1 class="title">Recipes!</h1>
+    </div>
+</div>
 
+<div class="row center-align">
+    {% for r in recipes %}
+    <div class="col s12 m3">
+        <div id="{{ r._id }}" class="card results-card">
+            <a href="">
+                <!--Recipe Image-->
+                <div class="card-image">
+                    <img src="{{ url_for('static', filename=r.img) }}" alt="{{ r.name }}" class="activator" lazyload="on">
+                </div>
+                <!--Recipe Name-->
+                <span class="card-title center-align grey-text text-darken-4">{{ r.name }}</span>
+            </a>
+            <!--Recipe Quick Stats-->
+            <div class="card-action">
+                <span>
+                    <i class="far fa-clock" aria-hidden="true"></i><br>
+                    {{ r.cook_time }}
+                </span>
+                <span>
+                    <i class="far fa-eye" aria-hidden="true"></i><br>
+                    {{ r.views }}
+                </span>
+                <span>
+                    <i class="far fa-star" aria-hidden="true"></i><br>
+                    <!--Iterate through rating array and calculate average rating-->
+                    {% set rating = [] %}
+                    {% for r in r.rating_values %}
+                        {% if rating.append(r) %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ (rating | sum / rating | count) | int }}
+                </span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 {% endblock %}

@@ -125,7 +125,10 @@ main_ing_list = categories_dropdown('categories', 'main_ing')
 def index():
     return render_template("index.html")
 
-# User login sessions/logout
+'''
+USER LOGIN AND LOGOUT FUNCTIONALITY
+'''
+
 @app.route('/login_register')
 def login_register():
     return render_template("login_register.html")
@@ -221,7 +224,10 @@ def before_request():
     if 'user' in session:
         g.user = session['user']
 
-# Route to add_recipe.html
+'''
+CREATE OPERATION
+'''
+
 @app.route('/add_recipe')
 def add_recipe():
     '''
@@ -247,10 +253,10 @@ def insert_recipe():
             # If user has submitted an image,
             # save to location and upload relative file path to database
             file_name = images.save(request.files['img'])
-            file_path = "..static/img/" + file_name
+            file_path = "img/" + file_name
         else:
             # If no image, stock image file path will be stored in database
-            file_path = "..static/img/no-image-available.jpg"
+            file_path = "img/no-image-available.jpg"
         
         # Get today's date
         today = date.today()
@@ -262,7 +268,7 @@ def insert_recipe():
         
         insert = {
             "name": request.form.get("name").lower(),
-            "rating_values": request.form.getlist("rating"),
+            "rating_values": request.form.getlist(int("rating")),
             "prep_time": request.form.get("prep_time").lower(),
             "cook_time": request.form.get("cook_time").lower(),
             "serves": request.form.get("serves").lower(),
@@ -289,6 +295,18 @@ def insert_recipe():
         flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
         
         return redirect(url_for('index'))
+
+'''
+READ OPERATION
+'''
+
+@app.route('/get_recipes')
+def get_recipes():
+    '''
+    get recipes and display summary details in cards
+    '''
+    recipes = recipes_coll.find()
+    return render_template("browse.html", recipes=recipes)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
