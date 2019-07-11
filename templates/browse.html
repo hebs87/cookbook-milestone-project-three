@@ -35,7 +35,7 @@
                     <!--Iterate through rating array and calculate average rating-->
                     {% set rating = [] %}
                     {% for r in r.rating_values %}
-                        {% if rating.append(r) %}
+                        {% if rating.append(r | int) %}
                         {% endif %}
                     {% endfor %}
                     {{ (rating | sum / rating | count) | int }}

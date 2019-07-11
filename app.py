@@ -248,11 +248,12 @@ def insert_recipe():
     Insert the new recipe entry into the database
     '''
     if request.method == 'POST':
-        # Check if user has submitted an recipe
-        if 'img' in request.files:
+        # Check if user has submitted an image
+        # If filepath field is an empty string, no image is present
+        if request.form.get("filepath") != "":
             # If user has submitted an image,
             # save to location and upload relative file path to database
-            file_name = images.save(request.files['img'])
+            file_name = images.save(request.files['image'])
             file_path = "img/" + file_name
         else:
             # If no image, stock image file path will be stored in database
@@ -268,7 +269,9 @@ def insert_recipe():
         
         insert = {
             "name": request.form.get("name").lower(),
-            "rating_values": request.form.getlist(int("rating")),
+            "rating_values": [
+                int(request.form.get("rating"))
+            ],
             "prep_time": request.form.get("prep_time").lower(),
             "cook_time": request.form.get("cook_time").lower(),
             "serves": request.form.get("serves").lower(),
@@ -294,7 +297,7 @@ def insert_recipe():
         # Flash message confirmation that recipe has been successfully added
         flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
         
-        return redirect(url_for('index'))
+        return redirect(url_for('get_recipes'))
 
 '''
 READ OPERATION
