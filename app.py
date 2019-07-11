@@ -268,10 +268,12 @@ def insert_recipe():
             "serves": request.form.get("serves").lower(),
             "ingredients": request.form.getlist("ingredients"),
             "instructions": request.form.getlist("instructions"),
-            "type": request.form.get("type").lower(),
-            "occasion": request.form.get("occasion").lower(),
-            "cuisine": request.form.get("cuisine").lower(),
-            "main_ing": request.form.get("main_ing").lower(),
+            "categories": {
+                "type": request.form.get("type").lower(),
+                "occasion": request.form.get("occasion").lower(),
+                "cuisine": request.form.get("cuisine").lower(),
+                "main_ing": request.form.get("main_ing").lower(),
+            },
             "author": request.form.get("author").lower(),
             "img": file_path,
             "added_by": user_id,
@@ -280,7 +282,7 @@ def insert_recipe():
             "deleted": False
         }
         
-        # Insert recipe dict into the database
+        # Insert recipe dict (insert variable) into the database
         recipes_coll.insert_one(insert)
         
         # Flash message confirmation that recipe has been successfully added
