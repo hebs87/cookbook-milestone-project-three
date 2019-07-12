@@ -120,6 +120,12 @@ main_ing_list = categories_dropdown('categories', 'main_ing')
 
 # Other helper functions (called multiple times in other functions)
 
+def find_recipe(recipe_id):
+    '''
+    Finds the receipe details based on the recipe_id
+    '''
+    return recipes_coll.find_one({"_id": ObjectId(recipe_id)})
+
 # Route to index.html
 @app.route('/')
 def index():
@@ -306,10 +312,24 @@ READ OPERATION
 @app.route('/get_recipes')
 def get_recipes():
     '''
-    get recipes and display summary details in cards
+    Get all recipes and display summary details in cards
     '''
     recipes = recipes_coll.find()
     return render_template("browse.html", recipes=recipes)
+
+@app.route('/recipe/<recipe_id>')
+def recipe(recipe_id):
+    '''
+    Gets details for a particular recipe_id that the user clicked on browse.html
+    This routes the user to the recipes.html page with details for that recipe_id
+    Each time the recipe is viewed, it increments the 'views' field in the DB by one
+    '''
+    recipe = find_recipe(recipe_id)
+    
+    # Increment 'views' field by 1 each time the recipe is viewed
+    recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$inc": {"views": 1}})
+    
+    return render_template("recipes.html", recipe=recipe)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),

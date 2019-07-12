@@ -12,7 +12,7 @@
     {% for r in recipes %}
     <div class="col s12 m3">
         <div id="{{ r._id }}" class="card results-card">
-            <a href="">
+            <a href="{{ url_for('recipe', recipe_id=r._id) }}">
                 <!--Recipe Image-->
                 <div class="card-image">
                     <img src="{{ url_for('static', filename=r.img) }}" alt="{{ r.name }}" class="activator" lazyload="on">
@@ -35,7 +35,7 @@
                     <!--Iterate through rating array and calculate average rating-->
                     {% set rating = [] %}
                     {% for r in r.rating_values %}
-                        {% if rating.append(r | int) %}
+                        {% if rating.append(r) %}
                         {% endif %}
                     {% endfor %}
                     {{ (rating | sum / rating | count) | int }}
