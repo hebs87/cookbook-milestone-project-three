@@ -18,18 +18,33 @@
             <img class="responsive-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
         </div>
         <div class="col s12 m6 center-align recipe-details">
-            <h6 class="stat">
+            <p class="stat">
                 Rating: 
                 {% set rating = [] %}
                 {% for r in recipe.rating_values %}
                     {% if rating.append(r) %}
                     {% endif %}
                 {% endfor %}
-                {{ (rating | sum / rating | count) | int }}
-            </h6>
-            <h6 class="stat">
-                {{ rating | count }} Rating(s)
-            </h6>
+                {{ (rating | sum / rating | count) | int }}/5
+            </p>
+            <p class="stat">
+                Times Rated: {{ rating | count }}
+            </p>
+            <p class="stat">
+                Prep Time: {{ recipe.prep_time }}
+            </p>
+            <p class="stat">
+                Cook Time: {{ recipe.cook_time }}
+            </p>
+            <p class="stat">
+                Serves: {{ recipe.serves | capitalize }}
+            </p>
+            <p class="stat">
+                By: {{ recipe.author | title }}
+            </p>
+            <p class="stat">
+                Added: {{ recipe.added_date }}
+            </p>
         </div>
     </div>
 

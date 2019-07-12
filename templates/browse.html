@@ -38,7 +38,7 @@
                         {% if rating.append(r) %}
                         {% endif %}
                     {% endfor %}
-                    {{ (rating | sum / rating | count) | int }}
+                    {{ (rating | sum / rating | count) | int }}/5
                 </span>
             </div>
         </div>
