@@ -7,7 +7,7 @@ $('.tabs').tabs();
 /* Initialize Select Form */
 $('select').formSelect();
 
-/* Initialize Rate Modal */
+/* Initialize Modals */
 $('.modal').modal();
 
 /* Add and remove new ingredient lines on user click (add_recipe.html) */

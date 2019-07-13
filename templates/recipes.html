@@ -31,7 +31,7 @@
             <p class="stat">
                 Times Rated: {{ rating | count }}
             </p>
-            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger" data-position="bottom">
+            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger">
                 <i class="far fa-star" aria-hidden="true"></i>Rate It
             </a>
             <p class="stat">
@@ -63,8 +63,8 @@
                     <span class="hide-on-small-and-down">Edit</span>
                 </a>
                     
-                    {% if session.user == added_by %}
-                    <a href="" class="waves-effect waves-light btn">
+                    {% if session.user | lower == added_by %}
+                    <a href="#delete_modal" class="waves-effect waves-light btn modal-trigger">
                         <i class="fas fa-trash-alt" aria-hidden="true"></i>
                         <span class="hide-on-small-and-down">Delete</span>
                     </a>
@@ -89,6 +89,7 @@
 <!--Rate It Modal-->
 <div id="rate_modal" class="modal">
     <div class="modal-content center-align">
+        <h5 class="bold">Choose your rating.</h5>
         <form method="GET" action="">    
             <div class="input-field col s12">
                 <select id="rating" name="rating" class="form-control validate" required>
@@ -100,11 +101,26 @@
             </div>
             <div class="input-field col s12">
                 <button class="btn waves-effect waves-light" type="submit" name="register">
-                    <i class="far fa-star"></i>
+                    <i class="far fa-star" aria-hidden="true"></i>
                     Rate It
                 </button>
             </div>
         </form>
+    </div>
+</div>
+
+<!--Delete Modal-->
+<div id="delete_modal" class="modal">
+    <div class="modal-content center-align">
+        <h5 class="bold">Are you sure you want to delete this recipe?</h5>
+        <a class="waves-effect waves-light btn" href="">
+            <i class="fas fa-check" aria-hidden="true"></i>
+            <span class="hide-on-small-and-down">Yes</span>
+        </a>
+        <a class="waves-effect waves-light btn" href="">
+            <i class="fas fa-times" aria-hidden="true"></i>
+            <span class="hide-on-small-and-down">No</span>
+        </a>
     </div>
 </div>
 
