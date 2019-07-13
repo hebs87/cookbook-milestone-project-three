@@ -31,7 +31,7 @@
             <p class="stat">
                 Times Rated: {{ rating | count }}
             </p>
-            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger" data-position="bottom">
                 <i class="far fa-star" aria-hidden="true"></i>Rate It
             </a>
             <p class="stat">
@@ -50,8 +50,35 @@
                 Added: {{ recipe.added_date }}
             </p>
         </div>
+        <!--Buttons - vary depending on whether user is in session-->
         <div class="col s12 center-align options-buttons">
-            
+            <a id="print-btn" class="waves-effect waves-light btn">
+                <i class="fas fa-print" aria-hidden="true"></i>
+                <span class="hide-on-small-and-down">Print</span>
+            </a>
+            <!--Extra options when user logged in-->
+            {% if session.user %}
+                <a href="" class="waves-effect waves-light btn">
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                    <span class="hide-on-small-and-down">Edit</span>
+                </a>
+                <a href="" class="waves-effect waves-light btn">
+                    <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                    <span class="hide-on-small-and-down">Delete</span>
+                </a>
+                
+                <!--ONLY ON DISPLAY IF THE RECIPE ID IS IN THE USER LIKED LIST-->
+                <a href="" class="waves-effect waves-light btn hide">
+                    <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="hide-on-small-and-down">Liked</span>
+                </a>
+                
+                <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER LIKED LIST-->
+                <a href="" class="waves-effect waves-light btn">
+                    <i class="far fa-thumbs-up" aria-hidden="true"></i>
+                    <span class="hide-on-small-and-down">Like</span>
+                </a>
+            {% endif %}
         </div>
     </div>
 
