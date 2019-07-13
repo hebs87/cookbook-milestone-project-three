@@ -328,9 +328,18 @@ def recipe(recipe_id):
     
     # Increment 'views' field by 1 each time the recipe is viewed
     recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$inc": {"views": 1}})
+    
+    # Ratings dropdown
     ratings = rating_dropdown()
     
-    return render_template("recipes.html", recipe=recipe, ratings=ratings)
+    # Convert added_by ObjectId to the username value - verify against the session user
+    added_by = users_coll.find_one(
+        {"_id": ObjectId(recipe.get("added_by"))})["username"]
+        
+    return render_template("recipes.html",
+        recipe=recipe,
+        ratings=ratings,
+        added_by=added_by)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
