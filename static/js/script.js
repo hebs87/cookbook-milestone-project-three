@@ -45,3 +45,8 @@ $(".remove-instruction").click(function() {
         instructionCount -= 1;
     }
 });
+
+/* Print Function */
+$("#print-btn").click(function() {
+    window.print();
+});
