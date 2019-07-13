@@ -328,8 +328,9 @@ def recipe(recipe_id):
     
     # Increment 'views' field by 1 each time the recipe is viewed
     recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$inc": {"views": 1}})
+    ratings = rating_dropdown()
     
-    return render_template("recipes.html", recipe=recipe)
+    return render_template("recipes.html", recipe=recipe, ratings=ratings)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),

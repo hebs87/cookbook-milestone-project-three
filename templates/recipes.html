@@ -13,10 +13,11 @@
 
     <!--Recipe Image, Stats and Buttons Card-->
     <div class="row card z-depth-1">
-        <!---->
+        <!--Recipe Image-->
         <div class="col s12 m6 center-align recipe-img">
             <img class="responsive-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
         </div>
+        <!--Recipe Stats-->
         <div class="col s12 m6 center-align recipe-details">
             <p class="stat">
                 Rating: 
@@ -30,6 +31,9 @@
             <p class="stat">
                 Times Rated: {{ rating | count }}
             </p>
+            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger">
+                <i class="far fa-star" aria-hidden="true"></i>Rate It
+            </a>
             <p class="stat">
                 Prep Time: {{ recipe.prep_time }}
             </p>
@@ -46,8 +50,33 @@
                 Added: {{ recipe.added_date }}
             </p>
         </div>
+        <div class="col s12 center-align options-buttons">
+            
+        </div>
     </div>
 
+</div>
+
+<!--Rate It Modal-->
+<div id="rate_modal" class="modal">
+    <div class="modal-content center-align">
+        <form method="GET" action="">    
+            <div class="input-field col s12">
+                <select id="rating" name="rating" class="form-control validate" required>
+                    <option disabled selected>Rating</option>
+                    {% for r in ratings %}
+                    <option value="{{ r }}">{{ r }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="input-field col s12">
+                <button class="btn waves-effect waves-light" type="submit" name="register">
+                    <i class="far fa-star"></i>
+                    Rate It
+                </button>
+            </div>
+        </form>
+    </div>
 </div>
 
 {% endblock %}
