@@ -9,10 +9,10 @@
 </div>
 
 <!--RECIPE CARD - IMAGE AND GENERAL DETAILS-->
-<div class="row center-align">
+<div class="row">
 
     <!--Recipe Image, Stats and Buttons Card-->
-    <div class="row card z-depth-1">
+    <div class="row card z-depth-1 center-align">
         <!--Recipe Image-->
         <div class="col s12 m6 center-align recipe-img">
             <img class="responsive-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
@@ -89,7 +89,32 @@
             {% endif %}
         </div>
     </div>
-
+    
+    <!--Recipe Ingredients and Instructions-->
+    <div class="row card z-depth-1">
+        <!--Ingredients-->
+        <div class="col s12 m6 ingredients">
+            <h4 class="center-align">Ingredients</h4>
+            <ul id="ingredients">
+                {% for ing in recipe.ingredients %}
+                <li class="ing-item">{{ ing }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <!--Instructions-->
+        <div class="col s12 m6 instructions">
+            <h4 class="center-align">Instructions</h4>
+            <ul id="instructions">
+                {% for instruction in recipe.instructions %}
+                <!--Include loop index so that the list is numbered-->
+                <li class="instruction-item">
+                    <span class"intruction-count">{{ loop.index }}. </span>
+                    {{ instruction }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
 </div>
 
 <!--Rate It Modal-->
