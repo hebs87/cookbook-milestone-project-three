@@ -329,18 +329,37 @@ def recipe(recipe_id):
     # Increment 'views' field by 1 each time the recipe is viewed
     recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$inc": {"views": 1}})
     
-    # Ratings dropdown
-    ratings = rating_dropdown()
-    
     # Convert added_by ObjectId to the username value - verify against the session user
     added_by = users_coll.find_one(
         {"_id": ObjectId(recipe.get("added_by"))})["username"]
         
     return render_template("recipes.html",
         recipe=recipe,
-        ratings=ratings,
+        ratings=rating_list,
         added_by=added_by)
 
+'''
+UPDATE OPERATION
+'''
+
+@app.route("/edit_recipe/<recipe_id>")
+def edit_recipe(recipe_id):
+    '''
+    Route user to edit_recipe.html and inject existing data into the form
+    Give users the ability to amend the recipe details
+    '''
+    recipe = find_recipe(recipe_id)
+    
+    return render_template("edit_recipe.html",
+        recipe=recipe,
+        ratings=rating_list,
+        time=time_list,
+        serves=serves_list,
+        types=types_list,
+        occasions=occasions_list,
+        cuisines=cuisines_list,
+        main_ing=main_ing_list)
+    
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
