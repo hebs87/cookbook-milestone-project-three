@@ -18,7 +18,7 @@
             <h3><i class="fas fa-list-ul"></i>Recipe Details</h3>
             <!--Recipe Name Field-->
             <div class="input-field col s12">
-                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name }}" required>
+                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name | title }}" required>
                 <label for="name"></label>
             </div>
             <!--Prep Time Select-->
@@ -48,26 +48,21 @@
                 </select>
             </div>
             <!--Serves Select-->
-            <div class="input-field col s12 m6">
+            <div class="input-field col s12">
                 <select id="serves" name="serves" class="form-control validate" required>
                     <option disabled selected>Serves</option>
                     {% for s in serves %}
-                    <option value="{{ s }}">{{ s|capitalize }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <!--Rating Select-->
-            <div class="input-field col s12 m6">
-                <select id="rating" name="rating" class="form-control validate" required>
-                    <option disabled selected>Rating</option>
-                    {% for r in rating %}
-                    <option value="{{ r }}">{{ r }}</option>
+                        {% if s == recipe.serves %}
+                            <option value="{{ s|capitalize }}" selected>{{ s|capitalize }}</option>
+                        {% else %}
+                            <option value="{{ s|capitalize }}">{{ s|capitalize }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
             <!--Author Field-->
             <div class="input-field col s12">
-                <input id="author" name="author" type="text" placeholder="Who created it?" class="form-control validate" required>
+                <input id="author" name="author" type="text" placeholder="Who created it?" class="form-control validate" value="{{ recipe.author | title }}" required>
             </div>
             <!--Image File Input-->
             <div class="file-field input-field col s12">
@@ -76,7 +71,7 @@
                     <input type="file" name="image">
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" name="filepath" placeholder="Add an image (optional)..." type="text">
+                    <input class="file-path validate" name="filepath" placeholder="Add an image (optional)..." type="text" value="{{ recipe.img[4:] }}">
                 </div>
             </div>
         </div>
@@ -90,7 +85,11 @@
                 <select id="type" name="type" class="form-control validate" required>
                     <option disabled selected>Type</option>
                     {% for t in types %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                        {% if t == recipe.categories.type %}
+                            <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
+                        {% else %}
+                            <option value="{{ t|capitalize }}">{{ t|capitalize }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -99,7 +98,11 @@
                 <select id="occasion" name="occasion" class="form-control validate" required>
                     <option disabled selected>Occasion</option>
                     {% for o in occasions %}
-                    <option value="{{ o }}">{{ o|title }}</option>
+                        {% if o == recipe.categories.occasion %}
+                            <option value="{{ o|title }}" selected>{{ o|title }}</option>
+                        {% else %}
+                            <option value="{{ o|title }}">{{ o|title }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -108,7 +111,11 @@
                 <select id="cuisine" name="cuisine" class="form-control validate" required>
                     <option disabled selected>Cuisine</option>
                     {% for c in cuisines %}
-                    <option value="{{ c }}">{{ c|title }}</option>
+                        {% if c == recipe.categories.cuisine %}
+                            <option value="{{ c|title }}" selected>{{ c|title }}</option>
+                        {% else %}
+                            <option value="{{ c|title }}">{{ c|title }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
@@ -117,7 +124,11 @@
                 <select id="main_ing" name="main_ing" class="form-control validate" required>
                     <option disabled selected>Main Ingredient</option>
                     {% for main in main_ing %}
-                    <option value="{{ main }}">{{ main|title }}</option>
+                        {% if main == recipe.categories.main_ing %}
+                            <option value="{{ main|title }}" selected>{{ main|title }}</option>
+                        {% else %}
+                            <option value="{{ main|title }}">{{ main|title }}</option>
+                        {% endif %}
                     {% endfor %}
                 </select>
             </div>
