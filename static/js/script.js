@@ -28,6 +28,15 @@ $(".remove-ing").click(function() {
     }
 });
 
+/* Remove the current ingredient (edit_recipe.html) */
+$(".remove-current-ing").click(function() {
+    // Ensure that the first line can't be removed
+    if (ingCount > 1) {
+        $(this).parent().remove();
+        ingCount -= 1;
+    }
+});
+
 /* Add and remove new instruction lines on user click (add_recipe.html) */
 let instructionCount = $(".instructions").length;
 // Add new line
@@ -42,6 +51,15 @@ $(".remove-instruction").click(function() {
     // Ensure that the first line can't be removed
     if (instructionCount > 1) {
         $(".instructions:last").remove();
+        instructionCount -= 1;
+    }
+});
+
+/* Remove the current instruction (edit_recipe.html) */
+$(".remove-current-instruction").click(function() {
+    // Ensure that the first line can't be removed
+    if (instructionCount > 1) {
+        $(this).parent().remove();
         instructionCount -= 1;
     }
 });
