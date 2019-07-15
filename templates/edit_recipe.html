@@ -1,19 +1,16 @@
-{% extends "base.html" %}
-{% block content %}
-
 {% extends "base.html" %} {% block content %}
 
 <!--Page Title-->
 <div class="row center-align">
     <div class="col s12">
-        <h1 class="title">Edit Recipe!</h1>
+        <h1 class="title">Add A Recipe!</h1>
     </div>
 </div>
 
 <!--ADD RECIPE FORM WITH NESTED CARDS FOR RELEVANT SECTIONS-->
 <div class="row center-align">
     <!--enctype attribute used in form tag, as image file is being uploaded-->
-    <form method="GET" action="" enctype="multipart/form-data">
+    <form method="POST" action="{{ url_for('insert_recipe') }}" enctype="multipart/form-data">
         
         <!--Recipe Details Card-->
         <div class="row card z-depth-1">
@@ -69,10 +66,10 @@
             <div class="file-field input-field col s12">
                 <div class="btn">
                     <i class="far fa-image"></i>
-                    <input type="file" name="img">
+                    <input type="file" name="image">
                 </div>
                 <div class="file-path-wrapper">
-                    <input class="file-path validate" name="file_path" placeholder="Add an image" type="text">
+                    <input class="file-path validate" name="filepath" placeholder="Add an image (optional)..." type="text">
                 </div>
             </div>
         </div>
@@ -169,8 +166,5 @@
 
     </form>
 </div>
-
-{% endblock %}
-
 
 {% endblock %}
