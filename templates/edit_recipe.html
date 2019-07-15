@@ -18,16 +18,19 @@
             <h3><i class="fas fa-list-ul"></i>Recipe Details</h3>
             <!--Recipe Name Field-->
             <div class="input-field col s12">
-                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" required>
+                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name }}" required>
                 <label for="name"></label>
             </div>
             <!--Prep Time Select-->
             <div class="input-field col s12 m6">
                 <select id="prep_time" name="prep_time" class="form-control validate" required>
                     <option disabled selected>Preparation Time</option>
-                    <!--Loop through time_list and inject data into the drop down menu-->
                     {% for t in time %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                        {% if t == recipe.prep_time%}
+                            <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
+                        {% else %}
+                            <option value="{{ t|capitalize }}">{{ t|capitalize }}</option>
+                        {% endif%}
                     {% endfor %}
                 </select>
             </div>
@@ -36,7 +39,11 @@
                 <select id="cook_time" name="cook_time" class="form-control validate" required>
                     <option disabled selected>Cooking Time</option>
                     {% for t in time %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                        {% if t == recipe.cook_time%}
+                            <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
+                        {% else %}
+                            <option value="{{ t|capitalize }}">{{ t|capitalize }}</option>
+                        {% endif%}
                     {% endfor %}
                 </select>
             </div>

@@ -27,7 +27,7 @@
                     <option disabled selected>Preparation Time</option>
                     <!--Loop through time_list and inject data into the drop down menu-->
                     {% for t in time %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                    <option value"{{ t }}">{{ t|capitalize }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -36,7 +36,7 @@
                 <select id="cook_time" name="cook_time" class="form-control validate" required>
                     <option disabled selected>Cooking Time</option>
                     {% for t in time %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                    <option value"{{ t }}">{{ t|capitalize }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -45,7 +45,7 @@
                 <select id="serves" name="serves" class="form-control validate" required>
                     <option disabled selected>Serves</option>
                     {% for s in serves %}
-                    <option value="{{ s }}">{{ s|capitalize }}</option>
+                    <option value"{{ s }}">{{ s|capitalize }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -54,7 +54,7 @@
                 <select id="rating" name="rating" class="form-control validate" required>
                     <option disabled selected>Rating</option>
                     {% for r in rating %}
-                    <option value="{{ r }}">{{ r }}</option>
+                    <option value"{{ r }}">{{ r }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -83,7 +83,7 @@
                 <select id="type" name="type" class="form-control validate" required>
                     <option disabled selected>Type</option>
                     {% for t in types %}
-                    <option value="{{ t }}">{{ t|capitalize }}</option>
+                    <option value"{{ t }}">{{ t|capitalize }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -92,7 +92,7 @@
                 <select id="occasion" name="occasion" class="form-control validate" required>
                     <option disabled selected>Occasion</option>
                     {% for o in occasions %}
-                    <option value="{{ o }}">{{ o|title }}</option>
+                    <option value"{{ o }}">{{ o|title }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -101,7 +101,7 @@
                 <select id="cuisine" name="cuisine" class="form-control validate" required>
                     <option disabled selected>Cuisine</option>
                     {% for c in cuisines %}
-                    <option value="{{ c }}">{{ c|title }}</option>
+                    <option value"{{ c }}">{{ c|title }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -110,7 +110,7 @@
                 <select id="main_ing" name="main_ing" class="form-control validate" required>
                     <option disabled selected>Main Ingredient</option>
                     {% for main in main_ing %}
-                    <option value="{{ main }}">{{ main|title }}</option>
+                    <option value"{{ main }}">{{ main|title }}</option>
                     {% endfor %}
                 </select>
             </div>
