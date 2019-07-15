@@ -20,6 +20,7 @@
         <!--Recipe Stats-->
         <div class="col s12 m6 center-align recipe-details">
             <p class="stat">
+                <i class="far fa-star" aria-hidden="true"></i> 
                 Rating: 
                 {% set rating = [] %}
                 {% for r in recipe.rating_values %}
@@ -35,18 +36,23 @@
                 <i class="far fa-star" aria-hidden="true"></i>Rate It
             </a>
             <p class="stat">
+                <i class="far fa-clock" aria-hidden="true"></i>
                 Prep Time: {{ recipe.prep_time }}
             </p>
             <p class="stat">
+                <i class="far fa-clock" aria-hidden="true"></i>
                 Cook Time: {{ recipe.cook_time }}
             </p>
             <p class="stat">
+                <i class="fas fa-cookie-bite" aria-hidden="true"></i>
                 Serves: {{ recipe.serves | capitalize }}
             </p>
             <p class="stat">
+                <i class="far fa-user" aria-hidden="true"></i>
                 By: {{ recipe.author | title }}
             </p>
             <p class="stat">
+                <i class="far fa-calendar-plus" aria-hidden="true"></i>
                 Added: {{ recipe.added_date }}
             </p>
         </div>
