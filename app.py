@@ -397,8 +397,10 @@ def update_recipe(recipe_id):
         today = date.today()
         last_edited_date = today.strftime("%d %B %Y")
         
-        # Get number of views
+        # Get number of views and decrement by 1
+        # Resolves bug of it being incremented when redirected to recipes.html
         views = recipe.get("views")
+        decrement_views = views - 1
         
         # Get session user details
         user = session['user'].capitalize()
@@ -423,9 +425,11 @@ def update_recipe(recipe_id):
             "added_by": added_by,
             "added_date": added_date,
             "last_edited_date": last_edited_date,
-            "views": views,
+            "views": decrement_views,
             "deleted": False
         })
+        
+        
         
         # Flash message confirmation that recipe has been successfully added
         flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully edited!"))
@@ -463,6 +467,12 @@ def rate(recipe_id):
     # Push rating from form into the rating_values field in the relevant record
     recipes_coll.update_one({"_id": ObjectId(recipe_id)},
         {"$push": {"rating_values": int(request.form.get("rating"))}})
+    
+    # Decrement number of views by 1
+    # Resolves bug of it being incremented when redirected to recipes.html
+    recipes_coll.update_one({"_id": ObjectId(recipe_id)},
+        {"$inc": {"views": -1}})
+    
     
     # Flash message confirmation that recipe has been successfully added
     flash(Markup("Thanks for rating this recipe!"))
