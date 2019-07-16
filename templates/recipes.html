@@ -121,7 +121,7 @@
 <div id="rate_modal" class="modal">
     <div class="modal-content center-align">
         <h5 class="bold">Choose your rating.</h5>
-        <form method="GET" action="">    
+        <form method="POST" action="{{ url_for('rate', recipe_id=recipe._id) }}">
             <div class="input-field col s12">
                 <select id="rating" name="rating" class="form-control validate" required>
                     <option disabled selected>Rating</option>

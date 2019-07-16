@@ -454,6 +454,22 @@ def remove_recipe(recipe_id):
     return redirect(url_for('get_recipes',
         recipe_id=recipe_id))
 
+@app.route('/rate/<recipe_id>', methods=["GET", "POST"])
+def rate(recipe_id):
+    '''
+    Allows the user to rate the recipe
+    Pushes the rating value into the rating_values list in the recipes collection
+    '''
+    # Push rating from form into the rating_values field in the relevant record
+    recipes_coll.update_one({"_id": ObjectId(recipe_id)},
+        {"$push": {"rating_values": int(request.form.get("rating"))}})
+    
+    # Flash message confirmation that recipe has been successfully added
+    flash(Markup("Thanks for rating this recipe!"))
+    
+    return redirect(url_for('recipe',
+            recipe_id=recipe_id))
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
