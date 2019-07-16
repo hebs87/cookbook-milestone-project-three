@@ -257,7 +257,7 @@ def insert_recipe():
         # Check if user has submitted an image
         # If filepath field is an empty string, no image is present
         if request.form.get("filepath") != "":
-            # If user has submitted an image,
+            # If user has submitted a new image,
             # save to location and upload relative file path to database
             file_name = images.save(request.files['image'])
             file_path = "img/" + file_name
@@ -293,6 +293,7 @@ def insert_recipe():
             "img": file_path,
             "added_by": user_id,
             "added_date": today_date,
+            "last_edited_date": "",
             "views": 0,
             "deleted": False
         }
@@ -342,7 +343,7 @@ def recipe(recipe_id):
 UPDATE OPERATION
 '''
 
-@app.route("/edit_recipe/<recipe_id>")
+@app.route('/edit_recipe/<recipe_id>')
 def edit_recipe(recipe_id):
     '''
     Route user to edit_recipe.html and inject existing data into the form
@@ -360,6 +361,77 @@ def edit_recipe(recipe_id):
         cuisines=cuisines_list,
         main_ing=main_ing_list)
 
+@app.route('/update_recipe/<recipe_id>', methods=["POST"])
+def update_recipe(recipe_id):
+    '''
+    Update existing database record with the new form values
+    '''
+    if request.method == 'POST':
+        
+        # Get the recipe_id
+        recipe = find_recipe(recipe_id)
+        
+        # Convert added_by ObjectId to the username value - verify against the session user
+        added_by = recipe.get("added_by")
+        
+        # Check if user has submitted an image
+        if request.form.get("filepath") == recipe.get("img"):
+            # If no new image is added by the user (URL unchanged)
+            file_path = recipe.get("img")
+        elif request.form.get("filepath") != "":
+            # If user has submitted a new image,
+            # save to location and upload relative file path to database
+            file_name = images.save(request.files['image'])
+            file_path = "img/" + file_name
+        else:
+            # If user removes the image, stock image file path will be stored in database
+            file_path = "img/no-image-available.jpg"
+        
+        # Get rating values
+        rating_values = recipe.get("rating_values")
+        
+        # Get added date
+        added_date = recipe.get("added_date")
+        
+        # Get last edited date
+        today = date.today()
+        last_edited_date = today.strftime("%d %B %Y")
+        
+        # Get number of views
+        views = recipe.get("views")
+        
+        # Get session user details
+        user = session['user'].capitalize()
+        
+        # Update new values in the database
+        recipes_coll.update({"_id": ObjectId(recipe_id)}, {
+            "name": request.form.get("name").lower(),
+            "rating_values": rating_values,
+            "prep_time": request.form.get("prep_time").lower(),
+            "cook_time": request.form.get("cook_time").lower(),
+            "serves": request.form.get("serves").lower(),
+            "ingredients": request.form.getlist("ingredients"),
+            "instructions": request.form.getlist("instructions"),
+            "categories": {
+                "type": request.form.get("type").lower(),
+                "occasion": request.form.get("occasion").lower(),
+                "cuisine": request.form.get("cuisine").lower(),
+                "main_ing": request.form.get("main_ing").lower(),
+            },
+            "author": request.form.get("author").lower(),
+            "img": file_path,
+            "added_by": added_by,
+            "added_date": added_date,
+            "last_edited_date": last_edited_date,
+            "views": views,
+            "deleted": False
+        })
+        
+        # Flash message confirmation that recipe has been successfully added
+        flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully edited!"))
+        
+        return redirect(url_for('recipe',
+            recipe_id=recipe_id))
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
