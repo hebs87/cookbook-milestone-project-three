@@ -10,6 +10,8 @@
 
 <div class="row center-align">
     {% for r in recipes %}
+    <!--Only display recipe if the deleted field value is false-->
+    {% if r.deleted == False %}
     <div class="col s12 m3">
         <div id="{{ r._id }}" class="card results-card">
             <a href="{{ url_for('recipe', recipe_id=r._id) }}">
@@ -43,6 +45,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </div>
 

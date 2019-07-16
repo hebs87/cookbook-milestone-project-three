@@ -433,6 +433,27 @@ def update_recipe(recipe_id):
         return redirect(url_for('recipe',
             recipe_id=recipe_id))
 
+'''
+DELETE OPERATION
+'''
+@app.route('/remove_recipe/<recipe_id>')
+def remove_recipe(recipe_id):
+    '''
+    Changes the 'deleted' in the recipes collection to 'True' when the user deletes the recipe
+    This ensures that the recipe remains in the database but is removed from the front end
+    '''
+    # Get the recipe_id
+    recipe = find_recipe(recipe_id)
+    
+    # Change the deleted field to 'True'
+    recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$set": {"deleted": True}})
+    
+    # Flash message confirmation that recipe has been successfully added
+    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully deleted!"))
+    
+    return redirect(url_for('get_recipes',
+        recipe_id=recipe_id))
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
