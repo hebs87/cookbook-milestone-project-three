@@ -29,7 +29,7 @@ $(".remove-ing").click(function() {
 });
 
 /* Remove the current ingredient (edit_recipe.html) */
-$(".remove-current-ing").click(function() {
+$(document).on('click', ".remove-current-ing", function() {
     // Ensure that the first line can't be removed
     if (ingCount > 1) {
         $(this).parent().remove();
@@ -56,7 +56,7 @@ $(".remove-instruction").click(function() {
 });
 
 /* Remove the current instruction (edit_recipe.html) */
-$(".remove-current-instruction").click(function() {
+$(document).on('click', ".remove-current-instruction", function() {
     // Ensure that the first line can't be removed
     if (instructionCount > 1) {
         $(this).parent().remove();
