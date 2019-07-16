@@ -10,7 +10,7 @@ $('select').formSelect();
 /* Initialize Modals */
 $('.modal').modal();
 
-/* Add and remove new ingredient lines on user click (add_recipe.html) */
+/* Add and remove new ingredient lines on user click (add_recipe.html & edit_recipe.html) */
 let ingCount = $(".ingredients").length;
 // Add new line
 $(".add-ing").click(function() {
@@ -37,7 +37,7 @@ $(".remove-current-ing").click(function() {
     }
 });
 
-/* Add and remove new instruction lines on user click (add_recipe.html) */
+/* Add and remove new instruction lines on user click (add_recipe.html & edit_recipe.html) */
 let instructionCount = $(".instructions").length;
 // Add new line
 $(".add-instruction").click(function() {
