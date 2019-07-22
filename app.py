@@ -204,7 +204,9 @@ def register():
         # If all checks pass, add user to the database and hash the password
         users_coll.insert_one({
             "username": new_username,
-            "password": generate_password_hash(new_password)
+            "password": generate_password_hash(new_password),
+            "added_recipes": [],
+            "liked_recipes": []
         })
         session['user'] = new_username
         flash(Markup("Welcome " + new_username + ", you're now logged in!"))
@@ -458,6 +460,10 @@ def remove_recipe(recipe_id):
     return redirect(url_for('get_recipes',
         recipe_id=recipe_id))
 
+'''
+RATE RECIPE
+'''
+
 @app.route('/rate/<recipe_id>', methods=["GET", "POST"])
 def rate(recipe_id):
     '''
@@ -472,7 +478,6 @@ def rate(recipe_id):
     # Resolves bug of it being incremented when redirected to recipes.html
     recipes_coll.update_one({"_id": ObjectId(recipe_id)},
         {"$inc": {"views": -1}})
-    
     
     # Flash message confirmation that recipe has been successfully added
     flash(Markup("Thanks for rating this recipe!"))
