@@ -410,6 +410,9 @@ def update_recipe(recipe_id):
         views = recipe.get("views")
         decrement_views = views - 1
         
+        #Get number of likes
+        likes = recipe.get("likes")
+        
         # Get session user details
         user = session['user'].capitalize()
         
@@ -434,10 +437,9 @@ def update_recipe(recipe_id):
             "added_date": added_date,
             "last_edited_date": last_edited_date,
             "views": decrement_views,
+            "likes": likes,
             "deleted": False
         })
-        
-        
         
         # Flash message confirmation that recipe has been successfully added
         flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully edited!"))
