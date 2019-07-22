@@ -23,14 +23,35 @@
                 <span class="card-title center-align grey-text text-darken-4">{{ r.name | title }}</span>
             </a>
             <!--Recipe Quick Stats-->
-            <div class="card-action">
-                <span>
-                    <i class="far fa-clock" aria-hidden="true"></i><br>
-                    {{ r.cook_time }}
-                </span>
+            <div class="card-content">
                 <span>
                     <i class="far fa-eye" aria-hidden="true"></i><br>
                     {{ r.views }}
+                </span>
+                <span>
+                    <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                    {{ r.like }}
+                </span>
+                <span>
+                    <i class="far fa-star" aria-hidden="true"></i><br>
+                    <!--Iterate through rating array and calculate average rating-->
+                    {% set rating = [] %}
+                    {% for r in r.rating_values %}
+                        {% if rating.append(r) %}
+                        {% endif %}
+                    {% endfor %}
+                    {{ (rating | sum / rating | count) | int }}/5
+                </span>
+            </div>
+            <!--Recipe Quick Stats-->
+            <div class="card-action">
+                <span>
+                    <i class="far fa-eye" aria-hidden="true"></i><br>
+                    {{ r.views }}
+                </span>
+                <span>
+                    <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                    {{ r.likes }}
                 </span>
                 <span>
                     <i class="far fa-star" aria-hidden="true"></i><br>
