@@ -297,12 +297,18 @@ def insert_recipe():
             "added_date": today_date,
             "last_edited_date": "",
             "views": 0,
+            "likes": 0,
             "deleted": False
         }
         
-        # Insert recipe dict (insert variable) into the database
-        recipes_coll.insert_one(insert)
+        # Insert recipe dict (insert variable) into the database and get the new ID
+        new_id = recipes_coll.insert_one(insert)
         
+        # Add the new recipe ID to the users collection for that user
+        users_coll.update_one(
+            {"_id": ObjectId(user_id)},
+            {"$push": {"added_recipes": new_id.inserted_id}})
+
         # Flash message confirmation that recipe has been successfully added
         flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
         
@@ -484,6 +490,8 @@ def rate(recipe_id):
     
     return redirect(url_for('recipe',
             recipe_id=recipe_id))
+
+
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
