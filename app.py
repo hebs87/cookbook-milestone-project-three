@@ -469,7 +469,15 @@ def remove_recipe(recipe_id):
     recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$set": {"deleted": True}})
     
     # Get session user details
-    user = session['user'].capitalize()
+    user = session['user'].lower()
+    # Remove the recipe ID from that particular users' added_recipes list
+    users_coll.find_one_and_update(
+        {"username": user},
+        {"$pull": {"added_recipes": ObjectId(recipe_id)}})
+    # Remove the recipe ID from all users' liked_recipes list
+    users_coll.update_many(
+        {},
+        {"$pull": {"liked_recipes": ObjectId(recipe_id)}})
     
     # Flash message confirmation that recipe has been successfully added
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully deleted!"))
