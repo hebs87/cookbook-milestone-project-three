@@ -53,9 +53,11 @@
             </p>
             <p class="stat">
                 {% if recipe.last_edited_date == "" %}
+                    <!--If the recipe hasn't been edited, the added date will be displayed-->
                     <i class="far fa-calendar-plus" aria-hidden="true"></i>
                     Added: {{ recipe.added_date }}
                 {% else %}
+                    <!--If the recipe has been updated, the edited date will be displayed instead-->
                     <i class="fas fa-edit" aria-hidden="true"></i>
                     Updated: {{ recipe.last_edited_date }}
                 {% endif %}
