@@ -70,17 +70,25 @@
                 </a>
                     
                     {% if session.user | lower == added_by %}
-                    <a href="#delete_modal" class="waves-effect waves-light btn modal-trigger">
-                        <i class="fas fa-trash-alt" aria-hidden="true"></i>
-                        <span class="hide-on-small-and-down">Delete</span>
-                    </a>
+                        <a href="#delete_modal" class="waves-effect waves-light btn modal-trigger">
+                            <i class="fas fa-trash-alt" aria-hidden="true"></i>
+                            <span class="hide-on-small-and-down">Delete</span>
+                        </a>
                     {% endif %}
-                
-                <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER LIKED LIST-->
-                <a href="{{ url_for('like_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">
-                    <i class="far fa-thumbs-up" aria-hidden="true"></i>
-                    <span class="hide-on-small-and-down">Like</span>
-                </a>
+                    
+                    {% if recipe._id in liked_recipes %}
+                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
+                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">
+                            <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="hide-on-small-and-down">Liked</span>
+                        </a>
+                    {% else %}
+                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
+                        <a href="{{ url_for('like_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">
+                            <i class="far fa-thumbs-up" aria-hidden="true"></i>
+                            <span class="hide-on-small-and-down">Like</span>
+                        </a>
+                    {% endif %}
             {% endif %}
         </div>
     </div>

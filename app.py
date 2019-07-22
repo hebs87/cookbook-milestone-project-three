@@ -335,6 +335,14 @@ def recipe(recipe_id):
     '''
     recipe = find_recipe(recipe_id)
     
+    try:
+        # Get the user's liked_recipes list if a user is logged in
+        user = session["user"].lower()
+        liked_recipes = users_coll.find_one({"username": user})["liked_recipes"]
+    except:
+        # Create an empty liked_recipes list if no user is logged in
+        liked_recipes = []
+    
     # Increment 'views' field by 1 each time the recipe is viewed
     recipes_coll.update_one({"_id": ObjectId(recipe_id)}, {"$inc": {"views": 1}})
     
@@ -345,7 +353,8 @@ def recipe(recipe_id):
     return render_template("recipes.html",
         recipe=recipe,
         ratings=rating_list,
-        added_by=added_by)
+        added_by=added_by,
+        liked_recipes=liked_recipes)
 
 '''
 UPDATE OPERATION
@@ -519,6 +528,31 @@ def like_recipe(recipe_id):
     
     # Flash message confirmation that the user successfully liked the recipe
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been added to your 'Liked' list!"))
+    
+    return redirect(url_for('recipe', recipe_id=recipe_id))
+
+@app.route('/unlike_recipe/<recipe_id>')
+def unlike_recipe(recipe_id):
+    '''
+    Allows the user to unlike a particular recipe
+    The recipe_id is removed from the user's liked_recipes list in the userLogin collection
+    The 'likes' field in the recipes collection is decremented by 1
+    The 'views' field in the recipes collection is decremented by 1
+    '''
+    
+    # Remove the liked recipe ID to the users collection for that user
+    user = session['user'].lower()
+    users_coll.find_one_and_update(
+        {"username": user},
+        {"$pull": {"liked_recipes": ObjectId(recipe_id)}})
+    
+    # Decrement 'likes' field in the recipes collection by 1 each time the recipe is liked
+    recipes_coll.update_one(
+        {"_id": ObjectId(recipe_id)},
+        {"$inc": {"likes": -1, "views": -1}})
+    
+    # Flash message confirmation that the user successfully liked the recipe
+    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been removed from your 'Liked' list!"))
     
     return redirect(url_for('recipe', recipe_id=recipe_id))
 
