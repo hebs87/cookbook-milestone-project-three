@@ -52,8 +52,13 @@
                 By: {{ recipe.author | title }}
             </p>
             <p class="stat">
-                <i class="far fa-calendar-plus" aria-hidden="true"></i>
-                Added: {{ recipe.added_date }}
+                {% if recipe.last_edited_date == "" %}
+                    <i class="far fa-calendar-plus" aria-hidden="true"></i>
+                    Added: {{ recipe.added_date }}
+                {% else %}
+                    <i class="fas fa-edit" aria-hidden="true"></i>
+                    Updated: {{ recipe.last_edited_date }}
+                {% endif %}
             </p>
         </div>
         <!--Buttons - vary depending on whether user is in session-->
