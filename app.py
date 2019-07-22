@@ -493,7 +493,34 @@ def rate(recipe_id):
     return redirect(url_for('recipe',
             recipe_id=recipe_id))
 
+'''
+LIKE/UNLIKE RECIPE
+'''
 
+@app.route('/like_recipe/<recipe_id>')
+def like_recipe(recipe_id):
+    '''
+    Allows the user to like a particular recipe
+    The recipe_id is added to the user's liked_recipes list in the userLogin collection
+    The 'likes' field in the recipes collection is incremented by 1
+    The 'views' field in the recipes collection is decremented by 1
+    '''
+    
+    # Add the liked recipe ID to the users collection for that user
+    user = session['user'].lower()
+    users_coll.find_one_and_update(
+        {"username": user},
+        {"$push": {"liked_recipes": ObjectId(recipe_id)}})
+    
+    # Increment 'likes' field in the recipes collection by 1 each time the recipe is liked
+    recipes_coll.update_one(
+        {"_id": ObjectId(recipe_id)},
+        {"$inc": {"likes": 1, "views": -1}})
+    
+    # Flash message confirmation that the user successfully liked the recipe
+    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been added to your 'Liked' list!"))
+    
+    return redirect(url_for('recipe', recipe_id=recipe_id))
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
