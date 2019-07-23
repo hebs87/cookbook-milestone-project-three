@@ -4,7 +4,7 @@
 <!--Page Title - Recipe Name-->
 <div class="row center-align">
     <div class="col s12">
-        <h1 class="page-title">'s Profile Page</h1>
+        <h1 class="page-title">{{ username | capitalize }}'s Profile</h1>
     </div>
 </div>
 
@@ -17,14 +17,14 @@
         </div>
         <div class="col s12">
             <ul class="collection">
-                
+                {% for added in user_added_recipes %}
                     <li class="collection-item avatar">
-                        <a href="">
-                            <img src="" alt="" class="circle">
-                            <span class="title"></span>
+                        <a href="{{ url_for('recipe', recipe_id=added._id) }}">
+                            <img src="{{ url_for('static', filename=added.img) }}" alt="{{ added.name | title }}" class="circle">
+                            <span class="title">{{ added.name | title }}</span>
                         </a>
                     </li>
-                
+                {% endfor %}
             </ul>
         </div>
     </div>

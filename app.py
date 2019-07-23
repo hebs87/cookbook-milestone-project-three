@@ -551,8 +551,13 @@ def profile(username):
     '''
     username = get_username(session["user"])["username"]
     
+    # Get all recipes from the recipes_coll that were added by the user's ID
+    user_id = get_username(session["user"])["_id"]
+    user_added_recipes = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
+    
     return render_template("profile.html",
-        username=username)
+        username=username,
+        user_added_recipes=user_added_recipes)
     
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
