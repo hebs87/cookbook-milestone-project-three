@@ -56,7 +56,7 @@
                             <img src="{{ url_for('static', filename=liked.img) }}" alt="{{ liked.name | title }}" class="circle">
                             <span class="title">{{ liked.name | title }}</span>
                         </a>
-                        <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn">
+                        <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn liked-btn-profile">
                             <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Liked</span>
                         </a>

@@ -304,7 +304,6 @@ def delete_account(username):
     
     return redirect(url_for('profile', username=username))
 
-
 '''
 CREATE OPERATION
 '''
@@ -630,7 +629,14 @@ def unlike_recipe(recipe_id):
     # Decrement 'likes' field in the recipes collection by 1 each time the recipe is liked
     recipes_coll.update_one(
         {"_id": ObjectId(recipe_id)},
-        {"$inc": {"likes": -1, "views": -1}})
+        {"$inc": {"likes": -1}})
+    
+    # Only decrement views if the user unlikes a recipe on the recipe.html page
+    # Resolves bug where views were decremented when the user unlikes a recipe in profile.html
+    if request.path == 'recipe':
+        recipes_coll.update_one(
+            {"_id": ObjectId(recipe_id)},
+            {"$inc": {"views": -1}})
     
     # Flash message confirmation that the user successfully liked the recipe
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been removed from your 'Liked' list!"))

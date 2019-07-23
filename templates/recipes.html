@@ -85,7 +85,7 @@
                     
                     {% if recipe._id in liked_recipes %}
                         <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">
+                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn liked-btn-recipe">
                             <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Liked</span>
                         </a>
