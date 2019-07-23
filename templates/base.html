@@ -47,8 +47,8 @@
                     <!--Additional options if user is logged in-->
                     {% if session.user %}
                         <li>
-                            <a href="#">
-                                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+                            <a href="{{ url_for('profile', username=session['user']) }}">
+                                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] | capitalize }}
                             </a>
                         </li>
                         <li>
@@ -92,8 +92,8 @@
             <!--Additional options if user is logged in-->
             {% if session.user %}
                 <li>
-                    <a href="#">
-                        <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+                    <a href="{{ url_for('profile', username=session['user']) }}">
+                        <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] | capitalize }}
                     </a>
                 </li>
                 <li>

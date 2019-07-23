@@ -64,6 +64,42 @@ def serves_dropdown():
         s for serves in serves_coll.find()
         for s in serves.get("serves")]
 
+# def types_dropdown():
+#     '''
+#     Drop down menu for types values
+#     Accesses types array within the types database
+#     '''
+#     return [
+#         t for types in types_coll.find()
+#         for t in types.get("types")]
+
+# def occasions_dropdown():
+#     '''
+#     Drop down menu for occasions values
+#     Accesses occasions array within the occasions database
+#     '''
+#     return [
+#         o for occ in occasions_coll.find()
+#         for o in occ.get("occasions")]
+
+# def cuisines_dropdown():
+#     '''
+#     Drop down menu for cusines values
+#     Accesses cusines array within the cusines database
+#     '''
+#     return [
+#         c for cuisine in cuisines_coll.find()
+#         for c in cuisine.get("cuisines")]
+
+# def main_ing_dropdown():
+#     '''
+#     Drop down menu for main_ing values
+#     Accesses main_ing array within the main_ing database
+#     '''
+#     return [
+#         m for main in main_ing_coll.find()
+#         for m in main.get("main_ing")]
+
 def categories_dropdown(key, val):
     '''
     Drop down menu for categories values (type, occasion, cuisine & main_ing
@@ -90,16 +126,9 @@ def find_recipe(recipe_id):
     '''
     return recipes_coll.find_one({"_id": ObjectId(recipe_id)})
 
-def get_username(username):
-    '''
-    Finds the username based on the session user
-    '''
-    return users_coll.find_one({"username": username.lower()})
+def
 
-'''
-INDEX ROUTE
-'''
-
+# Route to index.html
 @app.route('/')
 def index():
     return render_template("index.html")
@@ -128,8 +157,8 @@ def login():
         # Check if username exists and user's password matches the hashed password
         if existing_user and check_password_hash(existing_user["password"], password):
             flash(Markup("Welcome back " + username + ", you're now logged in!"))
-            session["user"] = username
-            return redirect(url_for('index', username=session["user"]))
+            session['user'] = username
+            return redirect(url_for('index'))
         # If either the username or password don't match, generic flash message is displayed
         else:
             flash(Markup("It appears those details don't match what we have, please try again."))
@@ -181,9 +210,9 @@ def register():
             "added_recipes": [],
             "liked_recipes": []
         })
-        session["user"] = new_username
+        session['user'] = new_username
         flash(Markup("Welcome " + new_username + ", you're now logged in!"))
-        return redirect(url_for('index', username=session["user"]))
+        return redirect(url_for('index'))
     
     return render_template("login_register.html")
 
@@ -196,14 +225,14 @@ def logout():
     flash(Markup("You were successfully logged out"))
     return redirect(url_for('index'))
 
-# @app.before_request
-# def before_request():
-#     '''
-#     Checks if the user is logged in before each request
-#     '''
-#     g.user = None
-#     if 'user' in session:
-#         g.user = session['user']
+@app.before_request
+def before_request():
+    '''
+    Checks if the user is logged in before each request
+    '''
+    g.user = None
+    if 'user' in session:
+        g.user = session['user']
 
 '''
 CREATE OPERATION
@@ -537,23 +566,8 @@ def unlike_recipe(recipe_id):
     
     return redirect(url_for('recipe', recipe_id=recipe_id))
 
-'''
-USER'S PROFILE PAGE
-'''
 
-@app.route('/profile/<username>', methods=["GET", "POST"])
-def profile(username):
-    '''
-    Loads the content on the user's profile page
-    Gets the user's added and liked recipes
-    Allows the user to change their password
-    Allows the user to delete their account
-    '''
-    username = get_username(session["user"])["username"]
-    
-    return render_template("profile.html",
-        username=username)
-    
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),

@@ -24,8 +24,8 @@
             </a>
         </div>
         <div class="col s6 m4">
-            <a href="#" class="waves-effect waves-light btn">
-                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] }}
+            <a href="{{ url_for('profile', username=session['user']) }}" class="waves-effect waves-light btn">
+                <i class="fas fa-user" aria-hidden="true"></i>{{ session['user'] | capitalize }}
             </a>
         </div>
         <div class="col s6 offset-s3 m4">
