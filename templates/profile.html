@@ -99,4 +99,34 @@
 
 </div>
 
+<!--Change Password Modal-->
+<div id="change_password_modal" class="modal">
+    <div class="modal-content center-align">
+        <h5 class="bold">Change Password</h5>
+        <form class="col s12" method="POST" action="">
+            <div class="row">
+                <!--Existing Password-->
+                <div class="input-field col s12">
+                    <i class="fas fa-lock prefix" aria-hidden="true"></i>
+                    <input id="existing_password" name="existing_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
+                    <label for="existing_password">Existing Password</label>
+                </div>
+                <!--New Password-->
+                <div class="input-field col s12">
+                    <i class="fas fa-key prefix" aria-hidden="true"></i>
+                    <input id="changed_password" name="changed_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
+                    <label for="changed_password">New Password</label>
+                </div>
+            </div>
+            <div class="row">
+                <!--Change Password Button-->
+                <button class="btn waves-effect waves-light" type="submit" name="login">
+                    Change Password
+                    <i class="fas fa-user-lock"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 {% endblock %}
