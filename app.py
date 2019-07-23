@@ -553,12 +553,17 @@ def profile(username):
     
     # Get all recipes from the recipes_coll that were added by the user's ID
     user_id = get_username(session["user"])["_id"]
-    user_added_recipes = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
+    user_added_list = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
+    
+    # Get all recipes that the user has liked
+    liked_recipes = get_username(session["user"])["liked_recipes"]
+    user_liked_list = recipes_coll.find({"_id": {"$in": liked_recipes}}).sort([("name", 1)])
     
     return render_template("profile.html",
         username=username,
-        user_added_recipes=user_added_recipes)
-    
+        user_added_list=user_added_list,
+        user_liked_list=user_liked_list)
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),

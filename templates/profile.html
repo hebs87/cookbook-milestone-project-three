@@ -18,7 +18,7 @@
         <div class="col s12">
             <ul class="collection">
                 <!--If the user has added recipes, these will be displayed as a list-->
-                {% for added in user_added_recipes %}
+                {% for added in user_added_list %}
                     <li class="collection-item avatar">
                         <a href="{{ url_for('recipe', recipe_id=added._id) }}">
                             <img src="{{ url_for('static', filename=added.img) }}" alt="{{ added.name | title }}" class="circle">
@@ -35,6 +35,38 @@
                                 Add a recipe
                             </a>
                              to get started.
+                        </p>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    
+    <!--User's Liked Recipes-->
+    <div class="row card z-depth-1">
+        <div class="col s12 center-align">
+            <h4 class="subheading">Liked Recipes</h4>
+        </div>
+        <div class="col s12">
+            <ul class="collection">
+                <!--If the user has liked recipes, these will be displayed as a list-->
+                {% for liked in user_liked_list %}
+                    <li class="collection-item avatar">
+                        <a href="{{ url_for('recipe', recipe_id=liked._id) }}">
+                            <img src="{{ url_for('static', filename=liked.img) }}" alt="{{ liked.name | title }}" class="circle">
+                            <span class="title">{{ liked.name | title }}</span>
+                        </a>
+                    </li>
+                <!--If the user hasn't liked any recipes, they will be invited to browse recipes-->
+                {% else %}
+                    <li class="collection-item avatar center-align">
+                        <p>
+                            You haven't liked any recipes yet.
+                            <br>
+                            <a href="{{ url_for('get_recipes') }}">
+                                Browse
+                            </a>
+                             our recipe collection to get started.
                         </p>
                     </li>
                 {% endfor %}
