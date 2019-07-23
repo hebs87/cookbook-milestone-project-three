@@ -17,12 +17,25 @@
         </div>
         <div class="col s12">
             <ul class="collection">
+                <!--If the user has added recipes, these will be displayed as a list-->
                 {% for added in user_added_recipes %}
                     <li class="collection-item avatar">
                         <a href="{{ url_for('recipe', recipe_id=added._id) }}">
                             <img src="{{ url_for('static', filename=added.img) }}" alt="{{ added.name | title }}" class="circle">
                             <span class="title">{{ added.name | title }}</span>
                         </a>
+                    </li>
+                <!--If the user hasn't added any recipes, they will be invited to add a recipe-->
+                {% else %}
+                    <li class="collection-item avatar center-align">
+                        <p>
+                            You haven't added any recipes yet.
+                            <br>
+                            <a href="{{ url_for('add_recipe') }}">
+                                Add a recipe
+                            </a>
+                             to get started.
+                        </p>
                     </li>
                 {% endfor %}
             </ul>
