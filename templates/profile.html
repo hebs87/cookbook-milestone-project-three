@@ -103,7 +103,7 @@
 <div id="change_password_modal" class="modal">
     <div class="modal-content center-align">
         <h5 class="bold">Change Password</h5>
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('change_password', username=username) }}">
             <div class="row">
                 <!--Existing Password-->
                 <div class="input-field col s12">

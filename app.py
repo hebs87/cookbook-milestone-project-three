@@ -196,14 +196,67 @@ def logout():
     flash(Markup("You were successfully logged out"))
     return redirect(url_for('index'))
 
-# @app.before_request
-# def before_request():
-#     '''
-#     Checks if the user is logged in before each request
-#     '''
-#     g.user = None
-#     if 'user' in session:
-#         g.user = session['user']
+@app.before_request
+def before_request():
+    '''
+    Checks if the user is logged in before each request
+    '''
+    g.user = None
+    if 'user' in session:
+        g.user = session['user']
+
+'''
+USER'S PROFILE PAGE
+'''
+
+@app.route('/profile/<username>', methods=["GET", "POST"])
+def profile(username):
+    '''
+    Loads the content on the user's profile page
+    Gets the user's added and liked recipes
+    '''
+    username = get_username(session["user"])["username"]
+    
+    # Get all recipes from the recipes_coll that were added by the user's ID
+    user_id = get_username(session["user"])["_id"]
+    user_added_list = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
+    
+    # Get all recipes that the user has liked
+    liked_recipes = get_username(session["user"])["liked_recipes"]
+    user_liked_list = recipes_coll.find({"_id": {"$in": liked_recipes}}).sort([("name", 1)])
+    
+    return render_template("profile.html",
+        username=username,
+        user_added_list=user_added_list,
+        user_liked_list=user_liked_list)
+
+'''
+CHANGE PASSWORD
+'''
+
+@app.route('/profile/<username>/change_password', methods=["POST"])
+def change_password(username):
+    '''
+    Allows the user to change their password
+    Users will have to enter their correct existing password first
+    '''
+    user = session["user"].lower()
+    username = get_username(session["user"])
+    existing_password = request.form.get("existing_password")
+    changed_password = request.form.get("changed_password")
+    
+    # If stored password matches the entry, the password will be changed
+    if check_password_hash(username["password"], existing_password):
+        flash(Markup("Thanks " + user + ", your password has been changed!"))
+        users_coll.update_one(
+            {"username": user},
+            {"$set": {"password": generate_password_hash(changed_password)}})
+    # If stored password doesn't match the entry, generic flash message is displayed
+    else:
+        flash(Markup("It appears your existing password doesn't match what we have, please try again."))
+    
+    return redirect(url_for('profile', username=username))
+    
 
 '''
 CREATE OPERATION
@@ -536,33 +589,6 @@ def unlike_recipe(recipe_id):
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been removed from your 'Liked' list!"))
     
     return redirect(request.referrer)
-
-'''
-USER'S PROFILE PAGE
-'''
-
-@app.route('/profile/<username>', methods=["GET", "POST"])
-def profile(username):
-    '''
-    Loads the content on the user's profile page
-    Gets the user's added and liked recipes
-    Allows the user to change their password
-    Allows the user to delete their account
-    '''
-    username = get_username(session["user"])["username"]
-    
-    # Get all recipes from the recipes_coll that were added by the user's ID
-    user_id = get_username(session["user"])["_id"]
-    user_added_list = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
-    
-    # Get all recipes that the user has liked
-    liked_recipes = get_username(session["user"])["liked_recipes"]
-    user_liked_list = recipes_coll.find({"_id": {"$in": liked_recipes}}).sort([("name", 1)])
-    
-    return render_template("profile.html",
-        username=username,
-        user_added_list=user_added_list,
-        user_liked_list=user_liked_list)
 
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
