@@ -256,7 +256,54 @@ def change_password(username):
         flash(Markup("It appears your existing password doesn't match what we have, please try again."))
     
     return redirect(url_for('profile', username=username))
+
+'''
+DELETE ACCOUNT
+'''
+
+@app.route('/profile/<username>/delete_account', methods=["POST"])
+def delete_account(username):
+    '''
+    Allows the user to delete their account
+    Users will have to enter their correct existing password first
+    Deleting the account will delete the user's recipes
+    The user's recipes' deleted value will be updated to true and they will no longer be displayed
+    The recipes will also be removed from all users' liked lists
+    The user's details will be removed from the userLogin collection
+    The session will end
+    '''
+    username = get_username(session["user"])
+    confirm_password = request.form.get("confirm_password")
     
+    # If stored password matches the entry, the password will be changed
+    if check_password_hash(username["password"], confirm_password):
+        # Find the user's added recipes
+        user_added_recipes = [recipe for recipe in username.get("added_recipes")]
+        # Update the deleted value to true for each recipe from the recipes collection
+        # Remove each recipe from the other users' liked list
+        for recipe in user_added_recipes:
+            recipes_coll.update_one({"_id": ObjectId(recipe)}, {"$set": {"deleted": True}})
+            users_coll.update_many(
+                {},
+                {"$pull": {"liked_recipes": ObjectId(recipe)}})
+        # Find the user's liked recipes
+        user_liked_recipes = [recipe for recipe in username.get("liked_recipes")]
+        # Decrement the likes field in each of those recipes by 1
+        for recipe in user_liked_recipes:
+            recipes_coll.update_one({"_id": ObjectId(recipe)}, {"$inc": {"likes": -1}})
+        flash(Markup("Your account has been successfully deleted."))
+        # End the user's session
+        session.pop('user', None)
+        # Remove the user's details from the userLogin collection
+        users_coll.remove({"_id": username.get("_id")})
+        # Redirect to index.html
+        return redirect(url_for('index'))
+    # If stored password doesn't match the entry, generic flash message is displayed
+    else:
+        flash(Markup("It appears your existing password doesn't match what we have, please try again."))
+    
+    return redirect(url_for('profile', username=username))
+
 
 '''
 CREATE OPERATION

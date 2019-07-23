@@ -139,7 +139,7 @@
             <br>
             Confirm your password to continue...
         </p>
-        <form class="col s12" method="POST" action="">
+        <form class="col s12" method="POST" action="{{ url_for('delete_account', username=username) }}">
             <div class="row">
                 <!--Existing Password-->
                 <div class="input-field col s12">
