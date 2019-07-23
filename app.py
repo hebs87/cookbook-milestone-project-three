@@ -510,7 +510,7 @@ def like_recipe(recipe_id):
     # Flash message confirmation that the user successfully liked the recipe
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been added to your 'Liked' list!"))
     
-    return redirect(url_for('recipe', recipe_id=recipe_id))
+    return redirect(request.referrer)
 
 @app.route('/unlike_recipe/<recipe_id>')
 def unlike_recipe(recipe_id):
@@ -535,7 +535,7 @@ def unlike_recipe(recipe_id):
     # Flash message confirmation that the user successfully liked the recipe
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been removed from your 'Liked' list!"))
     
-    return redirect(url_for('recipe', recipe_id=recipe_id))
+    return redirect(request.referrer)
 
 '''
 USER'S PROFILE PAGE
