@@ -75,9 +75,13 @@ $("#print-btn").click(function() {
 /* Hide the filter option when the search accordion is expanded, show again when collapsed */
 $(document).on('click', ".search-header", function() {
     $(".filter-option").toggleClass("hide");
+    // Reset values in the filter form if any have been selected
+    $("#filter_form")[0].reset();
 });
 
 /* Hide the search option when the filter accordion is expanded, show again when collapsed */
 $(document).on('click', ".filter-header", function() {
     $(".search-option").toggleClass("hide");
+    // Reset values in the search field form if any have been selected
+    $("#search").val("");
 });

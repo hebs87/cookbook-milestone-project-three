@@ -11,9 +11,9 @@
 <!--Search And Filters Form-->
 <div class="row center-align">
 
-    <form>
-        <ul class="collapsible">
-            <li class="search-option">
+    <form id="search_form">
+        <ul class="collapsible search-option center-align">
+            <li>
                 <div class="collapsible-header search-header">
                     <h4>
                         <i class="fas fa-search" aria-hidden="true"></i>
@@ -28,18 +28,18 @@
                     <!--Search Field-->
                     <div class="input-field col s12">
                         <i class="fas fa-search prefix" aria-hidden="true"></i>
-                        <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate">
+                        <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate" required>
                         <label for="search">Search Recipe Name</label>
                     </div>
                     <!--Submit Button-->
-                    <div class="col s6 m3">
+                    <div class="col s6">
                         <button id="search_btn" class="btn waves-effect waves-light" type="submit">
                             Search
                             <i class="fas fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
                     <!--Reset Button-->
-                    <div class="col s6 m3">
+                    <div class="col s6">
                         <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes') }}">
                             Reset
                             <i class="fas fa-undo-alt" aria-hidden="true"></i>
@@ -47,7 +47,12 @@
                     </div>
                 </div>
             </li>
-            <li class="filter-option">
+        </ul>
+    </form>
+    
+    <form id="filter_form">
+        <ul class="collapsible filter-option">
+            <li>
                 <div class="collapsible-header filter-header">
                     <h4>
                         <i class="fas fa-filter" aria-hidden="true"></i>
@@ -128,7 +133,7 @@
                 </div>
             </li>
         </ul>
-    </form>    
+    </form>
     
     <!--Recipe Details Card-->
     <div class="row card z-depth-1">
