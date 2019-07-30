@@ -10,6 +10,9 @@ $('select').formSelect();
 /* Initialize Modals */
 $('.modal').modal();
 
+/* Initialize Accordion */
+$('.collapsible').collapsible();
+
 /* Add and remove new ingredient lines on user click (add_recipe.html & edit_recipe.html) */
 let ingCount = $(".ingredients").length;
 // Add new line
