@@ -617,7 +617,7 @@ def unlike_recipe(recipe_id):
     Allows the user to unlike a particular recipe
     The recipe_id is removed from the user's liked_recipes list in the userLogin collection
     The 'likes' field in the recipes collection is decremented by 1
-    The 'views' field in the recipes collection is decremented by 1
+    The 'views' field in the recipes collection is decremented by 1 only if the recipe is unliked from recipe.html
     '''
     
     # Remove the liked recipe ID to the users collection for that user

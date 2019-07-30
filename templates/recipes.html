@@ -85,7 +85,7 @@
                     
                     {% if recipe._id in liked_recipes %}
                         <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn liked-btn-recipe">
+                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn">
                             <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Liked</span>
                         </a>
@@ -134,7 +134,7 @@
         <form method="POST" action="{{ url_for('rate', recipe_id=recipe._id) }}">
             <div class="input-field col s12">
                 <select id="rating" name="rating" class="form-control validate" required>
-                    <option disabled selected>Rating</option>
+                    <option value="" disabled selected>Rating</option>
                     {% for r in ratings %}
                     <option value="{{ r }}">{{ r }}</option>
                     {% endfor %}

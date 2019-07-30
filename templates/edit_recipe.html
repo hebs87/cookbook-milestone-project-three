@@ -24,7 +24,7 @@
             <!--Prep Time Select-->
             <div class="input-field col s12 m6">
                 <select id="prep_time" name="prep_time" class="form-control validate" required>
-                    <option disabled selected>Preparation Time</option>
+                    <option  value="" disabled selected>Preparation Time</option>
                     {% for t in time %}
                         {% if t == recipe.prep_time%}
                             <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
@@ -37,7 +37,7 @@
             <!--Cook Time Select-->
             <div class="input-field col s12 m6">
                 <select id="cook_time" name="cook_time" class="form-control validate" required>
-                    <option disabled selected>Cooking Time</option>
+                    <option value="" disabled selected>Cooking Time</option>
                     {% for t in time %}
                         {% if t == recipe.cook_time%}
                             <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
@@ -50,7 +50,7 @@
             <!--Serves Select-->
             <div class="input-field col s12">
                 <select id="serves" name="serves" class="form-control validate" required>
-                    <option disabled selected>Serves</option>
+                    <option value="" disabled selected>Serves</option>
                     {% for s in serves %}
                         {% if s == recipe.serves %}
                             <option value="{{ s|capitalize }}" selected>{{ s|capitalize }}</option>
@@ -83,7 +83,7 @@
             <!--Type Select-->
             <div class="input-field col s12 m6">
                 <select id="type" name="type" class="form-control validate" required>
-                    <option disabled selected>Type</option>
+                    <option value="" disabled selected>Type</option>
                     {% for t in types %}
                         {% if t == recipe.categories.type %}
                             <option value="{{ t|capitalize }}" selected>{{ t|capitalize }}</option>
@@ -96,7 +96,7 @@
             <!--Occasion Select-->
             <div class="input-field col s12 m6">
                 <select id="occasion" name="occasion" class="form-control validate" required>
-                    <option disabled selected>Occasion</option>
+                    <option value="" disabled selected>Occasion</option>
                     {% for o in occasions %}
                         {% if o == recipe.categories.occasion %}
                             <option value="{{ o|title }}" selected>{{ o|title }}</option>
@@ -109,7 +109,7 @@
             <!--Cuisine Select-->
             <div class="input-field col s12 m6">
                 <select id="cuisine" name="cuisine" class="form-control validate" required>
-                    <option disabled selected>Cuisine</option>
+                    <option value="" disabled selected>Cuisine</option>
                     {% for c in cuisines %}
                         {% if c == recipe.categories.cuisine %}
                             <option value="{{ c|title }}" selected>{{ c|title }}</option>
@@ -122,7 +122,7 @@
             <!--Main Ingredient Select-->
             <div class="input-field col s12 m6">
                 <select id="main_ing" name="main_ing" class="form-control validate" required>
-                    <option disabled selected>Main Ingredient</option>
+                    <option value="" disabled selected>Main Ingredient</option>
                     {% for main in main_ing %}
                         {% if main == recipe.categories.main_ing %}
                             <option value="{{ main|title }}" selected>{{ main|title }}</option>
