@@ -73,11 +73,11 @@ $("#print-btn").click(function() {
 });
 
 /* Hide the filter option when the search accordion is expanded, show again when collapsed */
-$(document).on('click', ".search-option", function() {
+$(document).on('click', ".search-header", function() {
     $(".filter-option").toggleClass("hide");
 });
 
 /* Hide the search option when the filter accordion is expanded, show again when collapsed */
-$(document).on('click', ".filter-option", function() {
+$(document).on('click', ".filter-header", function() {
     $(".search-option").toggleClass("hide");
 });
