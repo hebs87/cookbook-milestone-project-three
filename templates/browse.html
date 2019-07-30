@@ -141,44 +141,87 @@
 
 <!--Recipe cards-->
 <div class="row center-align">
-    {% for recipe in recipes %}
-    <!--Only display recipe if the deleted field value is false-->
-    {% if recipe.deleted == False %}
-    <div class="col s12 m3">
-        <div id="{{ recipe._id }}" class="card results-card">
-            <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
-                <!--Recipe Image-->
-                <div class="card-image">
-                    <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
+    <!--WITHOUT SEARCH-->
+    {% if search_results == "" %}
+        {% for recipe in recipes %}
+        <!--Only display recipe if the deleted field value is false-->
+        {% if recipe.deleted == False %}
+        <div class="col s12 m3">
+            <div id="{{ recipe._id }}" class="card results-card">
+                <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+                    <!--Recipe Image-->
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
+                    </div>
+                    <!--Recipe Name-->
+                    <span class="card-title center-align grey-text text-darken-4">{{ recipe.name | title }}</span>
+                </a>
+                <!--Recipe Quick Stats-->
+                <div class="card-content">
+                    <span>
+                        <i class="far fa-eye" aria-hidden="true"></i><br>
+                        {{ recipe.views }}
+                    </span>
+                    <span>
+                        <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                        {{ recipe.likes }}
+                    </span>
+                    <span>
+                        <i class="far fa-star" aria-hidden="true"></i><br>
+                        <!--Iterate through rating array and calculate average rating-->
+                        {% set rating = [] %}
+                        {% for r in recipe.rating_values %}
+                            {% if rating.append(r) %}
+                            {% endif %}
+                        {% endfor %}
+                        {{ (rating | sum / rating | count) | int }}/5
+                    </span>
                 </div>
-                <!--Recipe Name-->
-                <span class="card-title center-align grey-text text-darken-4">{{ recipe.name | title }}</span>
-            </a>
-            <!--Recipe Quick Stats-->
-            <div class="card-content">
-                <span>
-                    <i class="far fa-eye" aria-hidden="true"></i><br>
-                    {{ recipe.views }}
-                </span>
-                <span>
-                    <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
-                    {{ recipe.likes }}
-                </span>
-                <span>
-                    <i class="far fa-star" aria-hidden="true"></i><br>
-                    <!--Iterate through rating array and calculate average rating-->
-                    {% set rating = [] %}
-                    {% for r in recipe.rating_values %}
-                        {% if rating.append(r) %}
-                        {% endif %}
-                    {% endfor %}
-                    {{ (rating | sum / rating | count) | int }}/5
-                </span>
             </div>
         </div>
-    </div>
+        {% endif %}
+        {% endfor %}
+    <!--WITH SEARCH-->
+    {% else %}
+        {% for recipe in search_results %}
+        <!--Only display recipe if the deleted field value is false-->
+        {% if recipe.deleted == False %}
+        <div class="col s12 m3">
+            <div id="{{ recipe._id }}" class="card results-card">
+                <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+                    <!--Recipe Image-->
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
+                    </div>
+                    <!--Recipe Name-->
+                    <span class="card-title center-align grey-text text-darken-4">{{ recipe.name | title }}</span>
+                </a>
+                <!--Recipe Quick Stats-->
+                <div class="card-content">
+                    <span>
+                        <i class="far fa-eye" aria-hidden="true"></i><br>
+                        {{ recipe.views }}
+                    </span>
+                    <span>
+                        <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                        {{ recipe.likes }}
+                    </span>
+                    <span>
+                        <i class="far fa-star" aria-hidden="true"></i><br>
+                        <!--Iterate through rating array and calculate average rating-->
+                        {% set rating = [] %}
+                        {% for r in recipe.rating_values %}
+                            {% if rating.append(r) %}
+                            {% endif %}
+                        {% endfor %}
+                        {{ (rating | sum / rating | count) | int }}/5
+                    </span>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
     {% endif %}
-    {% endfor %}
 </div>
 
 {% endblock %}

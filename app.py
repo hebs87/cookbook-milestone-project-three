@@ -397,12 +397,27 @@ def get_recipes():
     '''
     recipes = recipes_coll.find().sort('name', 1)
     
+    # Results using the search form
+    args = request.args.get
+    
+    if args(str("search")):
+        search_word = args(str("search"))
+    else:
+        search_word = ""
+    
+    if not search_word:
+        search_results = ""
+    else:
+        search_results = recipes_coll.find(
+                {"$text": {"$search": search_word}})
+    
     return render_template("browse.html",
+        search_results=search_results,
         recipes=recipes,
         types=types_list,
         occasions=occasions_list,
         cuisines=cuisines_list,
-        main_ing=main_ing_list)
+        main_ing=main_ing_list)    
 
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):
