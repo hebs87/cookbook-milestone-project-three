@@ -395,7 +395,8 @@ def get_recipes():
     '''
     Get all recipes and display summary details in cards
     '''
-    recipes = recipes_coll.find()
+    recipes = recipes_coll.find().sort('name', 1)
+    
     return render_template("browse.html",
         recipes=recipes,
         types=types_list,

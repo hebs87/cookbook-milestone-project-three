@@ -71,3 +71,13 @@ $(document).on('click', ".remove-current-instruction", function() {
 $("#print-btn").click(function() {
     window.print();
 });
+
+/* Hide the filter option when the search accordion is expanded, show again when collapsed */
+$(document).on('click', ".search-option", function() {
+    $(".filter-option").toggleClass("hide");
+});
+
+/* Hide the search option when the filter accordion is expanded, show again when collapsed */
+$(document).on('click', ".filter-option", function() {
+    $(".search-option").toggleClass("hide");
+});
