@@ -396,7 +396,12 @@ def get_recipes():
     Get all recipes and display summary details in cards
     '''
     recipes = recipes_coll.find()
-    return render_template("browse.html", recipes=recipes)
+    return render_template("browse.html",
+        recipes=recipes,
+        types=types_list,
+        occasions=occasions_list,
+        cuisines=cuisines_list,
+        main_ing=main_ing_list)
 
 @app.route('/recipe/<recipe_id>')
 def recipe(recipe_id):

@@ -13,145 +13,81 @@
     <form method="POST" action="">
         <div class="row card z-depth-1">
             <!--Helper Text/Instructions-->
-            <h6>Search by recipe name or a category, then you may choose how to sort the results.</h6>
+            <h6>Search by recipe name or filter by one or multiple categories, then you may choose how to sort the results.</h6>
             <!--Search Field-->
             <div class="input-field col s12">
                 <i class="fas fa-search prefix" aria-hidden="true"></i>
-                <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate" required>
+                <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate">
                 <label for="search">Search Recipe Name</label>
             </div>
             <!--Type Category Drop Down-->
-            <div class="input-field col s12 m6">
-                <select id="type_filter" name="type_filter" class="form-control validate" required>
-                    <option value="" disabled selected>Type</option>
+            <div class="input-field col s12 m3">
+                <select id="type_filter" name="type_filter" class="form-control validate">
+                    <option value="" disabled selected>Filter by type</option>
                     <!--Loop through time_list and inject data into the drop down menu-->
-                    {% for t in time %}
-                    <option value"{{ t }}">{{ t|capitalize }}</option>
+                    {% for type in types %}
+                    <option value"{{ type }}">{{ type|capitalize }}</option>
                     {% endfor %}
                 </select>
+                <label for="type_filter">Recipe Type</label>
             </div>
             <!--Occasion Category Drop Down-->
-            <div class="input-field col s12 m6">
-                <select id="occasion_filter" name="occasion_filter" class="form-control validate" required>
-                    <option disabled selected>Occasion</option>
-                    {% for t in time %}
-                    <option value"{{ t }}">{{ t|capitalize }}</option>
+            <div class="input-field col s12 m3">
+                <select id="occasion_filter" name="occasion_filter" class="form-control validate">
+                    <option value="" disabled selected>Filter by occasion</option>
+                    {% for occasion in occasions %}
+                    <option value"{{ occasion }}">{{ occasion|capitalize }}</option>
                     {% endfor %}
                 </select>
+                <label for="occasion_filter">Occasion</label>
             </div>
             <!--Cuisine Category Drop Down-->
-            <div class="input-field col s12 m6">
-                <select id="cuisine_filter" name="cuisine_filter" class="form-control validate" required>
-                    <option disabled selected>Cuisine</option>
-                    {% for s in serves %}
-                    <option value"{{ s }}">{{ s|capitalize }}</option>
+            <div class="input-field col s12 m3">
+                <select id="cuisine_filter" name="cuisine_filter" class="form-control validate">
+                    <option value="" disabled selected>Filter by cuisine</option>
+                    {% for cuisine in cuisines %}
+                    <option value"{{ cuisine }}">{{ cuisine|capitalize }}</option>
                     {% endfor %}
                 </select>
+                <label for="cuisine_filter">Cuisine</label>
             </div>
             <!--Main Ingredient Category Drop Down-->
-            <div class="input-field col s12 m6">
-                <select id="main_ing_filter" name="main_ing_filter" class="form-control validate" required>
-                    <option disabled selected>Main Ingredient</option>
-                    {% for r in rating %}
-                    <option value"{{ r }}">{{ r }}</option>
+            <div class="input-field col s12 m3">
+                <select id="main_ing_filter" name="main_ing_filter" class="form-control validate">
+                    <option value="" disabled selected>Filter by  main ingredient</option>
+                    {% for ing in main_ing %}
+                    <option value"{{ ing }}">{{ ing|capitalize }}</option>
                     {% endfor %}
                 </select>
+                <label for="main_ing_filter">Main Ingredient</label>
             </div>
-            <!--Submit And Reset Buttons-->
-            
-        </div>
-        
-        <!--Recipe Categories Card-->
-        <div class="row card z-depth-1">
-            <!--Card Title-->
-            <h3><i class="fas fa-tags"></i> Categories</h3>
-            <!--Type Select-->
+            <!--Sort By Drop Down-->
             <div class="input-field col s12 m6">
-                <select id="type" name="type" class="form-control validate" required>
-                    <option disabled selected>Type</option>
-                    {% for t in types %}
-                    <option value"{{ t }}">{{ t|capitalize }}</option>
-                    {% endfor %}
+                <select id="sort_by" name="sort_by" class="form-control validate">
+                    <option  value="name" disabled selected>Sort by (optional)</option>
+                    <option value"name">Recipe Name</option>
+                    <option value"views">Most Viewed</option>
+                    <option value"likes">Most Liked</option>
+                    <option value"rating_values">Most Highly Rated</option>
                 </select>
+                <label for="sort_by">Sort By</label>
             </div>
-            <!--Occasion Select-->
-            <div class="input-field col s12 m6">
-                <select id="occasion" name="occasion" class="form-control validate" required>
-                    <option disabled selected>Occasion</option>
-                    {% for o in occasions %}
-                    <option value"{{ o }}">{{ o|title }}</option>
-                    {% endfor %}
-                </select>
+            <!--Submit Button-->
+            <div class="col s6 m3">
+                <button id="search_btn" class="btn waves-effect waves-light" type="submit">
+                    Search
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
             </div>
-            <!--Cuisine Select-->
-            <div class="input-field col s12 m6">
-                <select id="cuisine" name="cuisine" class="form-control validate" required>
-                    <option disabled selected>Cuisine</option>
-                    {% for c in cuisines %}
-                    <option value"{{ c }}">{{ c|title }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <!--Main Ingredient Select-->
-            <div class="input-field col s12 m6">
-                <select id="main_ing" name="main_ing" class="form-control validate" required>
-                    <option disabled selected>Main Ingredient</option>
-                    {% for main in main_ing %}
-                    <option value"{{ main }}">{{ main|title }}</option>
-                    {% endfor %}
-                </select>
+            <!--Reset Button-->
+            <div class="col s6 m3">
+                <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes') }}">
+                    Reset
+                    <i class="fas fa-undo-alt" aria-hidden="true"></i>
+                </a>
             </div>
         </div>
-        
-        <!--Ingredients Card-->
-        <div class="row card z-depth-1">
-            <!--Card Title-->
-            <h3><i class="fas fa-pizza-slice"></i> Ingredients</h3>
-            <!--Ingredient Field-->
-            <div class="input-field ingredients col s12">
-                <input id="ingredients" name="ingredients" type="text" placeholder="Ingredient (one per line)" class="form-control validate" required>
-                <label for="ingredients"></label>
-            </div>
-            <!--Add Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-ing">
-                <i class="fas fa-plus material-icons" aria-hidden="true"></i>
-            </button>
-
-            <!--Remove Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-ing">
-                <i class="fas fa-minus material-icons" aria-hidden="true"></i>
-            </button>
-        </div>
-
-        <!--Cooking Instructions Card-->
-        <div class="row card z-depth-1">
-            <!--Card Title-->
-            <h3><i class="fas fa-list-ol"></i> Instructions</h3>
-            <!--Instruction Field-->
-            <div class="input-field instructions col s12">
-                <input id="instructions" name="instructions" type="text" placeholder="Instructions (one per line)" class="form-control validate" required>
-                <label for="instructions"></label>
-            </div>
-            <!--Add Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-instruction">
-                <i class="fas fa-plus material-icons" aria-hidden="true"></i>
-            </button>
-
-            <!--Remove Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-instruction">
-                <i class="fas fa-minus material-icons" aria-hidden="true"></i>
-            </button>
-        </div>
-        
-        <!--Add Recipe Button-->
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="register">
-                Add
-                <i class="fas fa-plus-circle"></i>
-            </button>
-        </div>
-
-    </form>
+    </form>    
 </div>
 
 <!--Recipe cards-->
