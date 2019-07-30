@@ -13,11 +13,43 @@
 
     <form method="POST" action="">
         <ul class="collapsible">
-            <li>
+            <li class="search-option">
                 <div class="collapsible-header">
                     <h4>
                         <i class="fas fa-search" aria-hidden="true"></i>
-                        Search/
+                        Search
+                    </h4>
+                </div>
+                <div class="collapsible-body collection collapsible-collection">
+                    <!--Helper Text/Instructions-->
+                    <div class="col s12">
+                        <h6>Search by recipe name.</h6>
+                    </div>
+                    <!--Search Field-->
+                    <div class="input-field col s12">
+                        <i class="fas fa-search prefix" aria-hidden="true"></i>
+                        <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate">
+                        <label for="search">Search Recipe Name</label>
+                    </div>
+                    <!--Submit Button-->
+                    <div class="col s6 m3">
+                        <button id="search_btn" class="btn waves-effect waves-light" type="submit">
+                            Search
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <!--Reset Button-->
+                    <div class="col s6 m3">
+                        <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes') }}">
+                            Reset
+                            <i class="fas fa-undo-alt" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+            </li>
+            <li class="filter-option">
+                <div class="collapsible-header">
+                    <h4>
                         <i class="fas fa-filter" aria-hidden="true"></i>
                         Filter
                     </h4>
@@ -25,13 +57,7 @@
                 <div class="collapsible-body collection collapsible-collection">
                     <!--Helper Text/Instructions-->
                     <div class="col s12">
-                        <h6>Search by recipe name or filter by one or multiple categories, then you may choose how to sort the results.</h6>
-                    </div>
-                    <!--Search Field-->
-                    <div class="input-field col s12">
-                        <i class="fas fa-search prefix" aria-hidden="true"></i>
-                        <input id="search" name="search" type="text" placeholder="Search Recipe Name..." class="form-control validate">
-                        <label for="search">Search Recipe Name</label>
+                        <h6>Filter by one or multiple categories, then you may choose how to sort the results.</h6>
                     </div>
                     <!--Type Category Drop Down-->
                     <div class="input-field col s12 m3">
