@@ -413,27 +413,10 @@ def get_recipes():
                 {"$text": {"$search": search_word}}).sort('name', 1)
     
     # All other results with no search
-    # Set word variables to None
-    type_word = None
-    occasion_word = None
-    cuisine_word = None
-    main_ing_word = None
-    sort_by_option = 'name'
-    
     # Filtered results with no search
     if request.method == 'POST':
         # Get the user's submission from the filter form and put into a dictionary
         form_input = request.form.to_dict()
-        if 'type' in form_input:
-            type_word = form_input['type']
-        if 'occasion' in form_input:
-            occasion_word = form_input['occasion']
-        if 'cuisine' in form_input:
-            cuisine_word = form_input['cuisine']
-        if 'occasion' in form_input:
-            occasion_word = form_input['occasion']
-        if 'sort_by' in form_input:
-            sort_by_option = form_input['sort_by']
         
         # Build the filter query
         # Error message if user doesn't select any filters before submitting form
@@ -537,7 +520,8 @@ def get_recipes():
                 {cat_four: val_four}]})
         
         recipes = recipes_coll.find(filter_query).sort('name', 1)
-
+    
+    # All recipes with no search or filters
     else:
         recipes = recipes_coll.find().sort('name', 1)
     
