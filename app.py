@@ -390,17 +390,17 @@ def insert_recipe():
 READ OPERATION
 '''
 
-@app.route('/get_recipes')
+@app.route('/get_recipes', methods=["GET", "POST"])
 def get_recipes():
     '''
     Get all recipes and display summary details in cards
     '''
-    recipes = recipes_coll.find().sort('name', 1)
     
-    
+    # Args variable to get args from the form
     args = request.args.get
 
     # Results using the search form
+    # Set search_word variable
     if args(str("search")):
         search_word = args(str("search"))
     else:
@@ -411,6 +411,36 @@ def get_recipes():
     else:
         search_results = recipes_coll.find(
                 {"$text": {"$search": search_word}}).sort('name', 1)
+    
+    # All other results with no search
+    # Set word variables to None
+    type_word = None
+    occasion_word = None
+    cuisine_word = None
+    main_ing_word = None
+    sort_by_option = 'name'
+    
+    # Filtered results with no search
+    if request.method == 'POST':
+        # Get the user's submission from the filter form and put into a dictionary
+        form_input = request.form.to_dict()
+        if 'type_filter' in form_input:
+            type_word = form_input['type_filter']
+        if 'occasion_filter' in form_input:
+            occasion_word = form_input['occasion_filter']
+        if 'cuisine_filter' in form_input:
+            cuisine_word = form_input['cuisine_filter']
+        if 'occasion_filter' in form_input:
+            occasion_word = form_input['occasion_filter']
+        if 'sort_by' in form_input:
+            sort_by_option = form_input['sort_by']
+        # Error message if user doesn't select any filters before submitting form
+        if len(form_input) == 0:
+            flash(Markup("You haven't selected any filter options. Please choose a category to filter."))
+            return redirect(url_for('get_recipes'))
+        
+    else:
+        recipes = recipes_coll.find().sort('name', 1)
     
     return render_template("browse.html",
         search_results=search_results,

@@ -50,7 +50,7 @@
         </ul>
     </form>
     
-    <form id="filter_form">
+    <form id="filter_form" method="POST" action="{{ url_for('get_recipes') }}">
         <ul class="collapsible filter-option">
             <li>
                 <div class="collapsible-header filter-header">
