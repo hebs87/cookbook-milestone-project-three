@@ -66,44 +66,44 @@
                     </div>
                     <!--Type Category Drop Down-->
                     <div class="input-field col s12 m3">
-                        <select id="type_filter" name="type_filter" class="form-control validate">
+                        <select id="type" name="type" class="form-control validate">
                             <option value="" disabled selected>Filter by type</option>
                             <!--Loop through time_list and inject data into the drop down menu-->
                             {% for type in types %}
                             <option value"{{ type }}">{{ type|capitalize }}</option>
                             {% endfor %}
                         </select>
-                        <label for="type_filter">Recipe Type</label>
+                        <label for="type">Recipe Type</label>
                     </div>
                     <!--Occasion Category Drop Down-->
                     <div class="input-field col s12 m3">
-                        <select id="occasion_filter" name="occasion_filter" class="form-control validate">
+                        <select id="occasion" name="occasion" class="form-control validate">
                             <option value="" disabled selected>Filter by occasion</option>
                             {% for occasion in occasions %}
                             <option value"{{ occasion }}">{{ occasion|capitalize }}</option>
                             {% endfor %}
                         </select>
-                        <label for="occasion_filter">Occasion</label>
+                        <label for="occasion">Occasion</label>
                     </div>
                     <!--Cuisine Category Drop Down-->
                     <div class="input-field col s12 m3">
-                        <select id="cuisine_filter" name="cuisine_filter" class="form-control validate">
+                        <select id="cuisine" name="cuisine" class="form-control validate">
                             <option value="" disabled selected>Filter by cuisine</option>
                             {% for cuisine in cuisines %}
                             <option value"{{ cuisine }}">{{ cuisine|capitalize }}</option>
                             {% endfor %}
                         </select>
-                        <label for="cuisine_filter">Cuisine</label>
+                        <label for="cuisine">Cuisine</label>
                     </div>
                     <!--Main Ingredient Category Drop Down-->
                     <div class="input-field col s12 m3">
-                        <select id="main_ing_filter" name="main_ing_filter" class="form-control validate">
+                        <select id="main_ing" name="main_ing" class="form-control validate">
                             <option value="" disabled selected>Filter by  main ingredient</option>
                             {% for ing in main_ing %}
                             <option value"{{ ing }}">{{ ing|capitalize }}</option>
                             {% endfor %}
                         </select>
-                        <label for="main_ing_filter">Main Ingredient</label>
+                        <label for="main_ing">Main Ingredient</label>
                     </div>
                     <!--Sort By Drop Down-->
                     <div class="input-field col s12 m6">

@@ -424,14 +424,14 @@ def get_recipes():
     if request.method == 'POST':
         # Get the user's submission from the filter form and put into a dictionary
         form_input = request.form.to_dict()
-        if 'type_filter' in form_input:
-            type_word = form_input['type_filter']
-        if 'occasion_filter' in form_input:
-            occasion_word = form_input['occasion_filter']
-        if 'cuisine_filter' in form_input:
-            cuisine_word = form_input['cuisine_filter']
-        if 'occasion_filter' in form_input:
-            occasion_word = form_input['occasion_filter']
+        if 'type' in form_input:
+            type_word = form_input['type']
+        if 'occasion' in form_input:
+            occasion_word = form_input['occasion']
+        if 'cuisine' in form_input:
+            cuisine_word = form_input['cuisine']
+        if 'occasion' in form_input:
+            occasion_word = form_input['occasion']
         if 'sort_by' in form_input:
             sort_by_option = form_input['sort_by']
         # Error message if user doesn't select any filters before submitting form
@@ -439,6 +439,14 @@ def get_recipes():
             flash(Markup("You haven't selected any filter options. Please choose a category to filter."))
             return redirect(url_for('get_recipes'))
         
+        # Build the filter query
+        if len(form_input) == 1:
+            for k, v in form_input.items():
+                cat_one = 'categories.' + k
+                val_one = v.lower()
+                filter_query = {cat_one: val_one}
+        
+        recipes = recipes_coll.find(filter_query).sort('name', 1)
     else:
         recipes = recipes_coll.find().sort('name', 1)
     
