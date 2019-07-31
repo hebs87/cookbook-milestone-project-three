@@ -478,8 +478,45 @@ def get_recipes():
                 val_one = str(form_input['cuisine']).lower()
                 cat_two = 'categories.main_ing'
                 val_two = str(form_input['main_ing']).lower()
-            filter_query = ({'$and': [{cat_one: val_one}, {cat_two: val_two}]})
-
+            
+            filter_query = ({'$and': [{cat_one: val_one},
+                {cat_two: val_two}]})
+            
+        # Filter query if three options are selected from the form
+        elif len(form_input) == 3:
+            if 'type' in form_input and 'occasion' in form_input and 'cuisine' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.occasion'
+                val_two = str(form_input['occasion']).lower()
+                cat_three = 'categories.cuisine'
+                val_three = str(form_input['cuisine']).lower()
+            elif 'type' in form_input and 'occasion' in form_input and 'main_ing' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.occasion'
+                val_two = str(form_input['occasion']).lower()
+                cat_three = 'categories.main_ing'
+                val_three = str(form_input['main_ing']).lower()
+            elif 'type' in form_input and 'cuisine' in form_input and 'main_ing' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.cuisine'
+                val_two = str(form_input['cuisine']).lower()
+                cat_three = 'categories.main_ing'
+                val_three = str(form_input['main_ing']).lower()
+            else:
+                cat_one = 'categories.occasion'
+                val_one = str(form_input['occasion']).lower()
+                cat_two = 'categories.cuisine'
+                val_two = str(form_input['cuisine']).lower()
+                cat_three = 'categories.main_ing'
+                val_three = str(form_input['main_ing']).lower()
+            
+            filter_query = ({'$and': [{cat_one: val_one},
+                {cat_two: val_two},
+                {cat_three: val_three}]})
+            
         recipes = recipes_coll.find(filter_query).sort('name', 1)
     else:
         recipes = recipes_coll.find().sort('name', 1)
