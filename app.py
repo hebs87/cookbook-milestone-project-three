@@ -434,18 +434,52 @@ def get_recipes():
             occasion_word = form_input['occasion']
         if 'sort_by' in form_input:
             sort_by_option = form_input['sort_by']
+        
+        # Build the filter query
         # Error message if user doesn't select any filters before submitting form
         if len(form_input) == 0:
             flash(Markup("You haven't selected any filter options. Please choose a category to filter."))
             return redirect(url_for('get_recipes'))
-        
-        # Build the filter query
-        if len(form_input) == 1:
+        # Filter query if one option is selected from the form
+        elif len(form_input) == 1:
             for k, v in form_input.items():
                 cat_one = 'categories.' + k
                 val_one = v.lower()
                 filter_query = {cat_one: val_one}
-        
+        # Filter query if two options are selected from the form
+        elif len(form_input) == 2:
+            if 'type' in form_input and 'occasion' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.occasion'
+                val_two = str(form_input['occasion']).lower()
+            elif 'type' in form_input and 'cuisine' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.cuisine'
+                val_two = str(form_input['cuisine']).lower()
+            elif 'type' in form_input and 'main_ing' in form_input:
+                cat_one = 'categories.type'
+                val_one = str(form_input['type']).lower()
+                cat_two = 'categories.main_ing'
+                val_two = str(form_input['main_ing']).lower()
+            elif 'occasion' in form_input and 'cuisine' in form_input:
+                cat_one = 'categories.occasion'
+                val_one = str(form_input['occasion']).lower()
+                cat_two = 'categories.cuisine'
+                val_two = str(form_input['cuisine']).lower()
+            elif 'occasion' in form_input and 'main_ing' in form_input:
+                cat_one = 'categories.occasion'
+                val_one = str(form_input['occasion']).lower()
+                cat_two = 'categories.main_ing'
+                val_two = str(form_input['main_ing']).lower()
+            else:
+                cat_one = 'categories.cuisine'
+                val_one = str(form_input['cuisine']).lower()
+                cat_two = 'categories.main_ing'
+                val_two = str(form_input['main_ing']).lower()
+            filter_query = ({'$and': [{cat_one: val_one}, {cat_two: val_two}]})
+
         recipes = recipes_coll.find(filter_query).sort('name', 1)
     else:
         recipes = recipes_coll.find().sort('name', 1)
