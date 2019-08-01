@@ -523,11 +523,11 @@ def get_recipes():
                 {cat_three: val_three},
                 {cat_four: val_four}]})
         
-        recipes = recipes_coll.find(filter_query).sort('likes', -1)
+        recipes = recipes_coll.find(filter_query).sort([('likes', -1), ('name', 1)])
     
     # All recipes with no search or filters
     else:
-        recipes = recipes_coll.find().sort('likes', -1)
+        recipes = recipes_coll.find().sort([('likes', -1), ('name', 1)])
     
     if recipes:
         recipes_count = recipes.count()
