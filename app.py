@@ -412,12 +412,17 @@ def get_recipes(page):
         search_results = ""
     else:
         search_results = recipes_coll.find(
-                {"$text": {"$search": search_word}}).sort('likes', -1)
+                {"$text": {"$search": search_word}})
+    
     # Count the search_results
     if search_results:
         search_results_count = search_results.count()
     else:
         search_results_count = 0
+    
+    paginated_search_results = search_results.sort([("likes", -1), 
+        ("name", 1)]).skip(skip_count).limit(6)
+    
     
 
     # FILTERED RESULTS WITH NO SEARCH
