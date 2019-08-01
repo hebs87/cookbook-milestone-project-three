@@ -396,7 +396,7 @@ def get_recipes(page):
     Get all recipes and display summary details in cards
     '''
     # Number of results to skip when searching recipes collection - for pagination
-    skip_count = (int(page) - 1) * 8
+    skip_count = (int(page) - 1) * 6
     
     # RESULTS USING THE SEARCH FORM
     # Args variable to get args from the form
