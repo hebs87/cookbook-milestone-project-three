@@ -384,18 +384,21 @@ def insert_recipe():
         # Flash message confirmation that recipe has been successfully added
         flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
         
-        return redirect(url_for('get_recipes'))
+        return redirect(url_for('get_recipes', page=1))
 
 '''
 READ OPERATION
 '''
 
-@app.route('/get_recipes', methods=["GET", "POST"])
-def get_recipes():
+@app.route('/get_recipes/<page>', methods=["GET", "POST"])
+def get_recipes(page):
     '''
     Get all recipes and display summary details in cards
     '''
-    # Results using the search form
+    # Number of results to skip when searching recipes collection - for pagination
+    skip_count = (int(page) - 1) * 8
+    
+    # RESULTS USING THE SEARCH FORM
     # Args variable to get args from the form
     args = request.args.get
     
@@ -417,7 +420,7 @@ def get_recipes():
         search_results_count = 0
     
 
-    # Filtered results with no search
+    # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
         # Get the user's submission from the filter form and put into a dictionary
         form_input = request.form.to_dict()
@@ -426,7 +429,7 @@ def get_recipes():
         # Error message if user doesn't select any filters before submitting form
         if len(form_input) == 0:
             flash(Markup("You haven't selected any filter options. Please choose a category to filter."))
-            return redirect(url_for('get_recipes'))
+            return redirect(url_for('get_recipes', page=1))
 
         # Filter query if one option is selected from the form
         elif len(form_input) == 1:
@@ -525,7 +528,7 @@ def get_recipes():
         
         recipes = recipes_coll.find(filter_query).sort([('likes', -1), ('name', 1)])
     
-    # All recipes with no search or filters
+    # ALL RECIPES WITH NO SEARH OR FILTERS
     else:
         recipes = recipes_coll.find().sort([('likes', -1), ('name', 1)])
     
@@ -534,7 +537,10 @@ def get_recipes():
     else:
         recipes_count = 0
     
+    # PAGINATION
+    
     return render_template("browse.html",
+        page=page,
         search_results=search_results,
         search_results_count=search_results_count,
         recipes=recipes,
@@ -701,6 +707,7 @@ def remove_recipe(recipe_id):
     flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully deleted!"))
     
     return redirect(url_for('get_recipes',
+        page=1,
         recipe_id=recipe_id))
 
 '''

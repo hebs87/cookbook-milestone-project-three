@@ -40,7 +40,7 @@
                     </div>
                     <!--Reset Button-->
                     <div class="col s6">
-                        <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes') }}">
+                        <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes', page=1) }}">
                             Reset
                             <i class="fas fa-undo-alt" aria-hidden="true"></i>
                         </a>
@@ -50,7 +50,7 @@
         </ul>
     </form>
     
-    <form id="filter_form" method="POST" action="{{ url_for('get_recipes') }}">
+    <form id="filter_form" method="POST" action="{{ url_for('get_recipes', page=1) }}">
         <ul class="collapsible filter-option">
             <li>
                 <div class="collapsible-header filter-header">
@@ -125,7 +125,7 @@
                     </div>
                     <!--Reset Button-->
                     <div class="col s6 m3">
-                        <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes') }}">
+                        <a class="btn waves-effect waves-light" href="{{ url_for('get_recipes', page=1) }}">
                             Reset
                             <i class="fas fa-undo-alt" aria-hidden="true"></i>
                         </a>
