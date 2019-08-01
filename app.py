@@ -411,6 +411,11 @@ def get_recipes():
     else:
         search_results = recipes_coll.find(
                 {"$text": {"$search": search_word}}).sort('name', 1)
+    # Count the search_results
+    if search_results:
+        search_results_count = search_results.count()
+    else:
+        search_results_count = 0
     
     # All other results with no search
     # Set word variables to None
@@ -544,6 +549,7 @@ def get_recipes():
     
     return render_template("browse.html",
         search_results=search_results,
+        search_results_count=search_results_count,
         recipes=recipes,
         types=types_list,
         occasions=occasions_list,
