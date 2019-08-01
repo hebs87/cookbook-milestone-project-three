@@ -253,13 +253,13 @@
         {% if search_results %}
             <h6> Page {{ page }} of {{ total_pages }}</h6>
             <ul class="pagination">
-                <li id="previous-page">
+                <li id="previous-page" {% if page|int <= 1 %} class="disabled" {% endif %}>
                     <a {% if page|int > 1 %} href="{{ url_for('get_recipes', page=page|int-1) }}" {% endif %}>
                         <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     </a>
                 </li>
-                <li id="next-page">
-                    <a href="">
+                <li id="next-page" {% if page|int == total_pages|int %} class="disabled" {% endif %}>
+                    <a {% if page|int != total_pages|int %} href="{{ url_for('get_recipes', page=page|int+1) }}" {% endif %}>
                         <i class="fas fa-chevron-right" aria-hidden="true"></i>
                     </a>
                 </li>
