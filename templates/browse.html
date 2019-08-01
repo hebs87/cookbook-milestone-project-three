@@ -138,10 +138,22 @@
     <!--Recipe Details Card-->
     <div class="row card z-depth-1">
         <div class="col s12 center-align">
-            {% if search_results_count %}
-                <h6>{{ search_results_count }} recipes found, sorted by most liked.</h6>
+            {% if search_results %}
+                {% if search_results_count == 0 %}
+                    <h6>No recipes found.</h6>
+                {% elif search_results_count == 1 %}
+                    <h6>{{ search_results_count }} recipe found.</h6>
+                {% else %}
+                    <h6>{{ search_results_count }} recipes found, sorted by most liked.</h6>
+                {% endif %}
+            {% elif recipes %}
+                {% if recipes_count == 1 %}
+                    <h6>{{ recipes_count }} recipe found.</h6>
+                {% else %}
+                    <h6>{{ recipes_count }} recipes found, sorted by most liked.</h6>
+                {% endif %}
             {% else %}
-            <h6>No recipes found.</h6>
+                <h6>No recipes found.</h6>
             {% endif %}
         </div>
     </div>
