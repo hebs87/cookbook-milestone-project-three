@@ -251,7 +251,7 @@
     <div class="col s12">
         <!--Pagination for search results-->
         {% if search_results %}
-            <h6> Page x of x</h6>
+            <h6> Page {{ page }} of {{ total_pages }}</h6>
             <ul class="pagination">
                 <li id="previous-page">
                     <a {% if page|int > 1 %} href="{{ url_for('get_recipes', page=page|int-1) }}" {% endif %}>

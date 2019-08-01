@@ -424,6 +424,10 @@ def get_recipes(page):
                 {"$text": {"$search": search_word}}).sort([("likes", -1), 
                     ("_id", 1)]).skip(skip_count).limit(6)
     
+    total_pages = int(math.ceil(search_results_count/6.0))
+    
+    if search_results_count == 0:
+        page = 0
 
     # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
@@ -546,6 +550,7 @@ def get_recipes(page):
         page=page,
         search_results=paginated_search_results,
         search_results_count=search_results_count,
+        total_pages=total_pages,
         recipes=recipes,
         recipes_count=recipes_count,
         types=types_list,
