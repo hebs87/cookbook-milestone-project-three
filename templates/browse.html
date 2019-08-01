@@ -160,7 +160,7 @@
 
 </div>
 
-<!--Recipe cards-->
+<!--Recipe Cards-->
 <div class="row center-align">
     <!--WITHOUT SEARCH-->
     {% if search_results == "" %}
@@ -243,6 +243,27 @@
         {% endif %}
         {% endfor %}
     {% endif %}
+</div>
+
+<!--Pagination Links-->
+<div class="row center-align">
+    
+    <div class="col s12">
+        <h6> Page x of x</h6>
+        <ul class="pagination">
+            <li id="previous-page">
+                <a href="">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li id="next-page">
+                <a href="">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    
 </div>
 
 {% endblock %}
