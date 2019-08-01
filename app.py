@@ -420,15 +420,6 @@ def get_recipes(page):
     else:
         search_results_count = 0
     
-    paginated_search_results = recipes_coll.find(
-                {"$text": {"$search": search_word}}).sort([("likes", -1), 
-                    ("_id", 1)]).skip(skip_count).limit(6)
-    
-    total_pages = int(math.ceil(search_results_count/6.0))
-    
-    if search_results_count == 0:
-        page = 0
-
     # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
         # Get the user's submission from the filter form and put into a dictionary
@@ -535,23 +526,36 @@ def get_recipes(page):
                 {cat_three: val_three},
                 {cat_four: val_four}]})
         
-        recipes = recipes_coll.find(filter_query).sort([('likes', -1), ('name', 1)])
-    
-    # ALL RECIPES WITH NO SEARH OR FILTERS
+        recipes = recipes_coll.find(filter_query)
+        
+        # Pagination for filtered results
+        paginated_recipes = recipes_coll.find(filter_query).sort([("likes", -1), 
+                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(6)
+        
+    # ALL RECIPES WITH NO SEARCH OR FILTERS
     else:
-        recipes = recipes_coll.find().sort([('likes', -1), ('name', 1)])
+        recipes = recipes_coll.find()
+        
+        # Pagination for all recipes
+        paginated_recipes = recipes_coll.find().sort([("likes", -1), 
+                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(6)
     
     if recipes:
         recipes_count = recipes.count()
     else:
         recipes_count = 0
     
+    total_pages = int(math.ceil(recipes_count/6.0))
+    
+    if recipes_count == 0:
+        page = 0
+        
     return render_template("browse.html",
         page=page,
-        search_results=paginated_search_results,
+        search_results=search_results,
         search_results_count=search_results_count,
         total_pages=total_pages,
-        recipes=recipes,
+        recipes=paginated_recipes,
         recipes_count=recipes_count,
         types=types_list,
         occasions=occasions_list,
