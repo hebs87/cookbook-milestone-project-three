@@ -1,7 +1,7 @@
-import os, json, math, html
+import os, json, math, html, pymongo
 import re
 from flask import Flask, render_template, redirect, request, session, g, url_for, flash, Markup
-from flask_pymongo import PyMongo
+from flask_pymongo import PyMongo, pymongo
 from bson.objectid import ObjectId
 from werkzeug.security import check_password_hash, generate_password_hash
 from datetime import date
@@ -420,8 +420,10 @@ def get_recipes(page):
     else:
         search_results_count = 0
     
-    paginated_search_results = search_results.sort([("likes", -1), 
-        ("name", 1)]).skip(skip_count).limit(6)
+    paginated_search_results = recipes_coll.find(
+                {"$text": {"$search": search_word}}).sort([("likes", -1), 
+                    ("_id", 1)]).skip(skip_count).limit(6)
+    
 
     # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
@@ -540,11 +542,9 @@ def get_recipes(page):
     else:
         recipes_count = 0
     
-    # PAGINATION
-    
     return render_template("browse.html",
         page=page,
-        search_results=search_results,
+        search_results=paginated_search_results,
         search_results_count=search_results_count,
         recipes=recipes,
         recipes_count=recipes_count,
