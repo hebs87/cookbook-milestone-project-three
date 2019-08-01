@@ -547,10 +547,16 @@ def get_recipes():
     else:
         recipes = recipes_coll.find().sort('name', 1)
     
+    if recipes:
+        recipes_count = recipes.count()
+    else:
+        recipes_count = 0
+    
     return render_template("browse.html",
         search_results=search_results,
         search_results_count=search_results_count,
         recipes=recipes,
+        recipes_count=recipes_count,
         types=types_list,
         occasions=occasions_list,
         cuisines=cuisines_list,
