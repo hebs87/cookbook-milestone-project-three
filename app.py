@@ -537,31 +537,19 @@ def get_recipes(page):
         search_word = args(str("search"))
     else:
         search_word = ""
-    
-    # Number of results to skip when searching recipes collection - for pagination
-    search_page = 1
-    skip_search_count = (int(search_page) - 1) * 6
-    
+
     if not search_word:
         search_results = ""
-        paginated_search_results = ""
     else:
         search_results = recipes_coll.find(
-                {"$text": {"$search": search_word}})
-        paginated_search_results = recipes_coll.find(
-            {"$text": {"$search": search_word}}).sort([("likes", -1), 
-            ('name', 1), ("_id", 1)]).skip(skip_search_count).limit(6)
-    
+                {"$text": {"$search": search_word}}).sort([("likes", -1), 
+                ('name', 1)])
+
     # Count the search_results
     if search_results:
         search_results_count = search_results.count()
     else:
         search_results_count = 0
-    
-    total_search_pages = int(math.ceil(search_results_count/6.0))
-    
-    if search_results_count == 0:
-        search_page=0
     
     return render_template("browse.html",
         page=page,
@@ -569,10 +557,7 @@ def get_recipes(page):
         recipes_count=recipes_count,
         search_results=search_results,
         search_results_count=search_results_count,
-        paginated_search_results=paginated_search_results,
         total_pages=total_pages,
-        search_page=search_page,
-        total_search_pages=total_search_pages,
         types=types_list,
         occasions=occasions_list,
         cuisines=cuisines_list,

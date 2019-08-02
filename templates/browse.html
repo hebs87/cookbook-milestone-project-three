@@ -204,7 +204,7 @@
         {% endfor %}
     <!--WITH SEARCH-->
     {% else %}
-        {% for recipe in paginated_search_results %}
+        {% for recipe in search_results %}
         <!--Only display recipe if the deleted field value is false-->
         {% if recipe.deleted == False %}
         <div class="col s12 m3">
@@ -251,33 +251,19 @@
     <div class="col s12">
         <!--Pagination for search results-->
         {% if search_results == "" %}
-        <h6> Page {{ page }} of {{ total_pages }}</h6>
-        <ul class="pagination">
-            <li id="previous-page" {% if page|int <= 1 %} class="disabled" {% endif %}>
-                <a {% if page|int > 1 %} href="{{ url_for('get_recipes', page=page|int-1) }}" {% endif %}>
-                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li id="next-page" {% if page|int == total_pages|int %} class="disabled" {% endif %}>
-                <a {% if page|int != total_pages|int %} href="{{ url_for('get_recipes', page=page|int+1) }}" {% endif %}>
-                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        </ul>
-        {% else %}
-        <h6> Page {{ search_page }} of {{ total_search_pages }}</h6>
-        <ul class="pagination">
-            <li id="previous-page" {% if search_page|int <= 1 %} class="disabled" {% endif %}>
-                <a {% if search_page|int > 1 %} href="{{ url_for('get_recipes', search_page=search_page|int-1) }}" {% endif %}>
-                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
-                </a>
-            </li>
-            <li id="next-page" {% if search_page|int == total_search_pages|int %} class="disabled" {% endif %}>
-                <a {% if search_page|int != total_search_pages|int %} href="{{ url_for('get_recipes', search_page=search_page|int+1) }}" {% endif %}>
-                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
-                </a>
-            </li>
-        </ul>
+            <h6> Page {{ page }} of {{ total_pages }}</h6>
+            <ul class="pagination">
+                <li id="previous-page" {% if page|int <= 1 %} class="disabled" {% endif %}>
+                    <a {% if page|int > 1 %} href="{{ url_for('get_recipes', page=page|int-1) }}" {% endif %}>
+                        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li id="next-page" {% if page|int == total_pages|int %} class="disabled" {% endif %}>
+                    <a {% if page|int != total_pages|int %} href="{{ url_for('get_recipes', page=page|int+1) }}" {% endif %}>
+                        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
         {% endif %}
     </div>
     
