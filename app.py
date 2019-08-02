@@ -398,28 +398,6 @@ def get_recipes(page):
     # Number of results to skip when searching recipes collection - for pagination
     skip_count = (int(page) - 1) * 6
     
-    # RESULTS USING THE SEARCH FORM
-    # Args variable to get args from the form
-    args = request.args.get
-    
-    # Set search_word variable
-    if args(str("search")):
-        search_word = args(str("search"))
-    else:
-        search_word = ""
-    
-    if not search_word:
-        search_results = ""
-    else:
-        search_results = recipes_coll.find(
-                {"$text": {"$search": search_word}})
-    
-    # Count the search_results
-    if search_results:
-        search_results_count = search_results.count()
-    else:
-        search_results_count = 0
-    
     # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
         # Get the user's submission from the filter form and put into a dictionary
@@ -549,14 +527,52 @@ def get_recipes(page):
     
     if recipes_count == 0:
         page = 0
-        
+    
+    # RESULTS USING THE SEARCH FORM
+    # Args variable to get args from the form
+    args = request.args.get
+    
+    # Set search_word variable
+    if args(str("search")):
+        search_word = args(str("search"))
+    else:
+        search_word = ""
+    
+    # Number of results to skip when searching recipes collection - for pagination
+    search_page = 1
+    skip_search_count = (int(search_page) - 1) * 6
+    
+    if not search_word:
+        search_results = ""
+        paginated_search_results = ""
+    else:
+        search_results = recipes_coll.find(
+                {"$text": {"$search": search_word}})
+        paginated_search_results = recipes_coll.find(
+            {"$text": {"$search": search_word}}).sort([("likes", -1), 
+            ('name', 1), ("_id", 1)]).skip(skip_search_count).limit(6)
+    
+    # Count the search_results
+    if search_results:
+        search_results_count = search_results.count()
+    else:
+        search_results_count = 0
+    
+    total_search_pages = int(math.ceil(search_results_count/6.0))
+    
+    if search_results_count == 0:
+        search_page=0
+    
     return render_template("browse.html",
         page=page,
-        search_results=search_results,
-        search_results_count=search_results_count,
-        total_pages=total_pages,
         recipes=paginated_recipes,
         recipes_count=recipes_count,
+        search_results=search_results,
+        search_results_count=search_results_count,
+        paginated_search_results=paginated_search_results,
+        total_pages=total_pages,
+        search_page=search_page,
+        total_search_pages=total_search_pages,
         types=types_list,
         occasions=occasions_list,
         cuisines=cuisines_list,
