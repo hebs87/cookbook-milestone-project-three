@@ -396,7 +396,7 @@ def get_recipes(page):
     Get all recipes and display summary details in cards
     '''
     # Number of results to skip when searching recipes collection - for pagination
-    skip_count = (int(page) - 1) * 6
+    skip_count = (int(page) - 1) * 8
     
     # FILTERED RESULTS WITH NO SEARCH
     if request.method == 'POST':
@@ -508,7 +508,7 @@ def get_recipes(page):
         
         # Pagination for filtered results
         paginated_recipes = recipes_coll.find(filter_query).sort([("likes", -1), 
-                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(6)
+                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(8)
         
     # ALL RECIPES WITH NO SEARCH OR FILTERS
     else:
@@ -516,14 +516,14 @@ def get_recipes(page):
         
         # Pagination for all recipes
         paginated_recipes = recipes_coll.find().sort([("likes", -1), 
-                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(6)
+                    ('name', 1), ("_id", 1)]).skip(skip_count).limit(8)
     
     if recipes:
         recipes_count = recipes.count()
     else:
         recipes_count = 0
     
-    total_pages = int(math.ceil(recipes_count/6.0))
+    total_pages = int(math.ceil(recipes_count/8.0))
     
     if recipes_count == 0:
         page = 0
