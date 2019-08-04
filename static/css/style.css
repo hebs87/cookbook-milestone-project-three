@@ -41,6 +41,18 @@ nav .brand-logo img {
     padding-right: 10px;
 }
 
+nav ul a {
+    color: #ececec;
+    transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+nav ul a:hover {
+    color: #a39161;
+}
+
 nav ul .btn-icon {
     font-size: 1.5em;
     padding-right: 5px;
