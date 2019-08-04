@@ -25,18 +25,36 @@ h1, h2, h3, h4, h5, h6 {
     font-style: italic;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
     background-color: #000000;
-}
-
-nav .brand-logo {
     font-family: "Dancing Script", sans-serif;
+    font-weight: bold;
 }
 
-nav .brand-logo img {
-    vertical-align: text-top;
-    height: 2.5rem;
+.sidenav {
+    background-color: #a39161;
+    font-family: "Dancing Script", sans-serif;
+    font-weight: bold;
+}
+
+nav .brand-logo,
+.sidenav .brand-logo {
+    font-size: 1.9em;
+}
+
+.sidenav .brand-logo {
+    padding-bottom: 10px;
+}
+
+nav .brand-logo img,
+.sidenav .brand-logo img {
+    vertical-align: text-bottom;
+    height: 2.2rem;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -44,21 +62,37 @@ nav .brand-logo img {
 nav ul a {
     color: #ececec;
     transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-    -o-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
 }
 
 nav ul a:hover {
     color: #a39161;
 }
 
-nav ul .btn-icon {
-    font-size: 1.5em;
+nav ul .btn-icon,
+.sidenav .btn-icon {
+    font-size: 1.3em;
     padding-right: 5px;
 }
 
-nav ul .btn-text {
+nav ul .btn-text,
+.sidenav .btn-text {
     font-size: 1.2em;
+}
+
+.sidenav .btn-icon,
+.sidenav .btn-text {
+    color: #000000;
+}
+
+.sidenav .btn-icon {
+    padding-left: 17px;
+    padding-right: 12px;
+}
+
+.sidenav li {
+    padding-top: 10px;
 }
 
