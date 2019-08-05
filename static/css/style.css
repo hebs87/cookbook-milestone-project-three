@@ -96,3 +96,28 @@ nav ul .btn-text,
     padding-top: 10px;
 }
 
+/*--------------------------------- Footer ---------------------------------*/
+.page-footer {
+    background-color: #262626;
+    color: #ab9a6e;
+    font-size: 1.5em;
+    padding: 1em 0;
+}
+
+.social-links {
+    padding-top: 15px;
+}
+
+.social-links a {
+    margin-right: 15px;
+    color: #ab9a6e;
+    transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.social-links a:hover {
+    color: #ececec;
+}
+
