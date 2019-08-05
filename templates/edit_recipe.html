@@ -3,7 +3,7 @@
 <!--Page Title-->
 <div class="row center-align">
     <div class="col s12">
-        <h1 class="title">Add A Recipe!</h1>
+        <h1 class="page-title">Edit Recipe</h1>
     </div>
 </div>
 
@@ -13,9 +13,9 @@
     <form method="POST" action="{{ url_for('update_recipe', recipe_id=recipe._id) }}" enctype="multipart/form-data">
         
         <!--Recipe Details Card-->
-        <div class="row card z-depth-1">
+        <div class="row recipe-card card card z-depth-1">
             <!--Card Title-->
-            <h3><i class="fas fa-list-ul"></i>Recipe Details</h3>
+            <h3 class="card-title"><i class="fas fa-list-ul"></i>Recipe Details</h3>
             <!--Recipe Name Field-->
             <div class="input-field col s12">
                 <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name | title }}" required>
@@ -77,9 +77,9 @@
         </div>
         
         <!--Recipe Categories Card-->
-        <div class="row card z-depth-1">
+        <div class="row recipe-card card card z-depth-1">
             <!--Card Title-->
-            <h3><i class="fas fa-tags"></i> Categories</h3>
+            <h3 class="card-title"><i class="fas fa-tags"></i> Categories</h3>
             <!--Type Select-->
             <div class="input-field col s12 m6">
                 <select id="type" name="type" class="form-control validate" required>
@@ -135,37 +135,39 @@
         </div>
         
         <!--Ingredients Card-->
-        <div class="row card z-depth-1">
+        <div class="row recipe-card card card z-depth-1">
             <!--Card Title-->
-            <h3><i class="fas fa-pizza-slice"></i> Ingredients</h3>
+            <h3 class="card-title"><i class="fas fa-pizza-slice"></i> Ingredients</h3>
             <!--Ingredient Field-->
             {% for ing in recipe.ingredients %}
-            <div class="input-field ingredients col s12">
+            <div class="input-field edit-ingredients col s12">
                 <input id="ingredients" name="ingredients" type="text" placeholder="Ingredient (one per line)" class="form-control validate" value="{{ ing|capitalize }}" required>
                 <label for="ingredients"></label>
-                <a class="waves-effect waves-light btn remove-current-ing">
+                <a id="remove-current-ing" class="waves-effect waves-light btn remove-current-ing">
                     <i class="fas fa-minus material-icons" aria-hidden="true"></i>
                 </a>
             </div>
             {% endfor %}
-            <!--Add Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-ing">
-                <i class="fas fa-plus material-icons" aria-hidden="true"></i>
-            </button>
-
-            <!--Remove Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-ing">
-                <i class="fas fa-minus material-icons" aria-hidden="true"></i>
-            </button>
+            <div class="col s12 add-remove-btns">
+                <!--Add Ingredient Row Btn-->
+                <button type="button" class="waves-effect waves-light btn add-ing">
+                    <i class="fas fa-plus material-icons" aria-hidden="true"></i>
+                </button>
+    
+                <!--Remove Ingredient Row Btn-->
+                <button type="button" class="waves-effect waves-light btn remove-ing">
+                    <i class="fas fa-minus material-icons" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
 
         <!--Cooking Instructions Card-->
-        <div class="row card z-depth-1">
+        <div class="row recipe-card card card z-depth-1">
             <!--Card Title-->
-            <h3><i class="fas fa-list-ol"></i> Instructions</h3>
+            <h3 class="card-title"><i class="fas fa-list-ol"></i> Instructions</h3>
             <!--Instruction Field-->
             {% for instruction in recipe.instructions %}
-            <div class="input-field instructions col s12">
+            <div class="input-field edit-instructions col s12">
                 <input id="instructions" name="instructions" type="text" placeholder="Instructions (one per line)" class="form-control validate" value="{{ instruction|capitalize }}" required>
                 <label for="instructions"></label>
                 <a class="waves-effect waves-light btn remove-current-instruction">
@@ -173,20 +175,22 @@
                 </a>
             </div>
             {% endfor %}
-            <!--Add Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-instruction">
-                <i class="fas fa-plus material-icons" aria-hidden="true"></i>
-            </button>
-
-            <!--Remove Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-instruction">
-                <i class="fas fa-minus material-icons" aria-hidden="true"></i>
-            </button>
+            <div class="col s12 add-remove-btns">
+                <!--Add Instruction Row Btn-->
+                <button type="button" class="waves-effect waves-light btn add-instruction">
+                    <i class="fas fa-plus material-icons" aria-hidden="true"></i>
+                </button>
+    
+                <!--Remove Instruction Row Btn-->
+                <button type="button" class="waves-effect waves-light btn remove-instruction">
+                    <i class="fas fa-minus material-icons" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
         
         <!--Add Recipe Button-->
-        <div class="row">
-            <button class="btn waves-effect waves-light" type="submit" name="register">
+        <div class="row edit-btn-wrapper">
+            <button class="btn waves-effect waves-light edit-btn" type="submit" name="register">
                 Edit
                 <i class="fas fa-edit"></i>
             </button>

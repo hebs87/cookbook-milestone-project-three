@@ -38,21 +38,29 @@ h1, h2, h3, h4, h5, h6 {
 /*--------------------------------- Buttons ---------------------------------*/
 .index-btn,
 .login-wrapper .btn,
-.register-wrapper .btn {
+.register-wrapper .btn,
+.add-btn,
+.edit-btn,
+.btn .add-ing,
+.btn .add-instruction {
     background-color: #a39161;
     color: #ececec;
     width: 135px;
     border-radius: 18px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;    
+    -o-transition: all 0.5s ease-in-out;
 }
 
 .index-btn:hover,
 .login-wrapper .btn:hover,
-.register-wrapper .btn:hover {
+.register-wrapper .btn:hover,
+.add-btn:hover,
+.edit-btn:hover {
     background-color: #818181;
 }
+
+
 
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
@@ -147,7 +155,7 @@ nav ul .btn-text,
 }
 
 /*---------------------------------- Index ----------------------------------*/
-.title {
+.page-title {
     margin-top: 25px;
     margin-bottom: 25px;
     font-size: 3em;
@@ -222,18 +230,96 @@ h3 {
     padding-left: 7px;
 }
 
+/*----------------------------- Add/Edit Recipe -----------------------------*/
+.recipe-card {
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 1em;
+}
+
+.recipe-card .card-title {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.recipe-card .card-title i {
+    padding-right: 10px;
+    color: #ab9a6e;
+}
+
+.file-field .btn,
+.add-remove-btns .add-ing,
+.add-remove-btns .add-instruction {
+    background-color: #a39161;
+    color: #ececec;
+    border-radius: 18px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.add-remove-btns .remove-ing,
+.add-remove-btns .remove-instruction,
+.edit-ingredients .btn,
+.edit-instructions .btn {
+    background-color: #262626;
+    color: #ececec;
+    border-radius: 18px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+.file-field .btn:hover,
+.add-remove-btns .add-ing:hover,
+.add-remove-btns .add-instruction:hover,
+.add-remove-btns .remove-ing:hover,
+.add-remove-btns .remove-instruction:hover,
+.file-field .btn:focus,
+.edit-ingredients .btn:hover,
+.edit-instructions .btn:hover {
+    background-color: #818181;
+}
+
+.add-btn-wrapper,
+.edit-btn-wrapper {
+    margin-bottom: 25px;
+}
+
+.edit-ingredients #ingredients,
+.edit-instructions #instructions {
+    width: 90%;
+}
+
 /*------------------------------ Form overrides ------------------------------*/
 input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
-input[type=search]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 2px solid #ab9a6e;
+input[type=search]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid #ab9a6e;
 }
 
 label,
 input:not([type]):focus:not([readonly])+label,
 input[type=text]:not(.browser-default):focus:not([readonly])+label,
 input[type=password]:not(.browser-default):focus:not([readonly])+label,
-input[type=search]:not(.browser-default):focus:not([readonly])+label {
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+.dropdown-content li>a,
+.dropdown-content li>span,
+.select-dropdown li.disabled>span {
     color: #ab9a6e;
+}
+
+.select-dropdown.dropdown-content li:hover:not(.optgroup),
+.select-dropdown.dropdown-content li>span:hover:not(.optgroup) {
+    background-color: #818181;
+    color: #ececec;
+}
+
+.select-dropdown.dropdown-content li.selected>span,
+.select-dropdown.dropdown-content li:focus,
+body.keyboard-focused .select-dropdown.dropdown-content li:focus {
+    background-color: #262626;
+    color: #ececec;
 }
