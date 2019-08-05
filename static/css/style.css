@@ -142,7 +142,7 @@ nav ul .btn-text,
     color: #ececec;
 }
 
-/*--------------------------------- Index ---------------------------------*/
+/*---------------------------------- Index ----------------------------------*/
 .title {
     margin-top: 25px;
     margin-bottom: 25px;
@@ -165,4 +165,34 @@ nav ul .btn-text,
 
 .index-btn i {
     padding-right: 7px;
+}
+
+/*------------------------------ Login/Register ------------------------------*/
+.login-register-wrapper {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+}
+
+.login-register-wrapper .tabs .tab a {
+    background-color: #262626;
+    color: #ab9a6e;
+    font-weight: bold;
+}
+
+.login-register-wrapper .tabs .tab a.active {
+    background-color: #818181;
+    color: #ab9a6e;
+    text-shadow: 1px 1px 1px black;
+    font-weight: bold;
+}
+
+.login-register-wrapper .tabs .tab a.active:hover {
+    background-color: #818181;
+    color: #ab9a6e;
+    font-weight: bold;
+}
+
+.tabs .indicator {
+    background-color: #ab9a6e
 }
