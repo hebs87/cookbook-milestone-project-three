@@ -29,6 +29,21 @@ h1, h2, h3, h4, h5, h6 {
     text-transform: uppercase;
 }
 
+/*--------------------------------- Buttons ---------------------------------*/
+.index-btn {
+    background-color: #a39161;
+    color: #ececec;
+    width: 135px;
+    border-radius: 18px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;    
+}
+
+.index-btn:hover {
+    background-color: #818181;
+}
+
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
     background-color: #000000;
@@ -121,3 +136,27 @@ nav ul .btn-text,
     color: #ececec;
 }
 
+/*--------------------------------- Index ---------------------------------*/
+.title {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 3em;
+    color: #ab9a6e;
+}
+
+.index-img {
+    border-radius: 2em;
+}
+
+.index-btn-wrapper {
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+.index-btn {
+    margin-top: 20px;
+}
+
+.index-btn i {
+    padding-right: 7px;
+}
