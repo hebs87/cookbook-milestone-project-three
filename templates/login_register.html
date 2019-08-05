@@ -13,9 +13,12 @@
     </ul>
 
     <!--Login form-->
-    <div id="login" class="col s12 login-wrapper">
-        <div class="row">
-            <form class="col s12" method="POST" action="{{ url_for('login', _anchor='login') }}">
+    <div id="login" class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('login', _anchor='login') }}">
+            <div class="login-wrapper center-align">
+                
+                <h3 class"form-title">Login</h3>
+                
                 <div class="row">
                     <!--Username-->
                     <div class="input-field col s12">
@@ -23,6 +26,7 @@
                         <input id="username" name="username" type="text" class="form-control validate" minlength="6" maxlength="15" value="{{ request.form['username'] }}" required>
                         <label for="username">Username</label>
                     </div>
+
                     <!--Password-->
                     <div class="input-field col s12">
                         <i class="fas fa-lock prefix" aria-hidden="true"></i>
@@ -30,6 +34,7 @@
                         <label for="password">Password</label>
                     </div>
                 </div>
+
                 <div class="row">
                     <!--Login Button-->
                     <button class="btn waves-effect waves-light" type="submit" name="login">
@@ -37,14 +42,18 @@
                         <i class="fas fa-sign-in-alt"></i>
                     </button>
                 </div>
-            </form>
-        </div>
+
+            </div>
+        </form>
     </div>
 
     <!--Register form-->
-    <div id="register" class="col s12 register-wrapper">
-        <div class="row">
-            <form class="col s12" method="POST" action="{{ url_for('register', _anchor='register') }}">
+    <div id="register" class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('register', _anchor='register') }}">
+            <div class="register-wrapper center-align">
+                
+                <h3 class"form-title">Register</h3>
+                
                 <div class="row">
                     <!--Username-->
                     <div class="input-field col s12">
@@ -66,8 +75,8 @@
                         <i class="fas fa-user-plus"></i>
                     </button>
                 </div>
-            </form>
-        </div>
+            </div>    
+        </form>
     </div>
 
 </div>
