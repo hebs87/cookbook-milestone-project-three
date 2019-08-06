@@ -52,6 +52,17 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all 0.5s ease-in-out;
 }
 
+.change-pwd-btn, 
+.delete-acc-btn {
+    background-color: #a39161;
+    color: #ececec;
+    width: 90%;
+    border-radius: 18px;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
 .index-btn:hover,
 .login-wrapper .btn:hover,
 .register-wrapper .btn:hover,
@@ -59,8 +70,6 @@ h1, h2, h3, h4, h5, h6 {
 .edit-btn:hover {
     background-color: #818181;
 }
-
-
 
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
@@ -158,7 +167,7 @@ nav ul .btn-text,
 .page-title {
     margin-top: 25px;
     margin-bottom: 25px;
-    font-size: 3em;
+    font-size: 2.8em;
     color: #ab9a6e;
     font-weight: bold;
 }
@@ -176,7 +185,9 @@ nav ul .btn-text,
     margin-top: 20px;
 }
 
-.index-btn i {
+.index-btn i,
+.change-pwd-btn i, 
+.delete-acc-btn i {
     padding-right: 7px;
 }
 
@@ -216,12 +227,13 @@ nav ul .btn-text,
 }
 
 h3 {
-    font-size: 2.5em;
+    font-size: 1.8em;
     font-weight: bold;
 }
 
 .login-wrapper .prefix.active,
-.register-wrapper .prefix.active {
+.register-wrapper .prefix.active,
+.modal-form-wrapper .prefix.active {
     color: #ab9a6e;
 }
 
@@ -237,8 +249,9 @@ h3 {
     border-radius: 1em;
 }
 
-.recipe-card .card-title {
-    font-size: 2.5em;
+.recipe-card .card-title,
+.modal .title {
+    font-size: 1.8em;
     font-weight: bold;
 }
 
@@ -279,7 +292,9 @@ h3 {
 .file-field .btn:focus,
 .edit-ingredients .btn:hover,
 .edit-instructions .btn:hover,
-.liked-btn:hover {
+.liked-btn:hover,
+.change-pwd-btn:hover, 
+.delete-acc-btn:hover {
     background-color: #818181;
 }
 
@@ -317,6 +332,10 @@ h3 {
     color: #000000;
 }
 
+.acc-management-wrapper {
+    margin-top: 15px;
+}
+
 /*------------------------------ Form overrides ------------------------------*/
 input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
@@ -351,7 +370,15 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 /*------------------------------ Media Queries ------------------------------*/
-@media (min-width: 480px) {
+@media (min-width: 768px) {
+    .page-title {
+        font-size: 3em;
+    }
+    h3,
+    .recipe-card .card-title,
+    .modal .title {
+        font-size: 2.5em;
+    }
     .edit-ingredients #ingredients,
     .edit-instructions #instructions {
         width: 90%;
@@ -368,5 +395,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         -webkit-transition: all 0.5s ease-in-out;
         -moz-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
+    }
+    .liked-btn i {
+        padding-right: 7px;
     }
 }

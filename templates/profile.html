@@ -89,16 +89,18 @@
         <div class="col s12">
             <h4 class="card-title">Account Management</h4>
         </div>
-        <div class="col s12">
+        <div class="col s12 m5 offset-m1 acc-management-wrapper">
             <!--Change Password Modal Button-->
-            <a href="#change_password_modal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#change_password_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn">
                 <i class="fas fa-user-lock" aria-hidden="true"></i>
-                <span class="hide-on-small-and-down">Change Password</span>
+                Change Password
             </a>
+        </div>
+        <div class="col s12 m5 acc-management-wrapper">
             <!--Delete Account Modal Button-->
-            <a href="#delete_account_modal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#delete_account_modal" class="waves-effect waves-light btn modal-trigger delete-acc-btn">
                 <i class="fas fa-user-slash" aria-hidden="true"></i>
-                <span class="hide-on-small-and-down">Delete Account</span>
+                Delete Account
             </a>
         </div>
     </div>
@@ -108,9 +110,9 @@
 <!--Change Password Modal-->
 <div id="change_password_modal" class="modal">
     <div class="modal-content center-align">
-        <h5 class="bold">Change Password</h5>
+        <h4 class="title">Change Password</h4>
         <form class="col s12" method="POST" action="{{ url_for('change_password', username=username) }}">
-            <div class="row">
+            <div class="row modal-form-wrapper">
                 <!--Existing Password-->
                 <div class="input-field col s12">
                     <i class="fas fa-lock prefix" aria-hidden="true"></i>
@@ -124,7 +126,7 @@
                     <label for="changed_password">New Password</label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row modal-btn-wrapper">
                 <!--Change Password Button-->
                 <button class="btn waves-effect waves-light" type="submit">
                     Change Password
@@ -138,15 +140,15 @@
 <!--Delete Modal-->
 <div id="delete_account_modal" class="modal">
     <div class="modal-content center-align">
-        <h5 class="bold">Delete Account</h5>
-        <h6 class="bold">Are you sure you want to delete your account?</h6>
-        <p>
+        <h4 class="title">Delete Account</h4>
+        <h6 class="helper">Are you sure you want to delete your account?</h6>
+        <p class="helper">
             All your recipes and data will be permanently deleted if you go ahead!
             <br>
             Confirm your password to continue...
         </p>
         <form class="col s12" method="POST" action="{{ url_for('delete_account', username=username) }}">
-            <div class="row">
+            <div class="row modal-form-wrapper">
                 <!--Existing Password-->
                 <div class="input-field col s12">
                     <i class="fas fa-lock prefix" aria-hidden="true"></i>
@@ -154,7 +156,7 @@
                     <label for="existing_password">Confirm Password</label>
                 </div>
             </div>
-            <div class="row">
+            <div class="row modal-btn-wrapper">
                 <!--Change Password Button-->
                 <button class="btn waves-effect waves-light" type="submit">
                     Delete Account
