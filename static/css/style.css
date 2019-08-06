@@ -249,7 +249,8 @@ h3 {
 
 .file-field .btn,
 .add-remove-btns .add-ing,
-.add-remove-btns .add-instruction {
+.add-remove-btns .add-instruction,
+.liked-btn {
     background-color: #a39161;
     color: #ececec;
     border-radius: 18px;
@@ -277,7 +278,8 @@ h3 {
 .add-remove-btns .remove-instruction:hover,
 .file-field .btn:focus,
 .edit-ingredients .btn:hover,
-.edit-instructions .btn:hover {
+.edit-instructions .btn:hover,
+.liked-btn:hover {
     background-color: #818181;
 }
 
@@ -289,6 +291,30 @@ h3 {
 .edit-ingredients #ingredients,
 .edit-instructions #instructions {
     width: 75%;
+}
+
+/*--------------------------------- Profile ---------------------------------*/
+.collection-wrapper {
+    border: none;
+    margin-bottom: 0;
+}
+
+.collection-wrapper .link-wrapper {
+    padding: 0;
+}
+
+.collection-wrapper .like-wrapper {
+    padding: 0;
+    position: relative;
+    top: 12px;
+}
+
+.collection-wrapper .collection-item.avatar {
+    min-height: 60px;
+}
+
+.collection-wrapper .title {
+    color: #000000;
 }
 
 /*------------------------------ Form overrides ------------------------------*/
@@ -329,5 +355,18 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .edit-ingredients #ingredients,
     .edit-instructions #instructions {
         width: 90%;
+    }
+    .collection-wrapper .title {
+        position: relative;
+        top: 10px;
+    }
+    .liked-btn {
+        background-color: #a39161;
+        color: #ececec;
+        width: 135px;
+        border-radius: 18px;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
     }
 }
