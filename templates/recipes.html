@@ -12,16 +12,16 @@
 <div class="row">
 
     <!--Recipe Image, Stats and Buttons Card-->
-    <div class="row card z-depth-1 center-align">
+    <div class="row recipe-card card z-depth-1 center-align">
         <!--Recipe Image-->
-        <div class="col s12 m6 center-align recipe-img">
-            <img class="responsive-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
+        <div class="col s12 m6 center-align recipe-img-wrapper">
+            <img class="recipe-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
         </div>
         <!--Recipe Stats-->
         <div class="col s12 m6 center-align recipe-details">
             <p class="stat">
                 <i class="far fa-star" aria-hidden="true"></i> 
-                Rating: 
+                <strong class="stat-title">Rating: </strong>
                 {% set rating = [] %}
                 {% for r in recipe.rating_values %}
                     {% if rating.append(r) %}
@@ -30,41 +30,50 @@
                 {{ (rating | sum / rating | count) | int }}/5
             </p>
             <p class="stat">
-                Times Rated: {{ rating | count }}
+                <strong class="stat-title">Times Rated: </strong>
+                {{ rating | count }}
             </p>
-            <a href="#rate_modal" class="waves-effect waves-light btn modal-trigger">
+            <a href="#rate_modal" class="waves-effect waves-light btn rate-btn modal-trigger">
                 <i class="far fa-star" aria-hidden="true"></i>Rate It
             </a>
             <p class="stat">
                 <i class="far fa-clock" aria-hidden="true"></i>
-                Prep Time: {{ recipe.prep_time }}
+                <strong class="stat-title">Prep Time: </strong>
+                {{ recipe.prep_time }}
             </p>
             <p class="stat">
                 <i class="far fa-clock" aria-hidden="true"></i>
-                Cook Time: {{ recipe.cook_time }}
+                <strong class="stat-title">Cook Time: </strong>
+                {{ recipe.cook_time }}
             </p>
             <p class="stat">
                 <i class="fas fa-cookie-bite" aria-hidden="true"></i>
-                Serves: {{ recipe.serves | capitalize }}
+                <strong class="stat-title">Serves: </strong>
+                {{ recipe.serves | capitalize }}
             </p>
             <p class="stat">
                 <i class="far fa-user" aria-hidden="true"></i>
-                By: {{ recipe.author | title }}
+                <strong class="stat-title">By: </strong>{{ recipe.author | title }}
             </p>
             <p class="stat">
                 {% if recipe.last_edited_date == "" %}
                     <!--If the recipe hasn't been edited, the added date will be displayed-->
                     <i class="far fa-calendar-plus" aria-hidden="true"></i>
-                    Added: {{ recipe.added_date }}
+                    <strong class="stat-title">Added: </strong>
+                    {{ recipe.added_date }}
                 {% else %}
                     <!--If the recipe has been updated, the edited date will be displayed instead-->
                     <i class="fas fa-edit" aria-hidden="true"></i>
-                    Updated: {{ recipe.last_edited_date }}
+                    <strong class="stat-title">Updated: </strong>
+                    {{ recipe.last_edited_date }}
                 {% endif %}
             </p>
         </div>
+        <div class="col s12 center-align">
+            <div class="recipe-details-break"></div>
+        </div>
         <!--Buttons - vary depending on whether user is in session-->
-        <div class="col s12 center-align options-buttons">
+        <div class="col s12 center-align options-buttons-wrapper">
             <a id="print-btn" class="waves-effect waves-light btn">
                 <i class="fas fa-print" aria-hidden="true"></i>
                 <span class="hide-on-small-and-down">Print</span>
@@ -101,7 +110,7 @@
     </div>
     
     <!--Recipe Ingredients and Instructions-->
-    <div class="row card z-depth-1">
+    <div class="row recipe-card card z-depth-1">
         <!--Ingredients-->
         <div class="col s12 m6 ingredients">
             <h4 class="center-align">Ingredients</h4>

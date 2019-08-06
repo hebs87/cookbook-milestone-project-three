@@ -40,7 +40,8 @@ h1, h2, h3, h4, h5, h6 {
 .add-btn,
 .edit-btn,
 .btn .add-ing,
-.btn .add-instruction {
+.btn .add-instruction,
+.rate-btn {
     background-color: #a39161;
     color: #ececec;
     width: 135px;
@@ -67,7 +68,9 @@ h1, h2, h3, h4, h5, h6 {
 .login-wrapper .btn:hover,
 .register-wrapper .btn:hover,
 .add-btn:hover,
-.edit-btn:hover {
+.edit-btn:hover,
+.options-buttons-wrapper .btn:hover,
+.rate-btn:hover {
     background-color: #818181;
 }
 
@@ -263,7 +266,8 @@ h3 {
 .file-field .btn,
 .add-remove-btns .add-ing,
 .add-remove-btns .add-instruction,
-.liked-btn {
+.liked-btn,
+.options-buttons-wrapper .btn {
     background-color: #a39161;
     color: #ececec;
     border-radius: 18px;
@@ -336,6 +340,30 @@ h3 {
     margin-top: 15px;
 }
 
+/*--------------------------------- Recipes ---------------------------------*/
+.recipe-img-wrapper .recipe-img {
+  object-fit: cover;
+  width: 100%;
+  height: 150px;
+  border-radius: 1em 1em 0 0;
+}
+
+.stat i,
+.stat .stat-title {
+    color: #a39161
+}
+
+.options-buttons-wrapper .btn {
+    margin: 2px;
+}
+
+.recipe-details-break {
+    background-color: #262626;
+    width: 90%;
+    height: 2px;
+    margin: 0 auto 15px;
+}
+
 /*---------------------------------- Modals ----------------------------------*/
 .modal .helper {
     color: #818181;
@@ -375,6 +403,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 /*------------------------------ Media Queries ------------------------------*/
+/* Tablet */
 @media (min-width: 768px) {
     .page-title {
         font-size: 3em;
@@ -392,7 +421,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         position: relative;
         top: 10px;
     }
-    .liked-btn {
+    .liked-btn,
+    .options-buttons-wrapper .btn {
         background-color: #a39161;
         color: #ececec;
         width: 135px;
@@ -401,7 +431,17 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         -moz-transition: all 0.5s ease-in-out;
         -o-transition: all 0.5s ease-in-out;
     }
-    .liked-btn i {
+    .liked-btn i,
+    .options-buttons-wrapper .btn {
         padding-right: 7px;
     }
+    .recipe-img-wrapper .recipe-img {
+        height: 275px;
+        border-radius: 1em 0 0 0;
+    }
+}
+
+/* Desktop */
+@media (min-width: 992px) {
+
 }
