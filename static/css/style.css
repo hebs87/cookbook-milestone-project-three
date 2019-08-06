@@ -54,7 +54,8 @@ h1, h2, h3, h4, h5, h6 {
 .login-wrapper .btn,
 .register-wrapper .btn,
 .change-pwd-btn, 
-.delete-acc-btn {
+.delete-acc-btn,
+.modal-rate-btn {
     background-color: #a39161;
     color: #ececec;
     width: 90%;
@@ -70,7 +71,9 @@ h1, h2, h3, h4, h5, h6 {
 .add-btn:hover,
 .edit-btn:hover,
 .options-buttons-wrapper .btn:hover,
-.rate-btn:hover {
+.rate-btn:hover,
+.delete-yes-btn:hover,
+.delete-no-btn:hover {
     background-color: #818181;
 }
 
@@ -190,7 +193,8 @@ nav ul .btn-text,
 
 .index-btn i,
 .change-pwd-btn i, 
-.delete-acc-btn i {
+.delete-acc-btn i,
+.modal-rate-btn i {
     padding-right: 7px;
 }
 
@@ -267,10 +271,13 @@ h3 {
 .add-remove-btns .add-ing,
 .add-remove-btns .add-instruction,
 .liked-btn,
-.options-buttons-wrapper .btn {
+.options-buttons-wrapper .btn,
+.delete-yes-btn,
+.delete-no-btn {
     background-color: #a39161;
     color: #ececec;
     border-radius: 18px;
+    width: 50px;
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
@@ -298,7 +305,8 @@ h3 {
 .edit-instructions .btn:hover,
 .liked-btn:hover,
 .change-pwd-btn:hover, 
-.delete-acc-btn:hover {
+.delete-acc-btn:hover,
+.modal-rate-btn:hover {
     background-color: #818181;
 }
 
@@ -349,12 +357,18 @@ h3 {
 }
 
 .stat i,
-.stat .stat-title {
+.stat .stat-title,
+.ing-item i {
     color: #a39161
 }
 
 .options-buttons-wrapper .btn {
     margin: 2px;
+}
+
+.delete-yes-btn,
+.delete-no-btn {
+    margin: 5px;
 }
 
 .recipe-details-break {
@@ -370,16 +384,41 @@ h3 {
     border-bottom: 1px solid #262626;
 }
 
-.ingredient-list,
+.instructions .card-title {
+    margin-top: 10px;
+}
+
+.ingredients-list,
 .instructions-list {
     margin: 0;
 }
 
-.instructions-list,
-.instruction-item {
+.ingredients-list .ing-item,
+.instructions-list .instruction-item {
     padding-top: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid #262626;
+}
+
+.instructions ul li {
+    counter-increment: list;
+    list-style-type: none;
+    position: relative;
+}
+
+.instructions ul li::before {
+    color: #a39161;
+    content: counter(list) ".";
+    left: -13px;
+    position: absolute;
+    text-align: right;
+    width: 26px;
+    font-weight: bold;
+}
+
+.instruction-text {
+    left: 15px;
+    position: relative;
 }
 
 /*---------------------------------- Modals ----------------------------------*/
@@ -422,8 +461,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 /*------------------------------ Media Queries ------------------------------*/
-/* Tablet */
-@media (min-width: 768px) {
+/* Materialize Tablet Breakpoint */
+@media (min-width: 600px) {
     .page-title {
         font-size: 3em;
     }
@@ -441,7 +480,9 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         top: 10px;
     }
     .liked-btn,
-    .options-buttons-wrapper .btn {
+    .options-buttons-wrapper .btn,
+    .delete-yes-btn,
+    .delete-no-btn {
         background-color: #a39161;
         color: #ececec;
         width: 135px;
@@ -451,16 +492,21 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         -o-transition: all 0.5s ease-in-out;
     }
     .liked-btn i,
-    .options-buttons-wrapper .btn {
+    .options-buttons-wrapper .btn i,
+    .delete-yes-btn i,
+    .delete-yes-btn i {
         padding-right: 7px;
     }
     .recipe-img-wrapper .recipe-img {
         height: 275px;
         border-radius: 1em 0 0 0;
     }
+    .instructions .card-title {
+        margin-top: 0;
+    }
 }
 
-/* Desktop */
+/* Materialize Desktop Breakpoint */
 @media (min-width: 992px) {
-
+    
 }
