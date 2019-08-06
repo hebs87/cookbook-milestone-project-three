@@ -288,7 +288,7 @@ h3 {
 
 .edit-ingredients #ingredients,
 .edit-instructions #instructions {
-    width: 90%;
+    width: 80%;
 }
 
 /*------------------------------ Form overrides ------------------------------*/
@@ -322,4 +322,12 @@ input[type=search]:not(.browser-default):focus:not([readonly])+label,
 body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     background-color: #262626;
     color: #ececec;
+}
+
+/*------------------------------ Media Queries ------------------------------*/
+@media (min-width: 480px) {
+    .edit-ingredients #ingredients,
+    .edit-instructions #instructions {
+        width: 90%;
+    }
 }
