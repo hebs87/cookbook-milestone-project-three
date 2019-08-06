@@ -37,8 +37,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /*--------------------------------- Buttons ---------------------------------*/
 .index-btn,
-.login-wrapper .btn,
-.register-wrapper .btn,
 .add-btn,
 .edit-btn,
 .btn .add-ing,
@@ -52,6 +50,8 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all 0.5s ease-in-out;
 }
 
+.login-wrapper .btn,
+.register-wrapper .btn,
 .change-pwd-btn, 
 .delete-acc-btn {
     background-color: #a39161;
@@ -334,6 +334,11 @@ h3 {
 
 .acc-management-wrapper {
     margin-top: 15px;
+}
+
+/*---------------------------------- Modals ----------------------------------*/
+.modal .helper {
+    color: #818181;
 }
 
 /*------------------------------ Form overrides ------------------------------*/
