@@ -364,9 +364,28 @@ h3 {
     margin: 0 auto 15px;
 }
 
+.ingredients .card-title,
+.instructions .card-title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #262626;
+}
+
+.ingredient-list,
+.instructions-list {
+    margin: 0;
+}
+
+.instructions-list,
+.instruction-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #262626;
+}
+
 /*---------------------------------- Modals ----------------------------------*/
 .modal .helper {
     color: #818181;
+    border-bottom: #262626;
 }
 
 /*------------------------------ Form overrides ------------------------------*/

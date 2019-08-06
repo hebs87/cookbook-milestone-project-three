@@ -27,7 +27,8 @@
                     {% if rating.append(r) %}
                     {% endif %}
                 {% endfor %}
-                {{ (rating | sum / rating | count) | int }}/5
+                {{ (rating | sum / rating | count) | int }} 
+                out of 5
             </p>
             <p class="stat">
                 <strong class="stat-title">Times Rated: </strong>
@@ -113,22 +114,26 @@
     <div class="row recipe-card card z-depth-1">
         <!--Ingredients-->
         <div class="col s12 m6 ingredients">
-            <h4 class="center-align">Ingredients</h4>
-            <ul id="ingredients">
+            <h3 class="card-title center-align">Ingredients</h3>
+            <ul id="ingredients" class="ingredient-list">
                 {% for ing in recipe.ingredients %}
-                <li class="ing-item">{{ ing }}</li>
+                    <li class="ing-item">
+                        <i class="fas fa-chevron-right"></i>
+                        <span class="ing-text">{{ ing }}</span>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
         <!--Instructions-->
         <div class="col s12 m6 instructions">
-            <h4 class="center-align">Instructions</h4>
-            <ul id="instructions">
+            <h3 class="card-title center-align">Instructions</h3>
+            <ul id="instructions"class="instructions-list">
                 {% for instruction in recipe.instructions %}
                 <!--Include loop index so that the list is numbered-->
-                <li class="instruction-item">
-                    <span class"intruction-count">{{ loop.index }}. </span>
-                    {{ instruction }}</li>
+                    <li class="instruction-item">
+                        <span class"intruction-count">{{ loop.index }}. </span>
+                        <span class="instruction-text">{{ instruction }}</span>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
