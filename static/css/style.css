@@ -85,8 +85,6 @@ h1, h2, h3, h4, h5, h6 {
 .edit-ingredients .btn:hover,
 .edit-instructions .btn:hover,
 .liked-btn:hover,
-.collection-wrapper .no-adds a:hover,
-.collection-wrapper .no-likes a:hover,
 .change-pwd-btn:hover, 
 .delete-acc-btn:hover,
 .modal-rate-btn:hover,
@@ -374,6 +372,13 @@ h3 {
     margin-top: 15px;
 }
 
+.collection-wrapper .no-adds a:hover,
+.collection-wrapper .no-likes a:hover,
+.recipe-preview-card .card-title:hover {
+    color: #818181;
+}
+
+
 /*--------------------------------- Recipes ---------------------------------*/
 .recipe-img-wrapper .recipe-img {
   object-fit: cover;
@@ -488,12 +493,39 @@ h3 {
     margin-bottom: 20px;
 }
 
+#search_form,
+#filter_form {
+    margin-bottom:25px;
+}
+
 .recipe-count,
 .recipe-details-text,
 .recipe-sorted {
     color: #ab9a6e;
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
+
+.recipe-preview-card .results-card {
+    border-radius: 1em;
+    height: 370px;
+}
+
+.recipe-preview-card .card-image img {
+    border-radius: 1em 1em 0 0;
+}
+
+.recipe-preview-card .card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    overflow-y: auto;
+    color: #a39161;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+
 
 /*---------------------------------- Modals ----------------------------------*/
 .modal {
@@ -505,7 +537,6 @@ h3 {
 .filter-body .helper,
 .recipe-details-text {
     color: #818181;
-    border-bottom: #262626;
 }
 
 /*------------------------------ Form overrides ------------------------------*/
@@ -601,6 +632,12 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
     .filter-form-wrapper {
         margin-top: 30px;
+    }
+    .recipe-preview-card .results-card {
+        height: 290px;
+    }
+    .recipe-preview-card .card-title {
+        font-size: 1.1em;
     }
 }
 

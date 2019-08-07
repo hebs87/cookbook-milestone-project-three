@@ -181,15 +181,17 @@
         {% for recipe in recipes %}
         <!--Only display recipe if the deleted field value is false-->
         {% if recipe.deleted == False %}
-        <div class="col s12 m3">
-            <div id="{{ recipe._id }}" class="card results-card">
+        <div class="col s12 m3 recipe-preview-card">
+            <div id="{{ recipe._id }}" class="card hoverable results-card z-depth-1">
                 <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
                     <!--Recipe Image-->
                     <div class="card-image">
                         <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
                     </div>
                     <!--Recipe Name-->
-                    <span class="card-title center-align grey-text text-darken-4">{{ recipe.name | title }}</span>
+                    <div class="card-title center-align">
+                        {{ recipe.name | title }}
+                    </div>
                 </a>
                 <!--Recipe Quick Stats-->
                 <div class="card-content">
