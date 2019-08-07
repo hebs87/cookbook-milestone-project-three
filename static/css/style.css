@@ -75,7 +75,24 @@ h1, h2, h3, h4, h5, h6 {
 .options-buttons-wrapper .btn:hover,
 .rate-btn:hover,
 .delete-yes-btn:hover,
-.delete-no-btn:hover {
+.delete-no-btn:hover,
+.file-field .btn:hover,
+.add-remove-btns .add-ing:hover,
+.add-remove-btns .add-instruction:hover,
+.add-remove-btns .remove-ing:hover,
+.add-remove-btns .remove-instruction:hover,
+.file-field .btn:focus,
+.edit-ingredients .btn:hover,
+.edit-instructions .btn:hover,
+.liked-btn:hover,
+.collection-wrapper .no-adds a:hover,
+.collection-wrapper .no-likes a:hover,
+.change-pwd-btn:hover, 
+.delete-acc-btn:hover,
+.modal-rate-btn:hover,
+.modal-pwd-btn:hover,
+.modal-acc-btn:hover,
+.submit-button-wrapper .btn:hover {
     background-color: #818181;
 }
 
@@ -243,7 +260,8 @@ h3 {
 
 .login-wrapper .prefix.active,
 .register-wrapper .prefix.active,
-.modal-form-wrapper .prefix.active {
+.modal-form-wrapper .prefix.active,
+.search-form-wrapper .prefix.active {
     color: #ab9a6e;
 }
 
@@ -280,7 +298,8 @@ h3 {
 .liked-btn,
 .options-buttons-wrapper .btn,
 .delete-yes-btn,
-.delete-no-btn {
+.delete-no-btn,
+.submit-button-wrapper .btn {
     background-color: #a39161;
     color: #ececec;
     border-radius: 18px;
@@ -300,23 +319,6 @@ h3 {
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
-}
-
-.file-field .btn:hover,
-.add-remove-btns .add-ing:hover,
-.add-remove-btns .add-instruction:hover,
-.add-remove-btns .remove-ing:hover,
-.add-remove-btns .remove-instruction:hover,
-.file-field .btn:focus,
-.edit-ingredients .btn:hover,
-.edit-instructions .btn:hover,
-.liked-btn:hover,
-.change-pwd-btn:hover, 
-.delete-acc-btn:hover,
-.modal-rate-btn:hover,
-.modal-pwd-btn:hover,
-modal-acc-btn {
-    background-color: #818181;
 }
 
 .add-btn-wrapper,
@@ -366,12 +368,6 @@ modal-acc-btn {
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
-}
-
-
-.collection-wrapper .no-adds a:hover,
-.collection-wrapper .no-likes a:hover {
-    color: #818181;
 }
 
 .acc-management-wrapper {
@@ -466,7 +462,7 @@ modal-acc-btn {
 }
 
 .filter-body {
-    height: 450px;
+    height: 470px;
     overflow: visible;
 }
 
@@ -480,6 +476,16 @@ modal-acc-btn {
 .filter-header .filter-form-title i {
     color: #ab9a6e;
     margin: 0;
+}
+
+.search-form-wrapper {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.filter-form-wrapper {
+    margin-top: 65px;
+    margin-bottom: 20px;
 }
 
 /*---------------------------------- Modals ----------------------------------*/
@@ -499,6 +505,7 @@ input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
 .select-wrapper input.select-dropdown:focus {
     border-bottom: 1px solid #ab9a6e;
 }
@@ -508,6 +515,7 @@ input:not([type]):focus:not([readonly])+label,
 input[type=text]:not(.browser-default):focus:not([readonly])+label,
 input[type=password]:not(.browser-default):focus:not([readonly])+label,
 input[type=search]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly]),
 .dropdown-content li>a,
 .dropdown-content li>span,
 .select-dropdown li.disabled>span {
@@ -556,7 +564,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .liked-btn,
     .options-buttons-wrapper .btn,
     .delete-yes-btn,
-    .delete-no-btn {
+    .delete-no-btn,
+    .submit-button-wrapper .btn {
         background-color: #a39161;
         color: #ececec;
         width: 135px;
@@ -568,7 +577,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .liked-btn i,
     .options-buttons-wrapper .btn i,
     .delete-yes-btn i,
-    .delete-no-btn i {
+    .delete-no-btn i,
+    .submit-button-wrapper .btn i {
         padding-right: 7px;
     }
     .recipe-img-wrapper .recipe-img {
@@ -579,7 +589,10 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         margin-top: 0;
     }
     .filter-body {
-    height: 200px;
+        height: 205px;
+    }
+    .filter-form-wrapper {
+        margin-top: 30px;
     }
 }
 
