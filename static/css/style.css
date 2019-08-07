@@ -488,6 +488,13 @@ h3 {
     margin-bottom: 20px;
 }
 
+.recipe-count,
+.recipe-details-text,
+.recipe-sorted {
+    color: #ab9a6e;
+    font-size: 1.5em;
+}
+
 /*---------------------------------- Modals ----------------------------------*/
 .modal {
     border-radius: 1em;
@@ -495,7 +502,8 @@ h3 {
 
 .modal .helper,
 .search-body .helper,
-.filter-body .helper {
+.filter-body .helper,
+.recipe-details-text {
     color: #818181;
     border-bottom: #262626;
 }
