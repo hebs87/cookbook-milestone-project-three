@@ -81,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
-    background-color: #000000;
+    background-color: #000;
     font-family: "Dancing Script", sans-serif;
     font-weight: bold;
 }
@@ -134,7 +134,7 @@ nav ul .btn-text,
 
 .sidenav .btn-icon,
 .sidenav .btn-text {
-    color: #000000;
+    color: #000;
 }
 
 .sidenav .btn-icon {
@@ -351,7 +351,7 @@ modal-acc-btn {
 }
 
 .collection-wrapper .title {
-    color: #000000;
+    color: #000;
 }
 
 .collection-wrapper .no-adds,
@@ -451,8 +451,45 @@ modal-acc-btn {
     position: relative;
 }
 
+/*---------------------------------- Browse ----------------------------------*/
+.search-option,
+.search-header,
+.filter-option,
+.filter-header {
+    border-radius: 1em;
+}
+
+.search-body,
+.filter-body {
+    background-color: #fff;
+    border-radius: 1em;
+}
+
+.filter-body {
+    height: 450px;
+    overflow: visible;
+}
+
+.search-header .search-form-title,
+.filter-header .filter-form-title {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.search-header .search-form-title i,
+.filter-header .filter-form-title i {
+    color: #ab9a6e;
+    margin: 0;
+}
+
 /*---------------------------------- Modals ----------------------------------*/
-.modal .helper {
+.modal {
+    border-radius: 1em;
+}
+
+.modal .helper,
+.search-body .helper,
+.filter-body .helper {
     color: #818181;
     border-bottom: #262626;
 }
@@ -498,8 +535,15 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
     h3,
     .recipe-card .card-title,
-    .modal .title {
+    .modal .title,
+    .search-header .search-form-title,
+    .filter-header .filter-form-title {
         font-size: 2.5em;
+    }
+    .search-header .search-form-title i,
+    .filter-header .filter-form-title i {
+        font-size: 0.9em;
+        margin-right: 5px;
     }
     .edit-ingredients #ingredients,
     .edit-instructions #instructions {
@@ -533,6 +577,9 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
     .instructions .card-title {
         margin-top: 0;
+    }
+    .filter-body {
+    height: 200px;
     }
 }
 
