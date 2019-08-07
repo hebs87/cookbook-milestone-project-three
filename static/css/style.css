@@ -500,14 +500,15 @@ h3 {
 
 .recipe-count,
 .recipe-details-text,
-.recipe-sorted {
+.recipe-sorted,
+.pagination-count {
     color: #ab9a6e;
     font-size: 1.2em;
 }
 
 .recipe-preview-card .results-card {
     border-radius: 1em;
-    height: 370px;
+    margin-bottom: 25px;
 }
 
 .recipe-preview-card .card-image img {
@@ -518,6 +519,7 @@ h3 {
     font-size: 1.5em;
     font-weight: bold;
     padding: 10px;
+    height: 100px;
     overflow-y: auto;
     color: #a39161;
     -webkit-transition: all 0.35s ease-in-out;
@@ -525,7 +527,47 @@ h3 {
     -o-transition: all 0.35s ease-in-out;
 }
 
+.recipe-preview-card .card-stats {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #262626;
+    border-radius: 0 0 1em 1em;
+    color: #ececec;
+}
 
+.recipe-preview-card .card-stats i {
+    color: #a39161;
+}
+
+.pagination {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.pagination-helper {
+    color: #818181;
+    display: inline;
+    vertical-align: sub;
+}
+
+.pagination #previous-page:not(.disabled) i,
+.pagination #next-page:not(.disabled) i {
+    color: #a39161;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+.pagination #previous-page:not(.disabled) i:hover,
+.pagination #next-page:not(.disabled) i:hover {
+    color: #818181;
+}
+
+.pagination #previous-page.disabled i,
+.pagination #next-page.disabled i {
+    display: none;
+}
 
 /*---------------------------------- Modals ----------------------------------*/
 .modal {
@@ -633,11 +675,9 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .filter-form-wrapper {
         margin-top: 30px;
     }
-    .recipe-preview-card .results-card {
-        height: 290px;
-    }
     .recipe-preview-card .card-title {
         font-size: 1.1em;
+        height: 125px;
     }
 }
 

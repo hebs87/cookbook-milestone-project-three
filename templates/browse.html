@@ -194,7 +194,7 @@
                     </div>
                 </a>
                 <!--Recipe Quick Stats-->
-                <div class="card-content">
+                <div class="card-content card-stats">
                     <span>
                         <i class="far fa-eye" aria-hidden="true"></i><br>
                         {{ recipe.views }}
@@ -223,18 +223,20 @@
         {% for recipe in search_results %}
         <!--Only display recipe if the deleted field value is false-->
         {% if recipe.deleted == False %}
-        <div class="col s12 m3">
-            <div id="{{ recipe._id }}" class="card results-card">
+        <div class="col s12 m3 recipe-preview-card">
+            <div id="{{ recipe._id }}" class="card hoverable results-card z-depth-1">
                 <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
                     <!--Recipe Image-->
                     <div class="card-image">
                         <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
                     </div>
                     <!--Recipe Name-->
-                    <span class="card-title center-align grey-text text-darken-4">{{ recipe.name | title }}</span>
+                    <div class="card-title center-align">
+                        {{ recipe.name | title }}
+                    </div>
                 </a>
                 <!--Recipe Quick Stats-->
-                <div class="card-content">
+                <div class="card-content card-stats">
                     <span>
                         <i class="far fa-eye" aria-hidden="true"></i><br>
                         {{ recipe.views }}
@@ -267,13 +269,18 @@
     <div class="col s12">
         <!--Pagination for search results-->
         {% if search_results == "" %}
-            <h6> Page {{ page }} of {{ total_pages }}</h6>
             <ul class="pagination">
                 <li id="previous-page" {% if page|int <= 1 %} class="disabled" {% endif %}>
                     <a {% if page|int > 1 %} href="{{ url_for('get_recipes', page=page|int-1) }}" {% endif %}>
                         <i class="fas fa-chevron-left" aria-hidden="true"></i>
                     </a>
                 </li>
+                <h6 class="pagination-helper bold">
+                    Page 
+                    <span class="pagination-count bold italic">{{ page }}</span>
+                     of 
+                    <span class="pagination-count bold italic">{{ total_pages }}</span>
+                </h6>
                 <li id="next-page" {% if page|int == total_pages|int %} class="disabled" {% endif %}>
                     <a {% if page|int != total_pages|int %} href="{{ url_for('get_recipes', page=page|int+1) }}" {% endif %}>
                         <i class="fas fa-chevron-right" aria-hidden="true"></i>
