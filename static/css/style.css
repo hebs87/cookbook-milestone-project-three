@@ -46,23 +46,25 @@ h1, h2, h3, h4, h5, h6 {
     color: #ececec;
     width: 135px;
     border-radius: 18px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 .login-wrapper .btn,
 .register-wrapper .btn,
 .change-pwd-btn, 
 .delete-acc-btn,
+.modal-pwd-btn, 
+.modal-acc-btn,
 .modal-rate-btn {
     background-color: #a39161;
     color: #ececec;
     width: 90%;
     border-radius: 18px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 .index-btn:hover,
@@ -109,10 +111,10 @@ nav .brand-logo img,
 
 nav ul a {
     color: #ececec;
-    transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 nav ul a:hover {
@@ -159,10 +161,10 @@ nav ul .btn-text,
 .social-links a {
     margin-right: 15px;
     color: #ab9a6e;
-    transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -webkit-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 .social-links a:hover {
@@ -194,6 +196,7 @@ nav ul .btn-text,
 .index-btn i,
 .change-pwd-btn i, 
 .delete-acc-btn i,
+.rate-btn i,
 .modal-rate-btn i {
     padding-right: 7px;
 }
@@ -245,7 +248,11 @@ h3 {
 }
 
 .login-wrapper .btn i,
-.register-wrapper .btn i {
+.register-wrapper .btn i,
+.add-btn i,
+.edit-btn i,
+.modal-pwd-btn i, 
+.modal-acc-btn i {
     padding-left: 7px;
 }
 
@@ -278,9 +285,9 @@ h3 {
     color: #ececec;
     border-radius: 18px;
     width: 50px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 .add-remove-btns .remove-ing,
@@ -290,9 +297,9 @@ h3 {
     background-color: #262626;
     color: #ececec;
     border-radius: 18px;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 .file-field .btn:hover,
@@ -306,7 +313,9 @@ h3 {
 .liked-btn:hover,
 .change-pwd-btn:hover, 
 .delete-acc-btn:hover,
-.modal-rate-btn:hover {
+.modal-rate-btn:hover,
+.modal-pwd-btn:hover,
+modal-acc-btn {
     background-color: #818181;
 }
 
@@ -354,9 +363,9 @@ h3 {
 .collection-wrapper .no-adds a,
 .collection-wrapper .no-likes a {
     color: #a39161;
-    -webkit-transition: all 0.5s ease-in-out;
-    -moz-transition: all 0.5s ease-in-out;
-    -o-transition: all 0.5s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
 }
 
 
@@ -508,14 +517,14 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         color: #ececec;
         width: 135px;
         border-radius: 18px;
-        -webkit-transition: all 0.5s ease-in-out;
-        -moz-transition: all 0.5s ease-in-out;
-        -o-transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.35s ease-in-out;
+        -moz-transition: all 0.35s ease-in-out;
+        -o-transition: all 0.35s ease-in-out;
     }
     .liked-btn i,
     .options-buttons-wrapper .btn i,
     .delete-yes-btn i,
-    .delete-yes-btn i {
+    .delete-no-btn i {
         padding-right: 7px;
     }
     .recipe-img-wrapper .recipe-img {
