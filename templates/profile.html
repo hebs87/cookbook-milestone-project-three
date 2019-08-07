@@ -27,11 +27,11 @@
                     </li>
                 <!--If the user hasn't added any recipes, they will be invited to add a recipe-->
                 {% else %}
-                    <li class="collection-item avatar center-align">
+                    <li class="collection-item avatar center-align no-adds">
                         <p>
                             You haven't added any recipes yet.
                             <br>
-                            <a href="{{ url_for('add_recipe') }}">
+                            <a href="{{ url_for('add_recipe') }}" class="bold italic">
                                 Add a recipe
                             </a>
                              to get started.
@@ -69,11 +69,11 @@
                     </div>
                 <!--If the user hasn't liked any recipes, they will be invited to browse recipes-->
                 {% else %}
-                    <li class="collection-item avatar center-align">
+                    <li class="collection-item avatar center-align no-likes">
                         <p>
                             You haven't liked any recipes yet.
                             <br>
-                            <a href="{{ url_for('get_recipes', page=1) }}">
+                            <a href="{{ url_for('get_recipes', page=1) }}" class="bold italic">
                                 Browse
                             </a>
                              our recipe collection to get started.

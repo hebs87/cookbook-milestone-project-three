@@ -338,10 +338,31 @@ h3 {
 
 .collection-wrapper .collection-item.avatar {
     min-height: 60px;
+    border-bottom: none;
 }
 
 .collection-wrapper .title {
     color: #000000;
+}
+
+.collection-wrapper .no-adds,
+.collection-wrapper .no-likes {
+    padding: 0;
+    margin-top: 10;
+}
+
+.collection-wrapper .no-adds a,
+.collection-wrapper .no-likes a {
+    color: #a39161;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+}
+
+
+.collection-wrapper .no-adds a:hover,
+.collection-wrapper .no-likes a:hover {
+    color: #818181;
 }
 
 .acc-management-wrapper {
