@@ -575,6 +575,16 @@ h3 {
     border-radius: 1em;
 }
 
+#rate_modal {
+    width: 75vw;
+    overflow-y: visible;
+}
+
+#rate_modal .select-wrapper {
+    width: 90%;
+    margin: 15px auto;
+}
+
 .modal .helper,
 .search-body .helper,
 .filter-body .helper,
@@ -618,6 +628,13 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 /*------------------------------ Media Queries ------------------------------*/
+/* Materialize Desktop Breakpoint */
+@media (min-width: 992px) {
+    #rate_modal {
+        width: 40vw;
+    }
+}
+
 /* Materialize Tablet Breakpoint */
 @media (min-width: 600px) {
     .page-title {
@@ -682,5 +699,8 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     .recipe-preview-card .card-title {
         font-size: 1.1em;
         height: 125px;
+    }
+    #rate_modal {
+        width: 50vw;
     }
 }
