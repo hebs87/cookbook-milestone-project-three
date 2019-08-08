@@ -117,7 +117,7 @@ def login():
     '''
     Login
     Checks that the user exists, and that user's password matches the
-    hased password in the database
+    hashed password in the database
     '''
     if request.method == "POST":
         
@@ -195,15 +195,6 @@ def logout():
     session.pop('user', None)
     flash(Markup("You were successfully logged out"))
     return redirect(url_for('index'))
-
-@app.before_request
-def before_request():
-    '''
-    Checks if the user is logged in before each request
-    '''
-    g.user = None
-    if 'user' in session:
-        g.user = session['user']
 
 '''
 USER'S PROFILE PAGE
@@ -414,7 +405,8 @@ def get_recipes(page):
             for k, v in form_input.items():
                 cat_one = 'categories.' + k
                 val_one = v.lower()
-
+                
+                # Only include recipes with "deleted" value of False
                 filter_query = ({'$and': [{cat_one: val_one},
                                 {"deleted": False}]})
 
@@ -451,6 +443,7 @@ def get_recipes(page):
                 cat_two = 'categories.main_ing'
                 val_two = str(form_input['main_ing']).lower()
             
+            # Only include recipes with "deleted" value of False
             filter_query = ({'$and': [{cat_one: val_one},
                             {cat_two: val_two},
                             {"deleted": False}]})
@@ -486,6 +479,7 @@ def get_recipes(page):
                 cat_three = 'categories.main_ing'
                 val_three = str(form_input['main_ing']).lower()
             
+            # Only include recipes with "deleted" value of False
             filter_query = ({'$and': [{cat_one: val_one},
                             {cat_two: val_two},
                             {cat_three: val_three},
@@ -502,6 +496,7 @@ def get_recipes(page):
             cat_four = 'categories.main_ing'
             val_four = str(form_input['main_ing']).lower()
             
+            # Only include recipes with "deleted" value of False
             filter_query = ({'$and': [{cat_one: val_one},
                             {cat_two: val_two},
                             {cat_three: val_three},
@@ -516,6 +511,7 @@ def get_recipes(page):
         
     # ALL RECIPES WITH NO SEARCH OR FILTERS
     else:
+        # Only include recipes with "deleted" value of False
         recipes = recipes_coll.find({"deleted": False})
         
         # Pagination for all recipes
@@ -545,6 +541,7 @@ def get_recipes(page):
     if not search_word:
         search_results = ""
     else:
+        # Only include recipes with "deleted" value of False
         search_results = recipes_coll.find(
                 {'$and': [{"$text": {"$search": search_word}},
                 {"deleted": False}]}).sort([("likes", -1), 
