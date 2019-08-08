@@ -119,7 +119,7 @@
                 {% for ing in recipe.ingredients %}
                     <li class="ing-item">
                         <i class="fas fa-chevron-right bold"></i>
-                        <span class="ing-text">{{ ing }}</span>
+                        <span class="ing-text">{{ ing | capitalize }}</span>
                     </li>
                 {% endfor %}
             </ul>
@@ -130,7 +130,7 @@
             <ul id="instructions"class="instructions-list">
                 {% for instruction in recipe.instructions %}
                     <li class="instruction-item">
-                        <span class="instruction-text">{{ instruction }}</span>
+                        <span class="instruction-text">{{ instruction | capitalize }}</span>
                     </li>
                 {% endfor %}
             </ul>
