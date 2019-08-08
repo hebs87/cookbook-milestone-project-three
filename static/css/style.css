@@ -378,7 +378,6 @@ h3 {
     color: #818181;
 }
 
-
 /*--------------------------------- Recipes ---------------------------------*/
 .recipe-img-wrapper .recipe-img {
   object-fit: cover;
@@ -513,6 +512,8 @@ h3 {
 
 .recipe-preview-card .card-image img {
     border-radius: 1em 1em 0 0;
+    object-fit: cover;
+    height: 170px;
 }
 
 .recipe-preview-card .card-title {
@@ -674,6 +675,9 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     }
     .filter-form-wrapper {
         margin-top: 30px;
+    }
+    .recipe-preview-card .card-image img {
+        height: 96px;
     }
     .recipe-preview-card .card-title {
         font-size: 1.1em;
