@@ -140,7 +140,7 @@
             <h3 class="card-title"><i class="fas fa-pizza-slice"></i> Ingredients</h3>
             <!--Ingredient Field-->
             {% for ing in recipe.ingredients %}
-            <div class="input-field edit-ingredients col s12">
+            <div class="input-field ingredients edit-ingredients col s12">
                 <input id="ingredients" name="ingredients" type="text" placeholder="Ingredient (one per line)" class="form-control validate" value="{{ ing|capitalize }}" required>
                 <label for="ingredients"></label>
                 <a id="remove-current-ing" class="waves-effect waves-light btn remove-current-ing">
@@ -167,7 +167,7 @@
             <h3 class="card-title"><i class="fas fa-list-ol"></i> Instructions</h3>
             <!--Instruction Field-->
             {% for instruction in recipe.instructions %}
-            <div class="input-field edit-instructions col s12">
+            <div class="input-field instructions edit-instructions col s12">
                 <input id="instructions" name="instructions" type="text" placeholder="Instructions (one per line)" class="form-control validate" value="{{ instruction|capitalize }}" required>
                 <label for="instructions"></label>
                 <a class="waves-effect waves-light btn remove-current-instruction">
