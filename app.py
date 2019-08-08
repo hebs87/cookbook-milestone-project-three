@@ -210,7 +210,8 @@ def profile(username):
     
     # Get all recipes from the recipes_coll that were added by the user's ID
     user_id = get_username(session["user"])["_id"]
-    user_added_list = recipes_coll.find({"added_by": user_id}).sort([("name", 1)])
+    user_added_list = recipes_coll.find({'$and': [{"added_by": user_id},
+                                        {"deleted": False}]}).sort([('name', 1)])
     
     # Get all recipes that the user has liked
     liked_recipes = get_username(session["user"])["liked_recipes"]
