@@ -415,7 +415,8 @@ def get_recipes(page):
                 cat_one = 'categories.' + k
                 val_one = v.lower()
 
-                filter_query = {cat_one: val_one}
+                filter_query = ({'$and': [{cat_one: val_one},
+                                {"deleted": False}]})
 
         # Filter query if two options are selected from the form
         elif len(form_input) == 2:
@@ -451,7 +452,8 @@ def get_recipes(page):
                 val_two = str(form_input['main_ing']).lower()
             
             filter_query = ({'$and': [{cat_one: val_one},
-                {cat_two: val_two}]})
+                            {cat_two: val_two},
+                            {"deleted": False}]})
             
         # Filter query if three options are selected from the form
         elif len(form_input) == 3:
@@ -485,8 +487,9 @@ def get_recipes(page):
                 val_three = str(form_input['main_ing']).lower()
             
             filter_query = ({'$and': [{cat_one: val_one},
-                {cat_two: val_two},
-                {cat_three: val_three}]})
+                            {cat_two: val_two},
+                            {cat_three: val_three},
+                            {"deleted": False}]})
             
         # Filter query if all options are selected from the form
         elif len(form_input) == 4:
@@ -500,9 +503,10 @@ def get_recipes(page):
             val_four = str(form_input['main_ing']).lower()
             
             filter_query = ({'$and': [{cat_one: val_one},
-                {cat_two: val_two},
-                {cat_three: val_three},
-                {cat_four: val_four}]})
+                            {cat_two: val_two},
+                            {cat_three: val_three},
+                            {cat_four: val_four},
+                            {"deleted": False}]})
         
         recipes = recipes_coll.find(filter_query)
         
@@ -512,7 +516,7 @@ def get_recipes(page):
         
     # ALL RECIPES WITH NO SEARCH OR FILTERS
     else:
-        recipes = recipes_coll.find()
+        recipes = recipes_coll.find({"deleted": False})
         
         # Pagination for all recipes
         paginated_recipes = recipes_coll.find().sort([("likes", -1), 
@@ -542,7 +546,8 @@ def get_recipes(page):
         search_results = ""
     else:
         search_results = recipes_coll.find(
-                {"$text": {"$search": search_word}}).sort([("likes", -1), 
+                {'$and': [{"$text": {"$search": search_word}},
+                {"deleted": False}]}).sort([("likes", -1), 
                 ('name', 1)])
 
     # Count the search_results

@@ -680,8 +680,3 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         height: 125px;
     }
 }
-
-/* Materialize Desktop Breakpoint */
-@media (min-width: 992px) {
-    
-}
