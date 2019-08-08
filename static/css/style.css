@@ -290,6 +290,10 @@ h3 {
     color: #ab9a6e;
 }
 
+.recipe-card .add-remove-btns {
+    padding: 0;
+}
+
 .file-field .btn,
 .add-remove-btns .add-ing,
 .add-remove-btns .add-instruction,
@@ -317,6 +321,10 @@ h3 {
     -webkit-transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -o-transition: all 0.35s ease-in-out;
+}
+
+.add-remove-btns .btn {
+    margin: 5px;
 }
 
 .add-btn-wrapper,
@@ -628,13 +636,6 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
 }
 
 /*------------------------------ Media Queries ------------------------------*/
-/* Materialize Desktop Breakpoint */
-@media (min-width: 992px) {
-    #rate_modal {
-        width: 40vw;
-    }
-}
-
 /* Materialize Tablet Breakpoint */
 @media (min-width: 600px) {
     .page-title {
