@@ -290,6 +290,11 @@ h3 {
     color: #ab9a6e;
 }
 
+.recipe-details-title,
+.categories-title {
+    margin-bottom: 10px;
+}
+
 .recipe-card .add-remove-btns {
     padding: 0;
 }
