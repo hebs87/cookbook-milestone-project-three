@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /*--------------------------------- Buttons ---------------------------------*/
 .index-btn,
-.add-btn,
+.add-btn-wrapper .btn,
 .edit-btn,
 .btn .add-ing,
 .btn .add-instruction,
@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 .index-btn:hover,
 .login-wrapper .btn:hover,
 .register-wrapper .btn:hover,
-.add-btn:hover,
+.add-btn-wrapper .btn:hover,
 .edit-btn:hover,
 .options-buttons-wrapper .btn:hover,
 .rate-btn:hover,
@@ -297,7 +297,7 @@ h3 {
 
 .login-wrapper .btn i,
 .register-wrapper .btn i,
-.add-btn i,
+.add-btn-wrapper .btn i,
 .edit-btn i,
 .modal-pwd-btn i, 
 .modal-acc-btn i {
@@ -367,6 +367,10 @@ h3 {
 .add-btn-wrapper,
 .edit-btn-wrapper {
     margin-bottom: 25px;
+}
+
+.add-btn-wrapper .btn {
+    margin: 10px;
 }
 
 .edit-ingredients #ingredients,
