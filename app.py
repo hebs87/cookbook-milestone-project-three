@@ -838,6 +838,24 @@ def unlike_recipe(recipe_id):
     
     return redirect(request.referrer)
 
+'''
+ERROR HANDLERS
+'''
+ # 404 error handler
+@app.errorhandler(404)
+def not_found_error(error):
+    return render_template('error_404.html'), 404
+
+# 505 error handler
+@app.errorhandler(500)
+def something_wrong_error(error):
+    return render_template('error_500.html'), 500
+
+# Catch all error handler
+@app.route("/<path:path>")
+def global_error(path):
+    return render_template("error_404.html"), 404
+
 if __name__ == '__main__':
     app.run(host=os.getenv("IP", "0.0.0.0"),
             port=int(os.getenv("PORT", "5000")),
