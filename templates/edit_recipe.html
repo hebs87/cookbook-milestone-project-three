@@ -210,6 +210,10 @@
                 Edit
                 <i class="fas fa-edit"></i>
             </button>
+            <a class="btn waves-effect waves-light" href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+                Cancel
+                <i class="fas fa-times-circle" aria-hidden="true"></i>
+            </a>
         </div>
 
     </form>
