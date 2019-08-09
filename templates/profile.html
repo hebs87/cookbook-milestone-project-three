@@ -61,7 +61,7 @@
                                 </a>
                         </div>
                         <div class="col s3 like-wrapper">
-                                <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn liked-btn">
+                                <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn liked-btn sm-md-btn">
                                     <i class="fas fa-thumbs-up" aria-hidden="true"></i>
                                     <span class="hide-on-small-and-down">Liked</span>
                                 </a>
@@ -92,14 +92,14 @@
         </div>
         <div class="col s12 m5 offset-m1 acc-management-wrapper">
             <!--Change Password Modal Button-->
-            <a href="#change_password_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn">
+            <a href="#change_password_modal" class="waves-effect waves-light btn modal-trigger change-pwd-btn large-btn icon-left">
                 <i class="fas fa-user-lock" aria-hidden="true"></i>
                 Change Password
             </a>
         </div>
         <div class="col s12 m5 acc-management-wrapper">
             <!--Delete Account Modal Button-->
-            <a href="#delete_account_modal" class="waves-effect waves-light btn modal-trigger delete-acc-btn">
+            <a href="#delete_account_modal" class="waves-effect waves-light btn modal-trigger delete-acc-btn large-btn icon-left">
                 <i class="fas fa-user-slash" aria-hidden="true"></i>
                 Delete Account
             </a>
@@ -135,7 +135,7 @@
             </div>
             <div class="row modal-btn-wrapper">
                 <!--Change Password Button-->
-                <button class="btn waves-effect waves-light modal-pwd-btn" type="submit">
+                <button class="btn waves-effect waves-light modal-pwd-btn large-btn icon-right" type="submit">
                     Change Password
                     <i class="fas fa-user-lock"></i>
                 </button>
@@ -168,7 +168,7 @@
             </div>
             <div class="row modal-btn-wrapper">
                 <!--Change Password Button-->
-                <button class="btn waves-effect waves-light modal-acc-btn" type="submit">
+                <button class="btn waves-effect waves-light modal-acc-btn large-btn icon-right" type="submit">
                     Delete Account
                     <i class="fas fa-user-slash"></i>
                 </button>

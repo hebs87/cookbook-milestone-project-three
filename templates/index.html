@@ -23,29 +23,29 @@
     Buttons are different sizes/layouts depending on whether user is logged in/out-->
     {% if session.user %}
         <div class="col s12 m4">
-            <a href="{{ url_for('get_recipes', page=1) }}" class="waves-effect waves-light btn index-btn">
+            <a href="{{ url_for('get_recipes', page=1) }}" class="waves-effect waves-light btn index-btn standard-btn icon-left">
                 <i class="fas fa-utensils" aria-hidden="true"></i>Browse
             </a>
         </div>
         <div class="col s12 m4">
-            <a href="{{ url_for('profile', username=session['user']) }}" class="waves-effect waves-light btn index-btn">
+            <a href="{{ url_for('profile', username=session['user']) }}" class="waves-effect waves-light btn index-btn standard-btn icon-left">
                 <i class="fas fa-user" aria-hidden="true"></i>Profile
             </a>
         </div>
         <div class="col s12 m4">
-            <a href="{{ url_for('add_recipe') }}" class="waves-effect waves-light btn index-btn">
+            <a href="{{ url_for('add_recipe') }}" class="waves-effect waves-light btn index-btn standard-btn icon-left">
                 <i class="fas fa-plus" aria-hidden="true"></i>Add Recipe
             </a>
         </div>
     <!--If there is no user in session-->
     {% else %}
         <div class="col s12 m4 offset-m2">
-            <a href="{{ url_for('get_recipes', page=1) }}" class="waves-effect waves-light btn index-btn">
+            <a href="{{ url_for('get_recipes', page=1) }}" class="waves-effect waves-light btn index-btn standard-btn icon-left">
                 <i class="fas fa-utensils" aria-hidden="true"></i>Browse
             </a>
         </div>
         <div class="col s12 m4">
-            <a href="{{ url_for('login_register') }}" class="waves-effect waves-light btn index-btn">
+            <a href="{{ url_for('login_register') }}" class="waves-effect waves-light btn index-btn standard-btn icon-left">
                 <i class="fas fa-sign-in-alt" aria-hidden="true"></i>Login
             </a>
         </div>

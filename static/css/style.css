@@ -36,12 +36,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*--------------------------------- Buttons ---------------------------------*/
-.index-btn,
-.add-btn-wrapper .btn,
-.edit-btn-wrapper .btn,
-.btn .add-ing,
-.btn .add-instruction,
-.rate-btn {
+.standard-btn {
     background-color: #a39161;
     color: #ececec;
     width: 135px;
@@ -51,13 +46,7 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all 0.35s ease-in-out;
 }
 
-.login-wrapper .btn,
-.register-wrapper .btn,
-.change-pwd-btn, 
-.delete-acc-btn,
-.modal-pwd-btn, 
-.modal-acc-btn,
-.modal-rate-btn {
+.large-btn {
     background-color: #a39161;
     color: #ececec;
     width: 90%;
@@ -67,30 +56,12 @@ h1, h2, h3, h4, h5, h6 {
     -o-transition: all 0.35s ease-in-out;
 }
 
-.index-btn:hover,
-.login-wrapper .btn:hover,
-.register-wrapper .btn:hover,
-.add-btn-wrapper .btn:hover,
-.edit-btn-wrapper .btn:hover,
-.options-buttons-wrapper .btn:hover,
-.rate-btn:hover,
-.delete-yes-btn:hover,
-.delete-no-btn:hover,
-.file-field .btn:hover,
-.add-remove-btns .add-ing:hover,
-.add-remove-btns .add-instruction:hover,
-.add-remove-btns .remove-ing:hover,
-.add-remove-btns .remove-instruction:hover,
-.file-field .btn:focus,
-.edit-ingredients .btn:hover,
-.edit-instructions .btn:hover,
-.liked-btn:hover,
-.change-pwd-btn:hover, 
-.delete-acc-btn:hover,
-.modal-rate-btn:hover,
-.modal-pwd-btn:hover,
-.modal-acc-btn:hover,
-.submit-button-wrapper .btn:hover {
+.standard-btn:hover,
+.large-btn:hover,
+.small-btn:hover,
+.small-btn.alt:hover,
+.sm-md-btn:hover,
+.file-field .small-btn:focus {
     background-color: #818181;
 }
 
@@ -232,7 +203,6 @@ nav ul .btn-text,
 }
 
 .index-btn-wrapper {
-    margin-top: 5px;
     margin-bottom: 25px;
 }
 
@@ -240,11 +210,8 @@ nav ul .btn-text,
     margin-top: 20px;
 }
 
-.index-btn i,
-.change-pwd-btn i, 
-.delete-acc-btn i,
-.rate-btn i,
-.modal-rate-btn i {
+.standard-btn.icon-left i,
+.large-btn.icon-left i {
     padding-right: 7px;
 }
 
@@ -295,12 +262,8 @@ h3 {
     color: #ab9a6e;
 }
 
-.login-wrapper .btn i,
-.register-wrapper .btn i,
-.add-btn-wrapper .btn i,
-.edit-btn-wrapper .btn i,
-.modal-pwd-btn i, 
-.modal-acc-btn i {
+.standard-btn.icon-right i,
+.large-btn.icon-right i {
     padding-left: 7px;
 }
 
@@ -331,14 +294,8 @@ h3 {
     padding: 0;
 }
 
-.file-field .btn,
-.add-remove-btns .add-ing,
-.add-remove-btns .add-instruction,
-.liked-btn,
-.options-buttons-wrapper .btn,
-.delete-yes-btn,
-.delete-no-btn,
-.submit-button-wrapper .btn {
+.small-btn,
+.sm-md-btn {
     background-color: #a39161;
     color: #ececec;
     border-radius: 18px;
@@ -348,10 +305,7 @@ h3 {
     -o-transition: all 0.35s ease-in-out;
 }
 
-.add-remove-btns .remove-ing,
-.add-remove-btns .remove-instruction,
-.edit-ingredients .btn,
-.edit-instructions .btn {
+.small-btn.alt {
     background-color: #262626;
     color: #ececec;
     border-radius: 18px;
@@ -360,18 +314,15 @@ h3 {
     -o-transition: all 0.35s ease-in-out;
 }
 
-.add-remove-btns .btn {
+.add-remove-btns .btn,
+.delete-yes-btn,
+.delete-no-btn {
     margin: 5px;
-}
-
-.add-btn-wrapper,
-.edit-btn-wrapper {
-    margin-bottom: 25px;
 }
 
 .add-btn-wrapper .btn,
 .edit-btn-wrapper .btn{
-    margin: 10px;
+    margin: 0px 5px 25px;
 }
 
 .edit-ingredients #ingredients,
@@ -442,13 +393,8 @@ h3 {
     color: #a39161
 }
 
-.options-buttons-wrapper .btn {
+.options-buttons-wrapper .sm-md-btn {
     margin: 2px;
-}
-
-.delete-yes-btn,
-.delete-no-btn {
-    margin: 5px;
 }
 
 .recipe-details-break {
@@ -717,11 +663,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         position: relative;
         top: 10px;
     }
-    .liked-btn,
-    .options-buttons-wrapper .btn,
-    .delete-yes-btn,
-    .delete-no-btn,
-    .submit-button-wrapper .btn {
+    .sm-md-btn {
         background-color: #a39161;
         color: #ececec;
         width: 135px;
@@ -730,11 +672,7 @@ body.keyboard-focused .select-dropdown.dropdown-content li:focus {
         -moz-transition: all 0.35s ease-in-out;
         -o-transition: all 0.35s ease-in-out;
     }
-    .liked-btn i,
-    .options-buttons-wrapper .btn i,
-    .delete-yes-btn i,
-    .delete-no-btn i,
-    .submit-button-wrapper .btn i {
+    .sm-md-btn i {
         padding-right: 7px;
     }
     .recipe-img-wrapper .recipe-img {
