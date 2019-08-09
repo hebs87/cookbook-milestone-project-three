@@ -137,18 +137,18 @@
 
     <!--MAIN CONTENT-->
     <main>
+        <!--Flashed messages to appear at the top of the page, below the Navbar-->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <h6 id="flash_message" class="flash-message center-align">
+                        {{ message }}
+                    </h6>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         <div class="container">
-            <!--Flashed messages to appear at the top of the page, below the Navbar-->
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                        <h6 id="flash_message" class="center-align bold">
-                            {{ message }}
-                        </h6>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
-            
             <!--Main content-->
             {% block content %} {% endblock %}
         </div>

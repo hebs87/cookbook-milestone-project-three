@@ -94,6 +94,38 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #818181;
 }
 
+/*------------------------------ Flash Messages ------------------------------*/
+.flash-message {
+    visibility: hidden;
+    width: 100%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    position: fixed;
+    z-index: 100;
+    top: 4em;
+    background-color: #262626;
+    color: #ececec;
+}
+
+.flash-message .message-helper {
+    color: #a39161;
+}
+
+.flash-message.show {
+    visibility: visible;
+    animation: flashMessage-show 0.5s, flashMessage-hide 0.5s 3.5s;
+}
+
+@keyframes flashMessage-show {
+    from {top: 0; opacity: 0;}
+    to {top: 4em; opacity: 1;}
+}
+
+@keyframes flashMessage-hide {
+    from {top: 4em; opacity: 1;}
+    to {top: 0; opacity: 0;}
+}
+
 /*--------------------------------- Nav Bar ---------------------------------*/
 nav {
     background-color: #000;

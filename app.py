@@ -127,7 +127,9 @@ def login():
         
         # Check if username exists and user's password matches the hashed password
         if existing_user and check_password_hash(existing_user["password"], password):
-            flash(Markup("Welcome back " + username + ", you're now logged in!"))
+            flash(Markup("Welcome back \
+                        <span class='message-helper bold italic'>" + username.capitalize() + "</span>, \
+                        you're now logged in!"))
             session["user"] = username
             return redirect(url_for('index', username=session["user"]))
         # If either the username or password don't match, generic flash message is displayed
@@ -161,6 +163,7 @@ def register():
                 return redirect(url_for('register'))
         
         # Check username and password are between 6-15 characters
+        # This won't be visible, as the min and max length are set in the HTML input fields
         if len(new_username) < 5 or len(new_username) > 15:
             flash(Markup("Usernames must be between 5 and 15 characters. Please try again."))
             return redirect(url_for('register'))
@@ -171,7 +174,9 @@ def register():
         # Check if username already exists
         existing_user = users_coll.find_one({"username": new_username})
         if existing_user:
-            flash(Markup("Sorry, " + new_username + " is already taken! Please choose another one!"))
+            flash(Markup("Sorry, \
+                        <span class='message-helper bold italic'>" + new_username.capitalize() + "</span> \
+                        is already taken! Please choose another one."))
             return redirect(url_for('register'))
         
         # If all checks pass, add user to the database and hash the password
@@ -182,7 +187,9 @@ def register():
             "liked_recipes": []
         })
         session["user"] = new_username
-        flash(Markup("Welcome " + new_username + ", you're now logged in!"))
+        flash(Markup("Thanks for signing up \
+                    <span class='message-helper bold italic'>" + new_username.capitalize() + "</span>, \
+                    you're now logged in!"))
         return redirect(url_for('index', username=session["user"]))
     
     return render_template("login_register.html")
@@ -193,7 +200,7 @@ def logout():
     Remove the session cookie and end the user session
     '''
     session.pop('user', None)
-    flash(Markup("You were successfully logged out"))
+    flash(Markup("You were successfully logged out. Come back soon!"))
     return redirect(url_for('index'))
 
 '''
@@ -239,13 +246,17 @@ def change_password(username):
     
     # If stored password matches the entry, the password will be changed
     if check_password_hash(username["password"], existing_password):
-        flash(Markup("Thanks " + user + ", your password has been changed!"))
+        flash(Markup("Thanks \
+                    <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                    your password has successfully been changed!"))
         users_coll.update_one(
             {"username": user},
             {"$set": {"password": generate_password_hash(changed_password)}})
     # If stored password doesn't match the entry, generic flash message is displayed
     else:
-        flash(Markup("It appears your existing password doesn't match what we have, please try again."))
+        flash(Markup("Sorry \
+                    <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                    your existing password doesn't match what we have! Please try again."))
     
     return redirect(url_for('profile', username=username))
 
@@ -266,6 +277,7 @@ def delete_account(username):
     '''
     username = get_username(session["user"])
     confirm_password = request.form.get("confirm_password")
+    user_upper = session["user"].capitalize()
     
     # If stored password matches the entry, the password will be changed
     if check_password_hash(username["password"], confirm_password):
@@ -292,7 +304,9 @@ def delete_account(username):
         return redirect(url_for('index'))
     # If stored password doesn't match the entry, generic flash message is displayed
     else:
-        flash(Markup("It appears your existing password doesn't match what we have, please try again."))
+        flash(Markup("Sorry \
+                    <span class='message-helper bold italic'>" + user_upper + "</span>, \
+                    your existing password doesn't match what we have. please try again."))
     
     return redirect(url_for('profile', username=username))
 
@@ -374,7 +388,9 @@ def insert_recipe():
             {"$push": {"added_recipes": new_id.inserted_id}})
 
         # Flash message confirmation that recipe has been successfully added
-        flash(Markup("Thanks " + user.capitalize() + ", your recipe has been added!"))
+        flash(Markup("Thanks \
+                    <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                    your recipe has been added!"))
         
         return redirect(url_for('get_recipes', page=1))
 
@@ -691,7 +707,9 @@ def update_recipe(recipe_id):
         })
         
         # Flash message confirmation that recipe has been successfully added
-        flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully edited!"))
+        flash(Markup("Thanks \
+                    <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                    this recipe has been successfully edited!"))
         
         return redirect(url_for('recipe',
             recipe_id=recipe_id))
@@ -720,7 +738,9 @@ def remove_recipe(recipe_id):
         {"$pull": {"liked_recipes": ObjectId(recipe_id)}})
     
     # Flash message confirmation that recipe has been successfully added
-    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been successfully deleted!"))
+    flash(Markup("Thanks \
+                <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                this recipe has been successfully deleted!"))
     
     return redirect(url_for('get_recipes',
         page=1,
@@ -736,6 +756,7 @@ def rate(recipe_id):
     Allows the user to rate the recipe
     Pushes the rating value into the rating_values list in the recipes collection
     '''
+    username = session["user"]
     # Push rating from form into the rating_values field in the relevant record
     recipes_coll.update_one({"_id": ObjectId(recipe_id)},
         {"$push": {"rating_values": int(request.form.get("rating"))}})
@@ -746,7 +767,8 @@ def rate(recipe_id):
         {"$inc": {"views": -1}})
     
     # Flash message confirmation that recipe has been successfully added
-    flash(Markup("Thanks for rating this recipe!"))
+    flash(Markup("Thanks for rating this recipe \
+                <span class='message-helper bold italic'>" + username.capitalize() + "</span>!"))
     
     return redirect(url_for('recipe',
             recipe_id=recipe_id))
@@ -776,7 +798,9 @@ def like_recipe(recipe_id):
         {"$inc": {"likes": 1, "views": -1}})
     
     # Flash message confirmation that the user successfully liked the recipe
-    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been added to your 'Liked' list!"))
+    flash(Markup("Thanks \
+                <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                this recipe has been added to your 'Liked' list!"))
     
     return redirect(request.referrer)
 
@@ -808,7 +832,9 @@ def unlike_recipe(recipe_id):
             {"$inc": {"views": -1}})
     
     # Flash message confirmation that the user successfully liked the recipe
-    flash(Markup("Thanks " + user.capitalize() + ", this recipe has been removed from your 'Liked' list!"))
+    flash(Markup("Thanks \
+                <span class='message-helper bold italic'>" + user.capitalize() + "</span>, \
+                this recipe has been removed from your 'Liked' list!"))
     
     return redirect(request.referrer)
 
