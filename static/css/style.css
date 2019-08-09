@@ -638,6 +638,7 @@ h3 {
 .modal .helper,
 .search-body .helper,
 .filter-body .helper,
+.recipe-card .helper,
 .recipe-details-text {
     color: #818181;
 }
@@ -675,6 +676,19 @@ input[type=search]:not(.browser-default):focus:not([readonly]),
 body.keyboard-focused .select-dropdown.dropdown-content li:focus {
     background-color: #262626;
     color: #ececec;
+}
+
+/*------------------------------ Error-messages ------------------------------*/
+.recipe-card h6.helper{
+    margin-top: 15px;
+}
+
+.recipe-card p.helper {
+    margin-bottom: 0;
+}
+
+.error-img {
+    margin-bottom: 20px;
 }
 
 /*------------------------------ Media Queries ------------------------------*/
