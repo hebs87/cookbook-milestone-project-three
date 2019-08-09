@@ -4,14 +4,17 @@ $('.sidenav').sidenav();
 /* Initialize Tabs */
 $('.tabs').tabs();
 
-/* Initialize Select Form */
+/* Initialize Select Forms */
 $('select').formSelect();
 
 /* Initialize Modals */
 $('.modal').modal();
 
-/* Initialize Accordion */
+/* Initialize Accordions */
 $('.collapsible').collapsible();
+
+/* Initialize Tooltips */
+$('.tooltipped').tooltip();
 
 /* Add and remove new ingredient lines on user click (add_recipe.html & edit_recipe.html) */
 let ingCount = $(".ingredients").length;
