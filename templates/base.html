@@ -141,11 +141,11 @@
             <!--Flashed messages to appear at the top of the page, below the Navbar-->
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
-                    <ul class="flashes center-align">
-                        {% for message in messages %}
-                        <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
+                    {% for message in messages %}
+                        <h6 id="flash_message" class="center-align bold">
+                            {{ message }}
+                        </h6>
+                    {% endfor %}
                 {% endif %}
             {% endwith %}
             

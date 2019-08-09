@@ -16,6 +16,15 @@ $('.collapsible').collapsible();
 /* Initialize Tooltips */
 $('.tooltipped').tooltip();
 
+/* Flash Messages - Display for 2 seconds */
+function flashMessage() {
+    $("#flash_message").addClass("show");
+    setTimeout(function () {
+        $("#flash_message").removeClass("show").addClass("hide");
+    }, 3000);
+}
+flashMessage();
+
 /* Add and remove new ingredient lines on user click (add_recipe.html & edit_recipe.html) */
 let ingCount = $(".ingredients").length;
 // Add new line
