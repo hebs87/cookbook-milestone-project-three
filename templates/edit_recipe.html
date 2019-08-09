@@ -20,8 +20,11 @@
             <h3 class="card-title recipe-details-title"><i class="fas fa-list-ul"></i>Recipe Details</h3>
             <!--Recipe Name Field-->
             <div class="input-field col s12">
-                <input id="name" name="name" type="text" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name | title }}" required>
-                <label for="name">Recipe Name</label>
+                <input id="name" name="name" type="text" minlength="5" maxlength="50" placeholder="Recipe Name" class="form-control validate" value="{{ recipe.name | title }}" required>
+                <label for="name">
+                    Recipe Name
+                    <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="5-50 characters" aria-hidden="true"></i>
+                </label>
             </div>
             <!--Prep Time Select-->
             <div class="input-field col s12 m4">
@@ -67,8 +70,11 @@
            </div>
             <!--Author Field-->
             <div class="input-field col s12">
-                <input id="author" name="author" type="text" placeholder="Who created it?" class="form-control validate" value="{{ recipe.author | title }}" required>
-                <label for="author">Author</label>
+                <input id="author" name="author" type="text" minlength="5" maxlength="50" placeholder="Who created it?" class="form-control validate" value="{{ recipe.author | title }}" required>
+                <label for="author">
+                    Author
+                    <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="5-50 characters" aria-hidden="true"></i>
+                </label>
             </div>
             <!--Image File Input-->
             <div class="file-field input-field col s12">
