@@ -2,7 +2,7 @@
 {% block title %}Login / Register | {% endblock %}
 {% block content %}
 
-<div class="container white z-depth-2 login-register-wrapper">
+<div class="row white z-depth-2 login-register-wrapper">
 
     <!--Login and register tabs-->
     <ul class="tabs tabs-fixed-width z-depth-1">
@@ -47,7 +47,7 @@
                     <!--Login Button-->
                     <button class="btn waves-effect waves-light large-btn icon-right" type="submit" name="login">
                         Login
-                        <i class="fas fa-sign-in-alt"></i>
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
                     </button>
                 </div>
 
@@ -82,13 +82,15 @@
                         </label>
                     </div>
                 </div>
+
                 <div class="row">
                     <!--Register Button-->
                     <button class="btn waves-effect waves-light large-btn icon-right" type="submit" name="register">
                         Register
-                        <i class="fas fa-user-plus"></i>
+                        <i class="fas fa-user-plus" aria-hidden="true"></i>
                     </button>
                 </div>
+
             </div>    
         </form>
     </div>

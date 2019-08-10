@@ -118,7 +118,7 @@
             <ul id="ingredients" class="ingredients-list">
                 {% for ing in recipe.ingredients %}
                     <li class="ing-item">
-                        <i class="fas fa-chevron-right bold"></i>
+                        <i class="fas fa-chevron-right bold" aria-hidden="true"></i>
                         <span class="ing-text">{{ ing | capitalize }}</span>
                     </li>
                 {% endfor %}
