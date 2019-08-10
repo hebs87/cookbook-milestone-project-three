@@ -176,11 +176,13 @@ h6 {
       font-size: 3em; } }
 
 /* Login and Register form title */
-h3 {
+.login-wrapper .form-title,
+.register-wrapper .form-title {
   font-size: 1.8em;
   font-weight: bold; }
   @media (min-width: 600px) {
-    h3 {
+    .login-wrapper .form-title,
+    .register-wrapper .form-title {
       font-size: 2.5em; } }
 
 .ingredients .card-title,

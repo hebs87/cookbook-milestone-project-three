@@ -13,10 +13,13 @@
 }
 
 /* Login and Register form title */
-h3 {
-    @include fontStyle;
-    @include tablet {
-        font-size: 2.5em;
+.login-wrapper,
+.register-wrapper {
+    .form-title {
+        @include fontStyle;
+        @include tablet {
+            font-size: 2.5em;
+        }
     }
 }
 

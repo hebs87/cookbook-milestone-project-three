@@ -16,7 +16,7 @@
     <div class="row recipe-card card z-depth-1 center-align">
         <!--Recipe Image-->
         <div class="col s12 m6 center-align recipe-img-wrapper">
-            <img class="recipe-img" alt="{{ recipe.name }}"src="{{ url_for('static', filename=recipe.img) }}">
+            <img class="recipe-img" alt="{{ recipe.name }}" src="{{ url_for('static', filename=recipe.img) }}">
         </div>
         <!--Recipe Stats-->
         <div class="col s12 m6 center-align recipe-details">
@@ -127,7 +127,7 @@
         <!--Instructions-->
         <div class="col s12 m6 instructions">
             <h3 class="card-title center-align">Instructions</h3>
-            <ul id="instructions"class="instructions-list">
+            <ul id="instructions" class="instructions-list">
                 {% for instruction in recipe.instructions %}
                     <li class="instruction-item">
                         <span class="instruction-text">{{ instruction | capitalize }}</span>

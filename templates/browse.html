@@ -74,7 +74,7 @@
                                 <option value="" disabled selected>Type</option>
                                 <!--Loop through time_list and inject data into the drop down menu-->
                                 {% for type in types %}
-                                <option value"{{ type }}">{{ type|capitalize }}</option>
+                                <option value="{{ type }}">{{ type|capitalize }}</option>
                                 {% endfor %}
                             </select>
                             <label for="type">Recipe Type</label>
@@ -84,7 +84,7 @@
                             <select id="occasion" name="occasion" class="form-control validate">
                                 <option value="" disabled selected>Occasion</option>
                                 {% for occasion in occasions %}
-                                <option value"{{ occasion }}">{{ occasion|capitalize }}</option>
+                                <option value="{{ occasion }}">{{ occasion|capitalize }}</option>
                                 {% endfor %}
                             </select>
                             <label for="occasion">Occasion</label>
@@ -94,7 +94,7 @@
                             <select id="cuisine" name="cuisine" class="form-control validate">
                                 <option value="" disabled selected>Cuisine</option>
                                 {% for cuisine in cuisines %}
-                                <option value"{{ cuisine }}">{{ cuisine|capitalize }}</option>
+                                <option value="{{ cuisine }}">{{ cuisine|capitalize }}</option>
                                 {% endfor %}
                             </select>
                             <label for="cuisine">Cuisine</label>
@@ -104,7 +104,7 @@
                             <select id="main_ing" name="main_ing" class="form-control validate">
                                 <option value="" disabled selected>Main Ingredient</option>
                                 {% for ing in main_ing %}
-                                <option value"{{ ing }}">{{ ing|capitalize }}</option>
+                                <option value="{{ ing }}">{{ ing|capitalize }}</option>
                                 {% endfor %}
                             </select>
                             <label for="main_ing">Main Ingredient</label>
@@ -112,7 +112,7 @@
                         <!--Submit Button-->
                         <div class="row submit-button-wrapper">
                             <div class="col s6">
-                                <button id="search_btn" class="btn waves-effect waves-light sm-md-btn" type="submit">
+                                <button id="filter_btn" class="btn waves-effect waves-light sm-md-btn" type="submit">
                                     <span class="hide-on-small-and-down">Search</span>
                                     <i class="fas fa-search" aria-hidden="true"></i>
                                 </button>
@@ -188,11 +188,11 @@
         <!--Only display recipe if the deleted field value is false-->
         {% if recipe.deleted == False %}
         <div class="col s12 m3 recipe-preview-card">
-            <div id="{{ recipe._id }}" class="card hoverable results-card z-depth-1">
+            <div class="card hoverable results-card z-depth-1">
                 <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
                     <!--Recipe Image-->
                     <div class="card-image">
-                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
+                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator">
                     </div>
                     <!--Recipe Name-->
                     <div class="card-title center-align">
@@ -230,11 +230,11 @@
         <!--Only display recipe if the deleted field value is false-->
         {% if recipe.deleted == False %}
         <div class="col s12 m3 recipe-preview-card">
-            <div id="{{ recipe._id }}" class="card hoverable results-card z-depth-1">
+            <div class="card hoverable results-card z-depth-1">
                 <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
                     <!--Recipe Image-->
                     <div class="card-image">
-                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator" lazyload="on">
+                        <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator">
                     </div>
                     <!--Recipe Name-->
                     <div class="card-title center-align">

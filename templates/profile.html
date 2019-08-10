@@ -52,22 +52,21 @@
             <ul class="collection collection-wrapper">
                 <!--If the user has liked recipes, these will be displayed as a list-->
                 {% for liked in user_liked_list %}
-                    <div class="row">
-                        <div class="col s9 link-wrapper">
-                            <li class="collection-item avatar">
-                                <a href="{{ url_for('recipe', recipe_id=liked._id) }}">
-                                    <img src="{{ url_for('static', filename=liked.img) }}" alt="{{ liked.name | title }}" class="circle">
-                                    <span class="title">{{ liked.name | title }}</span>
-                                </a>
-                        </div>
-                        <div class="col s3 like-wrapper">
-                                <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn liked-btn sm-md-btn">
-                                    <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-                                    <span class="hide-on-small-and-down">Liked</span>
-                                </a>
-                            </li>
-                        </div>
+                    <div class="col s9 link-wrapper">
+                        <li class="collection-item avatar">
+                            <a href="{{ url_for('recipe', recipe_id=liked._id) }}">
+                                <img src="{{ url_for('static', filename=liked.img) }}" alt="{{ liked.name | title }}" class="circle">
+                                <span class="title">{{ liked.name | title }}</span>
+                            </a>
                     </div>
+                    <div class="col s3 like-wrapper">
+                            <a href="{{ url_for('unlike_recipe', recipe_id=liked._id) }}" class="waves-effect waves-light btn liked-btn sm-md-btn">
+                                <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+                                <span class="hide-on-small-and-down">Liked</span>
+                            </a>
+                        </li>
+                    </div>
+                    
                 <!--If the user hasn't liked any recipes, they will be invited to browse recipes-->
                 {% else %}
                     <li class="collection-item avatar center-align no-likes">
