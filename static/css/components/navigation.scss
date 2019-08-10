@@ -1,0 +1,65 @@
+/*---------------------------------- Links ----------------------------------*/
+nav {
+    ul {
+        a {
+            @include transitions {
+                color: $off-white;
+            }
+        }
+        a:hover {
+            color: $gold;
+        }
+    }
+}
+
+.social-links {
+    a {
+        @include transitions {
+            margin-right: 15px;
+            color: $gold;
+        }
+    }
+    a:hover {
+        color: $off-white;
+    }
+}
+
+/*--------------------------------- Nav Bar ---------------------------------*/
+nav {
+    @include titleFont($black);
+}
+
+.sidenav {
+    @include titleFont($gold);
+}
+
+.btn-icon {
+    font-size: 1.3em;
+    padding-right: 5px;
+}
+
+.btn-text {
+    font-size: 1.2em;
+}
+
+.sidenav {
+    .btn-text {
+        color: $black;
+    }
+}
+
+.sidenav {
+    .btn-icon {
+        padding: {
+            left: 17px;
+            right: 12px;
+        }
+        color: $black;
+    }
+}
+
+.sidenav {
+    li {
+        padding-top: 10px;
+    }
+}

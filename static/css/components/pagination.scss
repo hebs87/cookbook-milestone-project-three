@@ -1,0 +1,40 @@
+/*-------------------------------- Pagination --------------------------------*/
+.pagination {
+    margin-top: 0;
+    margin-bottom: 25px;
+    #previous-page:not(.disabled) {
+        i {
+            @include transitions {
+                color: $gold;
+            }
+        }
+        i:hover {
+            color: $light-grey;
+        }
+    }
+    #previous-page.disabled {
+        i {
+            display: none;
+        }
+    }
+    .pagination-helper {
+        color: $light-grey;
+        display: inline;
+        vertical-align: sub;
+    }
+    #next-page:not(.disabled) {
+        i {
+            @include transitions {
+                color: $gold;
+            }
+        }
+        i:hover {
+            color: $light-grey;
+        }
+    }
+    #next-page.disabled {
+        i {
+            display: none;
+        }
+    }
+}

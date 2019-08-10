@@ -1,0 +1,19 @@
+/*----------------------------- Add/Edit Recipe -----------------------------*/
+
+.edit-ingredients {
+    #ingredients {
+        width: 75%;
+        @include tablet {
+            width: 90%;
+        }
+    }
+}
+
+.edit-instructions {
+    #instructions {
+        width: 75%;
+        @include tablet {
+            width: 90%;
+        }
+    }
+}

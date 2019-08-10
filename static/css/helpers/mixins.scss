@@ -1,0 +1,48 @@
+/*-------------------------------- Mixins --------------------------------*/
+@mixin buttons() {
+    background-color: $gold;
+    color: $off-white;
+    border-radius: 18px;
+    @content;
+}
+
+@mixin transitions() {
+    @content;
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out;
+}
+
+@mixin images() {
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+    @content;
+}
+
+@mixin titleFont($color) {
+    background-color: $color;
+    font: {
+        family: "Dancing Script", sans-serif;
+        weight: bold;
+    }
+    @content;
+}
+
+@mixin fontStyle {
+    font: {
+        size: 1.8em;
+        weight: bold;
+    };
+    @content;
+}
+
+@mixin flashShow() {
+    top: 4em;
+    opacity: 1;
+}
+
+@mixin flashHide() {
+    top: 0;
+    opacity: 0;
+}

@@ -1,0 +1,38 @@
+/*---------------------------- Global Settings ----------------------------*/
+main {
+    flex: 1 0 auto;
+}
+
+body {
+    background-color: $cream;
+    font-family: "Roboto", sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.row {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}

@@ -1,0 +1,60 @@
+/*------------------------------ Form overrides ------------------------------*/
+/* Form icons on when field active */
+.login-wrapper,
+.register-wrapper,
+.modal-form-wrapper,
+.search-form-wrapper {
+    .prefix.active {
+        color: $gold;
+    }
+}
+
+/* Input bottom border when field in focus */
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus {
+    border-bottom: 1px solid $gold;
+}
+
+/* Form labels when field in focus */
+label,
+input:not([type]):focus:not([readonly])+label,
+input[type=text]:not(.browser-default):focus:not([readonly])+label,
+input[type=password]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly])+label,
+input[type=search]:not(.browser-default):focus:not([readonly]),
+.dropdown-content li>a,
+.dropdown-content li>span,
+.select-dropdown li.disabled>span {
+    color: $gold;
+}
+
+/* Dropdown list options on hover */
+.select-dropdown.dropdown-content {
+    li:hover:not(.optgroup),
+    li>span:hover:not(.optgroup) {
+        background-color: $light-grey;
+        color: $off-white;        
+    }
+}
+
+/* Dropdown list options when selected */
+.select-dropdown.dropdown-content {
+    li.selected>span,
+    li:focus {
+        background-color: $dark-grey;
+        color: $off-white;
+    }
+}
+
+body.keyboard-focused {
+    .select-dropdown.dropdown-content {
+        li:focus {
+            background-color: $dark-grey;
+            color: $off-white;
+        }
+    }
+}

@@ -1,0 +1,67 @@
+/*--------------------------------- Recipes ---------------------------------*/
+.stat {
+    i {
+        color: $gold;
+    }
+    .stat-title {
+        color: $gold;
+    }
+}
+
+.ing-item {
+    i {
+        color: $gold;
+    }
+}
+
+.recipe-details-break {
+    background-color: $dark-grey;
+    width: 90%;
+    height: 2px;
+    margin: 0 auto 15px;
+}
+
+.ingredients-list,
+.instructions-list {
+    margin: 0;
+}
+
+.ingredients-list {
+    .ing-item {
+        padding: {
+            top: 10px;
+            bottom: 10px;
+        }
+        border-bottom: 1px solid $dark-grey;
+    }
+}
+
+.instructions {
+    .card-title {
+        margin-top: 10px;
+        @include tablet {
+            margin-top: 0;
+        }
+    }
+    ul {
+        li {
+            padding: {
+            top: 10px;
+            bottom: 10px;
+            }
+            border-bottom: 1px solid $dark-grey;
+            counter-increment: list;
+            list-style-type: none;
+            position: relative;
+        }
+        li::before {
+            color: $gold;
+            content: counter(list) ".";
+            left: -13px;
+            position: absolute;
+            text-align: right;
+            width: 26px;
+            font-weight: bold;
+        }
+    }
+}

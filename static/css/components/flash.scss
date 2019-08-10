@@ -1,0 +1,22 @@
+/*------------------------------ Flash Messages ------------------------------*/
+.flash-message {
+    visibility: hidden;
+    width: 100%;
+    padding: {
+        top: 1em;
+        bottom: 1em;
+    }
+    position: fixed;
+    z-index: 100;
+    top: 4em;
+    background-color: $dark-grey;
+    color: $off-white;
+    .message-helper {
+        color: $gold;
+    }
+}
+
+.flash-message.show {
+    visibility: visible;
+    animation: flashMessageShow 0.5s, flashMessageHide 0.5s 3.5s;
+}
