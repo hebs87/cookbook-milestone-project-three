@@ -50,6 +50,18 @@ $desktop-width: 992px;
     @content;
 }
 
+@mixin tablet {
+    @media (min-width: $tablet-width) {
+        @content
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-width) {
+        @content
+    }
+}
+
 @mixin flashShow() {
     top: 4em;
     opacity: 1;
@@ -126,11 +138,9 @@ h6 {
         width: 50px;
         @include transitions;
     }
-    @media (min-width: $tablet-width) {
+    @include tablet {
         width: 135px;
-    }
-    i {
-        @media (min-width: $tablet-width) {
+        i {
             padding-right: 7px;
         }
     }
@@ -191,6 +201,12 @@ h6 {
 .small-btn:hover,
 .small-btn.alt:hover,
 .sm-md-btn:hover,
+.file-field .small-btn:hover,
+.standard-btn:focus,
+.large-btn:focus,
+.small-btn:focus,
+.small-btn.alt:focus,
+.sm-md-btn:focus,
 .file-field .small-btn:focus {
     background-color: $light-grey;
 }
@@ -208,9 +224,6 @@ h6 {
     top: 4em;
     background-color: $dark-grey;
     color: $off-white;
-}
-
-.flash-message {
     .message-helper {
         color: $gold;
     }
@@ -223,14 +236,14 @@ h6 {
 
 /*--------------------------- Headers/Titles/Text ---------------------------*/
 .page-title {
-    @include fontStyle {
-        margin: {
-            top: 25px;
-            bottom: 25px;
-        }
-        color: $gold;
+    margin: {
+        top: 25px;
+        bottom: 25px;
     }
-    @media (min-width: $tablet-width) {
+    font-size: 2.8em;
+    color: $gold;
+    font-weight: bold;
+    @include tablet {
         font-size: 3em;
     }
 }
@@ -238,7 +251,7 @@ h6 {
 /* Login and Register form title */
 h3 {
     @include fontStyle;
-    @media (min-width: $tablet-width) {
+    @include tablet {
         font-size: 2.5em;
     }
 }
@@ -259,13 +272,13 @@ h3 {
 .search-header {
     .search-form-title {
         @include fontStyle;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             font-size: 2.5em;
         }
         i {
             color: $gold;
             margin: 0;
-            @media (min-width: $tablet-width) {
+            @include tablet {
                 font-size: 0.9em;
                 margin-right: 5px;
             }
@@ -292,7 +305,7 @@ h3 {
     border-radius: 1em;
     .card-title {
         @include fontStyle;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             font-size: 2.5em;
         }
         i {
@@ -403,7 +416,7 @@ nav,
         @include images {
             width: 100%;
             height: 150px;
-            @media (min-width: $tablet-width) {
+            @include tablet {
                 height: 275px;
                 border-radius: 1em 0 0 0;
             }
@@ -503,7 +516,7 @@ nav {
 .edit-ingredients {
     #ingredients {
         width: 75%;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             width: 90%;
         }
     }
@@ -512,7 +525,7 @@ nav {
 .edit-instructions {
     #instructions {
         width: 75%;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             width: 90%;
         }
     }
@@ -523,16 +536,16 @@ nav {
 .collection-wrapper {
     border: none;
     margin-bottom: 0;
-    .title {
-        color: $black;
-        @media (min-width: $tablet-width) {
-            position: relative;
-            top: 10px;
-        }
-    }
     .collection-item.avatar {
         min-height: 60px;
         border-bottom: none;
+        .title {
+            color: $black;
+            @include tablet {
+                position: relative;
+                top: 10px;
+            }
+        }
     }
     .link-wrapper {
         padding: 0;
@@ -542,13 +555,13 @@ nav {
         position: relative;
         top: 12px;
     }
-    .no-adds,
-    .no-likes {
+    li.no-adds,
+    li.no-likes {
         padding: 0;
         margin-top: 10;
         a {
             @include transitions {
-                color: gold;
+                color: $gold;
             }
         }
         a:hover {
@@ -598,7 +611,7 @@ nav {
 .instructions {
     .card-title {
         margin-top: 10px;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             margin-top: 0;
         }
     }
@@ -636,13 +649,13 @@ nav {
     .filter-header {
         .filter-form-title {
             @include fontStyle;
-            @media (min-width: $tablet-width) {
+            @include tablet {
                 font-size: 2.5em;
             }
             i {
                 color: $gold;
                 margin: 0;
-                @media (min-width: $tablet-width) {
+                @include tablet {
                     font-size: 0.9em;
                     margin-right: 5px;
                 }
@@ -652,7 +665,7 @@ nav {
     .filter-body {
         height: 470px;
         overflow: visible;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             height: 205px;
         }
         h6.helper {
@@ -661,7 +674,7 @@ nav {
         .filter-form-wrapper {
             margin-top: 65px;
             margin-bottom: 20px;
-            @media (min-width: $tablet-width) {
+            @include tablet {
                 margin-top: 30px;
             }
         }
@@ -686,13 +699,14 @@ nav {
         border-radius: 1em;
         margin-bottom: 25px;
         .card-image {
-            @media (min-width: $tablet-width) {
-                height: 96px;
-            }
             img {
                 @include images {
                     height: 170px;
+                    @include tablet {
+                        height: 96px;
+                    }
                 }
+                
             }
         }
         .card-title {
@@ -706,7 +720,7 @@ nav {
                 overflow-y: auto;
                 color: $gold;
             }
-            @media (min-width: $tablet-width) {
+            @include tablet {
                 font-size: 1.1em;
                 height: 125px;
             }
@@ -774,7 +788,7 @@ nav {
     border-radius: 1em;
     .title {
         @include fontStyle;
-        @media (min-width: $tablet-width) {
+        @include tablet {
             font-size: 2.5em;
         }
     }
@@ -783,10 +797,10 @@ nav {
 #rate_modal {
     width: 75vw;
     overflow-y: visible;
-    @media (min-width: $tablet-width) {
+    @include tablet {
         width: 50vw;
     }
-    @media (min-width: $desktop-width) {
+    @include desktop {
         width: 40vw;
     }
     .select-wrapper {
