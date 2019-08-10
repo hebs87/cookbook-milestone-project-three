@@ -26,7 +26,7 @@
                 </li>
             <!--If the user hasn't added any recipes, they will be invited to add a recipe-->
             {% else %}
-                <li class="collection-item avatar center-align no-adds">
+                <li id="no-adds" class="collection-item avatar center-align no-adds">
                     <p>
                         You haven't added any recipes yet.
                         <br>
@@ -67,7 +67,7 @@
                 
             <!--If the user hasn't liked any recipes, they will be invited to browse recipes-->
             {% else %}
-                <li class="collection-item avatar center-align no-likes">
+                <li id="no-likes" class="collection-item avatar center-align no-likes">
                     <p>
                         You haven't liked any recipes yet.
                         <br>
@@ -105,71 +105,16 @@
 
 <!--Change Password Modal-->
 <div id="change_password_modal" class="modal">
-    <div class="modal-content center-align">
-        <h4 class="title">Change Password</h4>
-        <form class="col s12" method="POST" action="{{ url_for('change_password', username=username) }}">
-            <div class="row modal-form-wrapper">
-                <!--Existing Password-->
-                <div class="input-field col s12">
-                    <i class="fas fa-lock prefix" aria-hidden="true"></i>
-                    <input id="existing_password" name="existing_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
-                    <label for="existing_password">
-                        Existing Password
-                        <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters" aria-hidden="true"></i>
-                    </label>
-                </div>
-                <!--New Password-->
-                <div class="input-field col s12">
-                    <i class="fas fa-key prefix" aria-hidden="true"></i>
-                    <input id="changed_password" name="changed_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
-                    <label for="changed_password">
-                        New Password
-                        <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters" aria-hidden="true"></i>
-                    </label>
-                </div>
-            </div>
-            <div class="row modal-btn-wrapper">
-                <!--Change Password Button-->
-                <button class="btn waves-effect waves-light modal-pwd-btn large-btn icon-right" type="submit">
-                    Change Password
-                    <i class="fas fa-user-lock" aria-hidden="true"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+    
+    {% include "partials/change_pwd_modal.html" %}
+    
 </div>
 
 <!--Delete Modal-->
 <div id="delete_account_modal" class="modal">
-    <div class="modal-content center-align">
-        <h4 class="title">Delete Account</h4>
-        <h6 class="helper">Are you sure you want to delete your account?</h6>
-        <p class="helper italic">
-            All your recipes and data will be permanently deleted if you go ahead!
-            <br>
-            Confirm your password to continue...
-        </p>
-        <form class="col s12" method="POST" action="{{ url_for('delete_account', username=username) }}">
-            <div class="row modal-form-wrapper">
-                <!--Existing Password-->
-                <div class="input-field col s12">
-                    <i class="fas fa-lock prefix" aria-hidden="true"></i>
-                    <input id="confirm_password" name="confirm_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
-                    <label for="existing_password">
-                        Confirm Password
-                        <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters" aria-hidden="true"></i>
-                    </label>
-                </div>
-            </div>
-            <div class="row modal-btn-wrapper">
-                <!--Change Password Button-->
-                <button class="btn waves-effect waves-light modal-acc-btn large-btn icon-right" type="submit">
-                    Delete Account
-                    <i class="fas fa-user-slash" aria-hidden="true"></i>
-                </button>
-            </div>
-        </form>
-    </div>
+    
+    {% include "partials/del_acc_modal.html" %}
+    
 </div>
 
 {% endblock %}

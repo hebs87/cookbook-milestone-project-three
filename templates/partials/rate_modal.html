@@ -1,0 +1,20 @@
+<!--Allows users to submit a rating for the relevant recipe-->
+<div class="modal-content center-align">
+    <h4 class="title">Choose your rating</h4>
+    <form method="POST" action="{{ url_for('rate', recipe_id=recipe._id) }}">
+        <div class="input-field col s12 select-wrapper center-align">
+            <select id="rating" name="rating" class="form-control validate" required>
+                <option value="" disabled selected>Rating</option>
+                {% for r in ratings %}
+                <option value="{{ r }}">{{ r }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-field col s12 modal-btn-wrapper">
+            <button class="btn waves-effect waves-light modal-rate-btn large-btn icon-right" type="submit" name="register">
+                Rate It
+                <i class="far fa-star" aria-hidden="true"></i>
+            </button>
+        </div>
+    </form>
+</div>

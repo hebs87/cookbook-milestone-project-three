@@ -1,0 +1,35 @@
+<div class="col s12 m3 recipe-preview-card">
+    <div class="card hoverable results-card z-depth-1">
+        <a href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+            <!--Recipe Image-->
+            <div class="card-image">
+                <img src="{{ url_for('static', filename=recipe.img) }}" alt="{{ recipe.name }}" class="activator">
+            </div>
+            <!--Recipe Name-->
+            <div class="card-title center-align">
+                {{ recipe.name | title }}
+            </div>
+        </a>
+        <!--Recipe Quick Stats-->
+        <div class="card-content card-stats">
+            <span>
+                <i class="far fa-eye" aria-hidden="true"></i><br>
+                {{ recipe.views }}
+            </span>
+            <span>
+                <i class="fas fa-thumbs-up" aria-hidden="true"></i><br>
+                {{ recipe.likes }}
+            </span>
+            <span>
+                <i class="far fa-star" aria-hidden="true"></i><br>
+                <!--Iterate through rating array and calculate average rating-->
+                {% set rating = [] %}
+                    {% for r in recipe.rating_values %}
+                        {% if rating.append(r) %}
+                        {% endif %}
+                    {% endfor %}
+                {{ (rating | sum / rating | count) | int }}/5
+            </span>
+        </div>
+    </div>
+</div>

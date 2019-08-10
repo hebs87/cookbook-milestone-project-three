@@ -1,0 +1,44 @@
+<!--Displays the number of reciepes found from search results and the sorting order-->
+<div class="col s12 center-align recipe-count-wrapper">
+    {% if search_results %}
+        {% if search_results_count == 0 %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">No</span>
+                 recipes found.
+            </h6>
+        {% elif search_results_count == 1 %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">{{ search_results_count }}</span>
+                 recipe found.
+            </h6>
+        {% else %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">{{ search_results_count }}</span>
+                 recipes found, sorted by 
+                 <span class="recipe-sorted bold italic">most liked</span>.
+            </h6>
+        {% endif %}
+    {% elif recipes %}
+        {% if recipes_count == 0 %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">No</span>
+                 recipes found.
+            </h6>
+        {% elif recipes_count == 1 %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">{{ recipes_count }}</span>
+                 recipe found.
+            </h6>
+        {% elif recipes_count > 1 %}
+            <h6 class="recipe-details-text">
+                <span class="recipe-count bold italic">{{ recipes_count }}</span>
+                 recipes found, sorted by 
+                 <span class="recipe-sorted bold italic">most liked</span>.
+            </h6>
+        {% endif %}
+    {% else %}
+        <h6 class="recipe-details-text">
+            <span class="recipe-count bold italic">No</span>
+             recipes found.</h6>
+    {% endif %}
+</div>

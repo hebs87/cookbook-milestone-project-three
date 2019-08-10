@@ -614,19 +614,19 @@ nav {
     padding: 0;
     position: relative;
     top: 12px; }
-  .collection-wrapper li.no-adds,
-  .collection-wrapper li.no-likes {
+  .collection-wrapper li#no-adds,
+  .collection-wrapper li#no-likes {
     padding: 0;
     margin-top: 10px; }
-    .collection-wrapper li.no-adds a,
-    .collection-wrapper li.no-likes a {
+    .collection-wrapper li#no-adds a,
+    .collection-wrapper li#no-likes a {
       color: #a39161;
       transition: all 0.35s ease-in-out;
       -webkit-transition: all 0.35s ease-in-out;
       -moz-transition: all 0.35s ease-in-out;
       -o-transition: all 0.35s ease-in-out; }
-    .collection-wrapper li.no-adds a:hover,
-    .collection-wrapper li.no-likes a:hover {
+    .collection-wrapper li#no-adds a:hover,
+    .collection-wrapper li#no-likes a:hover {
       color: #818181; }
 
 /*----------------------------- Add/Edit Recipe -----------------------------*/
