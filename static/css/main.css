@@ -616,7 +616,7 @@ nav {
   .collection-wrapper li.no-adds,
   .collection-wrapper li.no-likes {
     padding: 0;
-    margin-top: 10; }
+    margin-top: 10px; }
     .collection-wrapper li.no-adds a,
     .collection-wrapper li.no-likes a {
       color: #a39161;

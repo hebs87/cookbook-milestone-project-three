@@ -24,7 +24,7 @@
     li.no-adds,
     li.no-likes {
         padding: 0;
-        margin-top: 10;
+        margin-top: 10px;
         a {
             @include transitions {
                 color: $gold;
