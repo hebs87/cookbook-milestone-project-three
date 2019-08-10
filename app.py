@@ -532,7 +532,7 @@ def get_recipes(page):
         recipes = recipes_coll.find({"deleted": False})
         
         # Pagination for all recipes
-        paginated_recipes = recipes_coll.find().sort([("likes", -1), 
+        paginated_recipes = recipes_coll.find({"deleted": False}).sort([("likes", -1), 
                     ('name', 1), ("_id", 1)]).skip(skip_count).limit(8)
     
     if recipes:
