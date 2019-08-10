@@ -1,0 +1,636 @@
+/*------------------------------ Font Imports ------------------------------*/
+@import url("https://fonts.googleapis.com/css?family=Dancing+Script:400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
+/*-------------------------------- Variables --------------------------------*/
+/*---------------------------- Global Settings ----------------------------*/
+main {
+  flex: 1 0 auto; }
+
+body {
+  background-color: #ede9df;
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column; }
+
+.row {
+  margin: 0; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 auto;
+  vertical-align: middle; }
+
+.bold {
+  font-weight: bold; }
+
+.italic {
+  font-style: italic; }
+
+.uppercase {
+  text-transform: uppercase; }
+
+/*--------------------------------- Buttons ---------------------------------*/
+.standard-btn {
+  background-color: #a39161;
+  color: #ececec;
+  border-radius: 18px;
+  width: 135px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+
+.large-btn {
+  background-color: #a39161;
+  color: #ececec;
+  border-radius: 18px;
+  width: 90%;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+
+.small-btn {
+  background-color: #a39161;
+  color: #ececec;
+  border-radius: 18px;
+  width: 50px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+
+.sm-md-btn {
+  background-color: #a39161;
+  color: #ececec;
+  border-radius: 18px;
+  width: 50px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+  @media (min-width: 600px) {
+    .sm-md-btn {
+      width: 135px; } }
+  @media (min-width: 600px) {
+    .sm-md-btn i {
+      padding-right: 7px; } }
+
+.small-btn.alt {
+  background-color: #262626;
+  color: #ececec;
+  border-radius: 18px;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+
+.standard-btn.icon-left i,
+.large-btn.icon-left i {
+  padding-right: 7px; }
+
+.standard-btn.icon-right i,
+.large-btn.icon-right i {
+  padding-left: 7px; }
+
+.index-btn {
+  margin-top: 20px; }
+
+.add-remove-btns .btn {
+  margin: 5px; }
+
+.delete-yes-btn,
+.delete-no-btn {
+  margin: 5px; }
+
+.add-btn-wrapper .btn,
+.edit-btn-wrapper .btn {
+  margin: 0px 5px 25px; }
+
+.options-buttons-wrapper .sm-md-btn {
+  margin: 2px; }
+
+.standard-btn:hover,
+.large-btn:hover,
+.small-btn:hover,
+.small-btn.alt:hover,
+.sm-md-btn:hover,
+.file-field .small-btn:focus {
+  background-color: #818181; }
+
+/*------------------------------ Flash Messages ------------------------------*/
+.flash-message {
+  visibility: hidden;
+  width: 100%;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  position: fixed;
+  z-index: 100;
+  top: 4em;
+  background-color: #262626;
+  color: #ececec; }
+
+.flash-message .message-helper {
+  color: #a39161; }
+
+.flash-message.show {
+  visibility: visible;
+  animation: flashMessageShow 0.5s, flashMessageHide 0.5s 3.5s; }
+
+/*--------------------------- Headers/Titles/Text ---------------------------*/
+.page-title {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  color: #a39161; }
+  @media (min-width: 600px) {
+    .page-title {
+      font-size: 3em; } }
+
+/* Login and Register form title */
+h3 {
+  font-size: 1.8em;
+  font-weight: bold; }
+  @media (min-width: 600px) {
+    h3 {
+      font-size: 2.5em; } }
+
+.ingredients .card-title,
+.instructions .card-title {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #262626; }
+
+.instruction-text {
+  left: 15px;
+  position: relative; }
+
+.search-header .search-form-title {
+  font-size: 1.8em;
+  font-weight: bold; }
+  @media (min-width: 600px) {
+    .search-header .search-form-title {
+      font-size: 2.5em; } }
+  .search-header .search-form-title i {
+    color: #a39161;
+    margin: 0; }
+    @media (min-width: 600px) {
+      .search-header .search-form-title i {
+        font-size: 0.9em;
+        margin-right: 5px; } }
+
+.modal .helper,
+.search-body .helper,
+.filter-body .helper,
+.recipe-card .helper {
+  color: #818181; }
+
+.recipe-details-text {
+  color: #818181; }
+
+.recipe-card {
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 1em; }
+  .recipe-card .card-title {
+    font-size: 1.8em;
+    font-weight: bold; }
+    @media (min-width: 600px) {
+      .recipe-card .card-title {
+        font-size: 2.5em; } }
+    .recipe-card .card-title i {
+      padding-right: 10px;
+      color: #a39161; }
+  .recipe-card h6.helper {
+    margin-top: 15px; }
+  .recipe-card p.helper {
+    margin-bottom: 0; }
+  .recipe-card .add-remove-btns {
+    padding: 0; }
+
+.recipe-details-title,
+.categories-title {
+  margin-bottom: 10px; }
+
+/*--------------------------------- Wrappers ---------------------------------*/
+.index-btn-wrapper {
+  margin-bottom: 25px; }
+
+.login-register-wrapper {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  border-radius: 5px; }
+
+.login-wrapper,
+.register-wrapper {
+  padding: 25px; }
+
+.acc-management-wrapper {
+  margin-top: 15px; }
+
+.search-option,
+.search-header,
+.filter-option,
+.filter-header {
+  border-radius: 1em; }
+
+.search-form-wrapper {
+  margin-top: 30px;
+  margin-bottom: 20px; }
+
+/*---------------------------------- Links ----------------------------------*/
+nav ul a {
+  color: #ececec;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+nav ul a:hover {
+  color: #a39161; }
+
+.social-links a {
+  margin-right: 15px;
+  color: #a39161;
+  transition: all 0.35s ease-in-out;
+  -webkit-transition: all 0.35s ease-in-out;
+  -moz-transition: all 0.35s ease-in-out;
+  -o-transition: all 0.35s ease-in-out; }
+.social-links a:hover {
+  color: #ececec; }
+
+/*---------------------------------- Images ----------------------------------*/
+nav .brand-logo,
+.sidenav .brand-logo {
+  font-size: 1.9em; }
+  nav .brand-logo img,
+  .sidenav .brand-logo img {
+    vertical-align: text-bottom;
+    height: 2.2rem;
+    padding-left: 10px;
+    padding-right: 10px; }
+
+.sidenav .brand-logo {
+  padding-bottom: 10px; }
+
+.recipe-img-wrapper .recipe-img {
+  object-fit: cover;
+  border-radius: 1em 1em 0 0;
+  width: 100%;
+  height: 150px; }
+  @media (min-width: 600px) {
+    .recipe-img-wrapper .recipe-img {
+      height: 275px;
+      border-radius: 1em 0 0 0; } }
+
+.index-img {
+  border-radius: 2em; }
+
+.error-img {
+  margin-bottom: 20px; }
+
+/*--------------------------------- Nav Bar ---------------------------------*/
+nav {
+  background-color: #000;
+  font-family: "Dancing Script", sans-serif;
+  font-weight: bold; }
+
+.sidenav {
+  background-color: #a39161;
+  font-family: "Dancing Script", sans-serif;
+  font-weight: bold; }
+
+.btn-icon {
+  font-size: 1.3em;
+  padding-right: 5px; }
+
+.btn-text {
+  font-size: 1.2em; }
+
+.sidenav .btn-text {
+  color: #000; }
+
+.sidenav .btn-icon {
+  padding-left: 17px;
+  padding-right: 12px;
+  color: #000; }
+
+.sidenav li {
+  padding-top: 10px; }
+
+/*--------------------------------- Footer ---------------------------------*/
+.page-footer {
+  background-color: #262626;
+  color: #a39161;
+  font-size: 1.5em;
+  padding: 1em 0; }
+
+.social-links {
+  padding-top: 15px; }
+
+/*------------------------------ Login/Register ------------------------------*/
+.login-register-wrapper .tabs .indicator {
+  background-color: #a39161; }
+.login-register-wrapper .tabs .tab a {
+  background-color: #262626;
+  color: #a39161;
+  font-weight: bold; }
+.login-register-wrapper .tabs .tab a.active {
+  background-color: #818181;
+  color: #a39161;
+  text-shadow: 1px 1px 1px #000;
+  font-weight: bold; }
+.login-register-wrapper .tabs .tab a.active:hover {
+  background-color: #818181;
+  color: #a39161;
+  font-weight: bold; }
+
+/*----------------------------- Add/Edit Recipe -----------------------------*/
+.edit-ingredients #ingredients {
+  width: 75%; }
+  @media (min-width: 600px) {
+    .edit-ingredients #ingredients {
+      width: 90%; } }
+
+.edit-instructions #instructions {
+  width: 75%; }
+  @media (min-width: 600px) {
+    .edit-instructions #instructions {
+      width: 90%; } }
+
+/*--------------------------------- Profile ---------------------------------*/
+.collection-wrapper {
+  border: none;
+  margin-bottom: 0; }
+  .collection-wrapper .title {
+    color: #000; }
+    @media (min-width: 600px) {
+      .collection-wrapper .title {
+        position: relative;
+        top: 10px; } }
+  .collection-wrapper .collection-item.avatar {
+    min-height: 60px;
+    border-bottom: none; }
+  .collection-wrapper .link-wrapper {
+    padding: 0; }
+  .collection-wrapper .like-wrapper {
+    padding: 0;
+    position: relative;
+    top: 12px; }
+  .collection-wrapper .no-adds,
+  .collection-wrapper .no-likes {
+    padding: 0;
+    margin-top: 10; }
+    .collection-wrapper .no-adds a,
+    .collection-wrapper .no-likes a {
+      color: gold;
+      transition: all 0.35s ease-in-out;
+      -webkit-transition: all 0.35s ease-in-out;
+      -moz-transition: all 0.35s ease-in-out;
+      -o-transition: all 0.35s ease-in-out; }
+    .collection-wrapper .no-adds a:hover,
+    .collection-wrapper .no-likes a:hover {
+      color: #818181; }
+
+/*--------------------------------- Recipes ---------------------------------*/
+.stat i {
+  color: #a39161; }
+.stat .stat-title {
+  color: #a39161; }
+
+.ing-item i {
+  color: #a39161; }
+
+.recipe-details-break {
+  background-color: #262626;
+  width: 90%;
+  height: 2px;
+  margin: 0 auto 15px; }
+
+.ingredients-list,
+.instructions-list {
+  margin: 0; }
+
+.ingredients-list .ing-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #262626; }
+
+.instructions .card-title {
+  margin-top: 10px; }
+  @media (min-width: 600px) {
+    .instructions .card-title {
+      margin-top: 0; } }
+.instructions ul li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #262626;
+  counter-increment: list;
+  list-style-type: none;
+  position: relative; }
+.instructions ul li::before {
+  color: #a39161;
+  content: counter(list) ".";
+  left: -13px;
+  position: absolute;
+  text-align: right;
+  width: 26px;
+  font-weight: bold; }
+
+/*---------------------------------- Browse ----------------------------------*/
+.search-body,
+.filter-body {
+  background-color: #fff;
+  border-radius: 1em; }
+
+.filter-option .filter-header .filter-form-title {
+  font-size: 1.8em;
+  font-weight: bold; }
+  @media (min-width: 600px) {
+    .filter-option .filter-header .filter-form-title {
+      font-size: 2.5em; } }
+  .filter-option .filter-header .filter-form-title i {
+    color: #a39161;
+    margin: 0; }
+    @media (min-width: 600px) {
+      .filter-option .filter-header .filter-form-title i {
+        font-size: 0.9em;
+        margin-right: 5px; } }
+.filter-option .filter-body {
+  height: 470px;
+  overflow: visible; }
+  @media (min-width: 600px) {
+    .filter-option .filter-body {
+      height: 205px; } }
+  .filter-option .filter-body .filter-form-wrapper {
+    margin-top: 65px;
+    margin-bottom: 20px; }
+    @media (min-width: 600px) {
+      .filter-option .filter-body .filter-form-wrapper {
+        margin-top: 30px; } }
+
+#search_form,
+#filter_form {
+  margin-bottom: 25px; }
+
+.recipe-count,
+.recipe-details-text,
+.recipe-sorted,
+.pagination-count {
+  color: #a39161;
+  font-size: 1.2em; }
+
+.recipe-preview-card .results-card {
+  border-radius: 1em;
+  margin-bottom: 25px; }
+  @media (min-width: 600px) {
+    .recipe-preview-card .results-card .card-image {
+      height: 96px; } }
+  .recipe-preview-card .results-card .card-image img {
+    object-fit: cover;
+    border-radius: 1em 1em 0 0;
+    height: 170px; }
+  .recipe-preview-card .results-card .card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 10px;
+    height: 100px;
+    overflow-y: auto;
+    color: #a39161;
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out; }
+    @media (min-width: 600px) {
+      .recipe-preview-card .results-card .card-title {
+        font-size: 1.1em;
+        height: 125px; } }
+  .recipe-preview-card .results-card .card-title:hover {
+    color: #818181; }
+  .recipe-preview-card .results-card .card-stats {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #262626;
+    border-radius: 0 0 1em 1em;
+    color: #ececec; }
+    .recipe-preview-card .results-card .card-stats i {
+      color: #a39161; }
+
+/*-------------------------------- Pagination --------------------------------*/
+.pagination {
+  margin-top: 0;
+  margin-bottom: 25px; }
+  .pagination #previous-page:not(.disabled) i {
+    color: #a39161;
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out; }
+  .pagination #previous-page:not(.disabled) i:hover {
+    color: #818181; }
+  .pagination #previous-page.disabled i {
+    display: none; }
+  .pagination .pagination-helper {
+    color: #818181;
+    display: inline;
+    vertical-align: sub; }
+  .pagination #next-page:not(.disabled) i {
+    color: #a39161;
+    transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -o-transition: all 0.35s ease-in-out; }
+  .pagination #next-page:not(.disabled) i:hover {
+    color: #818181; }
+  .pagination #next-page.disabled i {
+    display: none; }
+
+/*---------------------------------- Modals ----------------------------------*/
+.modal {
+  border-radius: 1em; }
+  .modal .title {
+    font-size: 1.8em;
+    font-weight: bold; }
+    @media (min-width: 600px) {
+      .modal .title {
+        font-size: 2.5em; } }
+
+#rate_modal {
+  width: 75vw;
+  overflow-y: visible; }
+  @media (min-width: 600px) {
+    #rate_modal {
+      width: 50vw; } }
+  @media (min-width: 992px) {
+    #rate_modal {
+      width: 40vw; } }
+  #rate_modal .select-wrapper {
+    width: 90%;
+    margin: 15px auto; }
+
+/*------------------------------ Form overrides ------------------------------*/
+/* Form icons on when field active */
+.login-wrapper .prefix.active,
+.register-wrapper .prefix.active,
+.modal-form-wrapper .prefix.active,
+.search-form-wrapper .prefix.active {
+  color: #a39161; }
+
+/* Input bottom border when field in focus */
+input:not([type]):focus:not([readonly]),
+input[type=text]:not(.browser-default):focus:not([readonly]),
+input[type=password]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+input[type=search]:not(.browser-default):focus:not([readonly]),
+.select-wrapper input.select-dropdown:focus {
+  border-bottom: 1px solid #a39161; }
+
+/* Form labels when field in focus */
+label,
+input:not([type]):focus:not([readonly]) + label,
+input[type=text]:not(.browser-default):focus:not([readonly]) + label,
+input[type=password]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]) + label,
+input[type=search]:not(.browser-default):focus:not([readonly]),
+.dropdown-content li > a,
+.dropdown-content li > span,
+.select-dropdown li.disabled > span {
+  color: #a39161; }
+
+/* Dropdown list options on hover */
+.select-dropdown.dropdown-content li:hover:not(.optgroup),
+.select-dropdown.dropdown-content li > span:hover:not(.optgroup) {
+  background-color: #818181;
+  color: #ececec; }
+
+/* Dropdown list options when selected */
+.select-dropdown.dropdown-content li.selected > span,
+.select-dropdown.dropdown-content li:focus {
+  background-color: #262626;
+  color: #ececec; }
+
+body.keyboard-focused .select-dropdown.dropdown-content li:focus {
+  background-color: #262626;
+  color: #ececec; }
+
+/*-------------------------------- Keyframes --------------------------------*/
+@keyframes flashMessageShow {
+  from {
+    top: 0;
+    opacity: 0; }
+  to {
+    top: 4em;
+    opacity: 1; } }
+@keyframes flashMessageHide {
+  from {
+    top: 4em;
+    opacity: 1; }
+  to {
+    top: 0;
+    opacity: 0; } }
+
+/*# sourceMappingURL=main.css.map */
