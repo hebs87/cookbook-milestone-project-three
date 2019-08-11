@@ -129,6 +129,10 @@ h6 {
 .edit-btn-wrapper .btn {
   margin: 0px 5px 25px; }
 
+.add-remove-btns .remove-current-ing,
+.add-remove-btns .remove-current-instruction {
+  margin: 0; }
+
 .options-buttons-wrapper .sm-md-btn {
   margin: 2px; }
 

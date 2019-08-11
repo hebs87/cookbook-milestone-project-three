@@ -77,6 +77,13 @@
     }
 }
 
+.add-remove-btns {
+    .remove-current-ing,
+    .remove-current-instruction {
+        margin: 0;
+    }
+}
+
 .options-buttons-wrapper {
     .sm-md-btn {
         margin: 2px;
