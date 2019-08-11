@@ -95,8 +95,10 @@ h6 {
   @media (min-width: 600px) {
     .sm-md-btn {
       width: 135px; }
-      .sm-md-btn i {
-        padding-right: 7px; } }
+      .sm-md-btn i.icon-left {
+        padding-right: 7px; }
+      .sm-md-btn i.icon-right {
+        padding-left: 7px; } }
 
 .small-btn.alt {
   background-color: #262626;

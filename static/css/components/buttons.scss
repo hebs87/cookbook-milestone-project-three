@@ -27,8 +27,11 @@
     }
     @include tablet {
         width: 135px;
-        i {
+        i.icon-left {
             padding-right: 7px;
+        }
+        i.icon-right {
+            padding-left: 7px;
         }
     }
 }
