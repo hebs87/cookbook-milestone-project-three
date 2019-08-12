@@ -708,7 +708,7 @@ nav {
 .ingredients-list .ing-item {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
-  border-bottom: 0.1rem solid #262626;
+  border-bottom: 0.03rem solid #262626;
 }
 
 .instructions .card-title {
@@ -722,7 +722,7 @@ nav {
 .instructions ul li {
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;
-  border-bottom: 0.1rem solid #262626;
+  border-bottom: 0.03rem solid #262626;
   counter-increment: list;
   list-style-type: none;
   position: relative;
