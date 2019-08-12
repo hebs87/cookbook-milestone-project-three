@@ -5,7 +5,7 @@
     margin-bottom: 0;
     
     .collection-item.avatar {
-        min-height: 60px;
+        min-height: 4.2rem;
         border-bottom: none;
         
         .title {
@@ -13,7 +13,7 @@
             
             @include tablet {
                 position: relative;
-                top: 10px;
+                top: 0.6rem;
             }
             
         }
@@ -27,13 +27,13 @@
     .like-wrapper {
         padding: 0;
         position: relative;
-        top: 12px;
+        top: 0.9rem;
     }
     
     li#no-adds,
     li#no-likes {
         padding: 0;
-        margin-top: 10px;
+        margin-top: 0.6rem;
         
         a {
             @include transitions {

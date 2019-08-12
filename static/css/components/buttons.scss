@@ -3,7 +3,7 @@
 .standard-btn {
     
     @include buttons {
-        width: 135px;
+        width: 8.5rem;
         @include transitions;
     }
 
@@ -21,7 +21,7 @@
 .small-btn {
 
     @include buttons {
-        width: 50px;
+        width: 3.4rem;
         @include transitions;
     }
 
@@ -30,19 +30,19 @@
 .sm-md-btn {
     
     @include buttons {
-        width: 50px;
+        width: 3.4rem;
         @include transitions;
     }
     
     @include tablet {
-        width: 135px;
+        width: 8.5rem;
         
         i.icon-left {
-            padding-right: 7px;
+            padding-right: 0.4rem;
         }
         
         i.icon-right {
-            padding-left: 7px;
+            padding-left: 0.4rem;
         }
     
     }
@@ -54,7 +54,7 @@
     @include transitions {
         background-color: #262626;
         color: #ececec;
-        border-radius: 18px;
+        border-radius: 1.3rem;
     }
     
 }
@@ -63,7 +63,7 @@
 .large-btn.icon-left {
     
     i {
-        padding-right: 7px;
+        padding-right: 0.4rem;
     }
     
 }
@@ -72,33 +72,33 @@
 .large-btn.icon-right {
     
     i {
-        padding-left: 7px;
+        padding-left: 0.4rem;
     }
     
 }
 
 .index-btn {
-    margin-top: 20px;
+    margin-top: 1.3rem;
 }
 
 .add-remove-btns {
     
     .btn {
-        margin: 5px;
+        margin: 0.3rem;
     }
     
 }
 
 .delete-yes-btn,
 .delete-no-btn {
-    margin: 5px;
+    margin: 0.3rem;
 }
 
 .add-btn-wrapper,
 .edit-btn-wrapper {
     
     .btn {
-        margin: 0px 5px 25px;
+        margin: 0px 0.3rem 1.7rem;
     }
     
 }
@@ -115,7 +115,7 @@
 .options-buttons-wrapper {
     
     .sm-md-btn {
-        margin: 2px;
+        margin: 0.15rem;
     }
     
 }

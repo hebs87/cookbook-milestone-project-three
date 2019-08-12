@@ -1,13 +1,13 @@
 /* MODALS */
 
 .modal {
-    border-radius: 1em;
+    border-radius: 1rem;
     
     .title {
         @include fontStyle;
         
         @include tablet {
-            font-size: 2.5em;
+            font-size: 2.5rem;
         }
         
     }
@@ -28,7 +28,7 @@
     
     .select-wrapper {
         width: 90%;
-        margin: 15px auto;
+        margin: 1.1rem auto;
     }
     
 }

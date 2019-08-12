@@ -13,6 +13,7 @@
 }
 
 /* Input bottom border when field in focus */
+/* Using rem on the border size skewed the form fields alignment, so used px instead */
 input:not([type]):focus:not([readonly]),
 input[type=text]:not(.browser-default):focus:not([readonly]),
 input[type=password]:not(.browser-default):focus:not([readonly]),

@@ -23,8 +23,8 @@
 .recipe-details-break {
     background-color: $dark-grey;
     width: 90%;
-    height: 2px;
-    margin: 0 auto 15px;
+    height: 0.15rem;
+    margin: 0 auto 1.1rem;
 }
 
 .ingredients-list,
@@ -36,10 +36,10 @@
     
     .ing-item {
         padding: {
-            top: 10px;
-            bottom: 10px;
+            top: 0.6rem;
+            bottom: 0.6rem;
         }
-        border-bottom: 1px solid $dark-grey;
+        border-bottom: 0.1rem solid $dark-grey;
     }
     
 }
@@ -47,7 +47,7 @@
 .instructions {
     
     .card-title {
-        margin-top: 10px;
+        margin-top: 0.6rem;
         
         @include tablet {
             margin-top: 0;
@@ -59,10 +59,10 @@
         
         li {
             padding: {
-            top: 10px;
-            bottom: 10px;
+            top: 0.6rem;
+            bottom: 0.6rem;
             }
-            border-bottom: 1px solid $dark-grey;
+            border-bottom: 0.1rem solid $dark-grey;
             counter-increment: list;
             list-style-type: none;
             position: relative;
@@ -71,10 +71,10 @@
         li::before {
             color: $gold;
             content: counter(list) ".";
-            left: -13px;
+            left: -0.9rem;
             position: absolute;
             text-align: right;
-            width: 26px;
+            width: 1.7rem;
             font-weight: bold;
         }
         

@@ -22,7 +22,8 @@ nav {
     
     a {
         @include transitions {
-            margin-right: 15px;
+            margin-right: 0.6rem;
+            margin-left: 0.6rem;
             color: $gold;
         }
     }
@@ -44,12 +45,12 @@ nav {
 }
 
 .btn-icon {
-    font-size: 1.3em;
-    padding-right: 5px;
+    font-size: 1.3rem;
+    padding-right: 0.3rem;
 }
 
 .btn-text {
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .sidenav {
@@ -64,8 +65,8 @@ nav {
     
     .btn-icon {
         padding: {
-            left: 17px;
-            right: 12px;
+            left: 1.2rem;
+            right: 1.2rem;
         }
         color: $black;
     }
@@ -75,7 +76,7 @@ nav {
 .sidenav {
     
     li {
-        padding-top: 10px;
+        padding-top: 0.6rem;
     }
     
 }

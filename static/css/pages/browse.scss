@@ -3,7 +3,7 @@
 .search-body,
 .filter-body {
     background-color: $white;
-    border-radius: 1em;
+    border-radius: 1rem;
 }
 
 .filter-option {
@@ -14,7 +14,7 @@
             @include fontStyle;
             
             @include tablet {
-                font-size: 2.5em;
+                font-size: 2.5rem;
             }
             
             i {
@@ -22,8 +22,8 @@
                 margin: 0;
                 
                 @include tablet {
-                    font-size: 0.9em;
-                    margin-right: 5px;
+                    font-size: 2.1rem;
+                    margin-right: 0.3rem;
                 }
                 
             }
@@ -33,19 +33,19 @@
     }
     
     .filter-body {
-        height: 470px;
+        height: 33.6rem;
         overflow: visible;
         
         @include tablet {
-            height: 205px;
+            height: 14.1rem;
         }
         
         .filter-form-wrapper {
-            margin-top: 65px;
-            margin-bottom: 20px;
+            margin-top: 4.6rem;
+            margin-bottom: 1.3rem;
             
             @include tablet {
-                margin-top: 30px;
+                margin-top: 2.1rem;
             }
             
         }
@@ -56,30 +56,30 @@
 
 #search_form,
 #filter_form {
-    margin-bottom:25px;
+    margin-bottom: 1.7rem;
 }
 
 .recipe-count,
 .recipe-sorted,
 .pagination-count {
     color: $gold;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .recipe-preview-card {
     
     .results-card {
-        border-radius: 1em;
-        margin-bottom: 25px;
+        border-radius: 1rem;
+        margin-bottom: 1.7rem;
         
         .card-image {
             
             img {
                 @include images {
-                    height: 170px;
+                    height: 12.2rem;
                     
                     @include tablet {
-                        height: 96px;
+                        height: 6.7rem;
                     }
                     
                 }
@@ -91,18 +91,18 @@
         .card-title {
             @include transitions {
                 font: {
-                    size: 1.5em;
+                    size: 1.5rem;
                     weight: bold;
                 }
-                padding: 10px;
-                height: 100px;
+                padding: 0.6rem;
+                height: 7.1rem;
                 overflow-y: auto;
                 color: $gold;
             }
             
             @include tablet {
-                font-size: 1.1em;
-                height: 125px;
+                font-size: 1.1rem;
+                height: 8.6rem;
             }
             
         }
@@ -112,11 +112,11 @@
         }
         
         .card-stats {
-            padding: 10px;
+            padding: 0.6rem;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             background-color: $dark-grey;
-            border-radius: 0 0 1em 1em;
+            border-radius: 0 0 1rem 1rem;
             color: $off-white;
             
             i {
