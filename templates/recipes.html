@@ -35,9 +35,12 @@
                 <strong class="stat-title">Times Rated: </strong>
                 {{ rating | count }}
             </p>
-            <a href="#rate_modal" class="waves-effect waves-light btn rate-btn standard-btn icon-left modal-trigger">
-                <i class="far fa-star" aria-hidden="true"></i>Rate It
-            </a>
+            <!--The user will only be able to rate the recipe if they are logged in-->
+            {% if session.user %}
+                <a href="#rate_modal" class="waves-effect waves-light btn rate-btn standard-btn icon-left modal-trigger">
+                    <i class="far fa-star" aria-hidden="true"></i>Rate It
+                </a>
+            {% endif %}
             <p class="stat">
                 <i class="far fa-clock" aria-hidden="true"></i>
                 <strong class="stat-title">Prep Time: </strong>
