@@ -37,7 +37,7 @@
             </p>
             <!--The user will only be able to rate the recipe if they are logged in-->
             {% if session.user %}
-                <a href="#rate_modal" class="waves-effect waves-light btn rate-btn standard-btn icon-left modal-trigger">
+                <a href="#rate_modal" class="waves-effect waves-light btn rate-btn standard-btn icon-left modal-trigger" aria-label="Rate it modal">
                     <i class="far fa-star" aria-hidden="true"></i>Rate It
                 </a>
             {% endif %}
@@ -79,32 +79,32 @@
         </div>
         <!--Buttons - vary depending on whether user is in session-->
         <div class="col s12 center-align options-buttons-wrapper">
-            <a id="print-btn" class="waves-effect waves-light btn sm-md-btn">
+            <a id="print-btn" class="waves-effect waves-light btn sm-md-btn"  aria-label="Print recipe button">
                 <i class="fas fa-print icon-left" aria-hidden="true"></i>
                 <span class="hide-on-small-and-down">Print</span>
             </a>
             <!--Extra options when user logged in-->
             {% if session.user %}
-                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn">
+                <a href="{{ url_for('edit_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Edit recipe page">
                     <i class="fas fa-edit icon-left" aria-hidden="true"></i>
                     <span class="hide-on-small-and-down">Edit</span>
                 </a>
                     {% if session.user | lower == added_by %}
-                        <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger">
+                        <a href="#delete_modal" class="waves-effect waves-light btn sm-md-btn modal-trigger"  aria-label="Delete recipe modal">
                             <i class="fas fa-trash-alt icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Delete</span>
                         </a>
                     {% endif %}
                     
                     {% if recipe._id in liked_recipes %}
-                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn">
+                        <!--ONLY ON DISPLAY IF THE RECIPE ID IS IN THE USER'S LIKED LIST-->
+                        <a href="{{ url_for('unlike_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Unlike recipe button">
                             <i class="fas fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Liked</span>
                         </a>
                     {% else %}
                         <!--ONLY ON DISPLAY IF THE RECIPE ID IS NOT IN THE USER'S LIKED LIST-->
-                        <a href="{{ url_for('like_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn">
+                        <a href="{{ url_for('like_recipe', recipe_id=recipe._id) }}" class="waves-effect waves-light btn sm-md-btn" aria-label="Like recipe button">
                             <i class="far fa-thumbs-up icon-left" aria-hidden="true"></i>
                             <span class="hide-on-small-and-down">Like</span>
                         </a>

@@ -167,19 +167,19 @@
         <div class="input-field ingredients edit-ingredients col s12">
             <input id="ingredients" name="ingredients" type="text" placeholder="Ingredient (one per line)" class="form-control validate" value="{{ ing|capitalize }}" required>
             <label for="ingredients"></label>
-            <a id="remove-current-ing" class="waves-effect waves-light btn remove-current-ing small-btn alt">
+            <a id="remove-current-ing" class="waves-effect waves-light btn remove-current-ing small-btn alt"  aria-label="Remove current ingredient row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </a>
         </div>
         {% endfor %}
         <div class="col s12 add-remove-btns">
             <!--Add Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-ing small-btn">
+            <button type="button" class="waves-effect waves-light btn add-ing small-btn" aria-label="Add new ingredient row">
                 <i class="fas fa-plus material-icons" aria-hidden="true"></i>
             </button>
 
             <!--Remove Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-ing small-btn alt">
+            <button type="button" class="waves-effect waves-light btn remove-ing small-btn alt" aria-label="Remove last instruction row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </button>
         </div>
@@ -197,19 +197,19 @@
         <div class="input-field instructions edit-instructions col s12">
             <input id="instructions" name="instructions" type="text" placeholder="Instructions (one per line)" class="form-control validate" value="{{ instruction|capitalize }}" required>
             <label for="instructions"></label>
-            <a class="waves-effect waves-light btn remove-current-instruction small-btn alt">
+            <a class="waves-effect waves-light btn remove-current-instruction small-btn alt" aria-label="Remove current instruction row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </a>
         </div>
         {% endfor %}
         <div class="col s12 add-remove-btns">
             <!--Add Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-instruction small-btn">
+            <button type="button" class="waves-effect waves-light btn add-instruction small-btn" aria-label="Add new instruction row">
                 <i class="fas fa-plus material-icons" aria-hidden="true"></i>
             </button>
     
             <!--Remove Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-instruction small-btn alt">
+            <button type="button" class="waves-effect waves-light btn remove-instruction small-btn alt" aria-label="Remove last instruction row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </button>
         </div>
@@ -218,11 +218,11 @@
     <!--Add Recipe Button-->
     <div class="row edit-btn-wrapper center-align">
         <div class="col s12">
-            <button class="btn waves-effect waves-light edit-btn standard-btn icon-right" type="submit" name="register">
+            <button class="btn waves-effect waves-light edit-btn standard-btn icon-right" type="submit" name="edit-recipe" aria-label="Edit recipe button">
                 Edit
                 <i class="fas fa-edit" aria-hidden="true"></i>
             </button>
-            <a class="btn waves-effect waves-light standard-btn icon-right" href="{{ url_for('recipe', recipe_id=recipe._id) }}">
+            <a class="btn waves-effect waves-light standard-btn icon-right" href="{{ url_for('recipe', recipe_id=recipe._id) }}" aria-label="Cancel button">
                 Cancel
                 <i class="fas fa-times-circle" aria-hidden="true"></i>
             </a>

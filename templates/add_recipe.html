@@ -152,11 +152,11 @@
         </div>
         <div class="col s12 add-remove-btns">
             <!--Add Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-ing small-btn">
+            <button type="button" class="waves-effect waves-light btn add-ing small-btn" aria-label="Add new ingredient row">
                 <i class="fas fa-plus material-icons" aria-hidden="true"></i>
             </button>
             <!--Remove Ingredient Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-ing small-btn alt">
+            <button type="button" class="waves-effect waves-light btn remove-ing small-btn alt" aria-label="Remove last ingredient row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </button>
         </div>
@@ -176,11 +176,11 @@
         </div>
         <div class="col s12 add-remove-btns">
             <!--Add Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn add-instruction small-btn">
+            <button type="button" class="waves-effect waves-light btn add-instruction small-btn" aria-label="Add new instruction row">
                 <i class="fas fa-plus material-icons" aria-hidden="true"></i>
             </button>
             <!--Remove Instruction Row Btn-->
-            <button type="button" class="waves-effect waves-light btn remove-instruction small-btn alt">
+            <button type="button" class="waves-effect waves-light btn remove-instruction small-btn alt" aria-label="Remove last instruction row">
                 <i class="fas fa-minus material-icons" aria-hidden="true"></i>
             </button>
         </div>
@@ -189,11 +189,11 @@
     <!--Add Recipe Button-->
     <div class="row add-btn-wrapper center-align">
         <div class="col s12">
-            <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" name="register">
+            <button class="btn waves-effect waves-light add-btn standard-btn icon-right" type="submit" name="add-recipe" aria-label="Add recipe button">
                 Add
                 <i class="fas fa-plus-circle" aria-hidden="true"></i>
             </button>
-            <a class="btn waves-effect waves-light standard-btn icon-right" href="{{ url_for('index') }}">
+            <a class="btn waves-effect waves-light standard-btn icon-right" href="{{ url_for('index') }}" ari-label="Cancel button">
                 Cancel
                 <i class="fas fa-times-circle" aria-hidden="true"></i>
             </a>

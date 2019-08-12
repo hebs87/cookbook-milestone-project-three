@@ -5,11 +5,11 @@
         This recipe will be permanently deleted if you go ahead!
     </p>
     <div class="input-field col s12 modal-btn-wrapper">
-        <a class="waves-effect waves-light btn delete-yes-btn sm-md-btn" href="{{ url_for('remove_recipe', recipe_id=recipe._id) }}">
+        <a class="waves-effect waves-light btn delete-yes-btn sm-md-btn" href="{{ url_for('remove_recipe', recipe_id=recipe._id) }}" aria-label="Confirm delete recipe button">
             <i class="fas fa-check" aria-hidden="true"></i>
             <span class="hide-on-small-and-down">Yes</span>
         </a>
-        <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn">
+        <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Do not delete recipe button">
             <i class="fas fa-times" aria-hidden="true"></i>
             <span class="hide-on-small-and-down">No</span>
         </a>
