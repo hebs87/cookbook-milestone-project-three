@@ -2,7 +2,10 @@
 nav,
 .sidenav {
     .brand-logo {
-        font-size: 1.9em;
+        font-size: 1.7em;
+        @media tablet {
+            font-size: 1.9em;
+        }
         img {
             vertical-align: text-bottom;
             height: 2.2rem;

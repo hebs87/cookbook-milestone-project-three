@@ -276,7 +276,11 @@ h6 {
 /*---------------------------------- Images ----------------------------------*/
 nav .brand-logo,
 .sidenav .brand-logo {
-  font-size: 1.9em; }
+  font-size: 1.7em; }
+  @media tablet {
+    nav .brand-logo,
+    .sidenav .brand-logo {
+      font-size: 1.9em; } }
   nav .brand-logo img,
   .sidenav .brand-logo img {
     vertical-align: text-bottom;
