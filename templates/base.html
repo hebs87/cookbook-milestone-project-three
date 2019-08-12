@@ -3,8 +3,6 @@
 
 <head>
 
-    <!--Link for Favicon-->
-    <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='img/favicon-logo.png') }}" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -16,6 +14,8 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <!--Link for custom CSS sheet-->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" type="text/css">
+    <!--Link for Favicon-->
+    <link rel="icon" sizes="192x192" href="{{ url_for('static', filename='img/favicon-logo.png') }}" type="image/x-icon">
 
 </head>
 
@@ -31,20 +31,18 @@
     </header>
     <!--END HEADER-->
     
+    <!--Flashed messages to appear at the top of the page, below the Navbar-->
+    {% include "partials/flash_messages.html" %}
+    
     <!--MAIN CONTENT-->
-    <main>
-        <!--Flashed messages to appear at the top of the page, below the Navbar-->
-        {% include "partials/flash_messages.html" %}
-        
-        <div class="container">
-            <!--Main content-->
-            {% block content %} {% endblock %}
-        </div>
+    <main class="container">
+        <!--Main content-->
+        {% block content %} {% endblock %}
     </main>
     <!--END MAIN CONTENT-->
     
     <!--FOOTER-->
-    <footer class="page-footer">
+    <footer class="page-footer container-fluid">
         
         {% include "partials/footer.html" %}
         
