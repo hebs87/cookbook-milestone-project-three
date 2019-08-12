@@ -13,20 +13,20 @@
             a {
                 background-color: $dark-grey;
                 color: $gold;
-                font-weight: bold;
+                font-weight: 700;
             }
             
             a.active {
                 background-color: $light-grey;
                 color: $gold;
                 text-shadow: 0.1rem 0.1rem 0.1rem $black;
-                font-weight: bold;
+                font-weight: 700;
             }
             
             a.active:hover {
                 background-color: $light-grey;
                 color: $gold;
-                font-weight: bold;
+                font-weight: 700;
             }
             
         }

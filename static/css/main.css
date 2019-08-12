@@ -52,7 +52,7 @@ h6 {
 }
 
 .bold {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .italic {
@@ -154,7 +154,7 @@ h6 {
 
 .add-btn-wrapper .btn,
 .edit-btn-wrapper .btn {
-  margin: 0px 0.3rem 1.7rem;
+  margin: 0 0.3rem 1.7rem;
 }
 
 .add-remove-btns .remove-current-ing,
@@ -208,7 +208,7 @@ h6 {
   margin-bottom: 1.7rem;
   font-size: 2.8rem;
   color: #a39161;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .page-title {
@@ -220,7 +220,7 @@ h6 {
 .login-wrapper .form-title,
 .register-wrapper .form-title {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .login-wrapper .form-title,
@@ -242,7 +242,7 @@ h6 {
 
 .search-header .search-form-title {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .search-header .search-form-title {
@@ -278,7 +278,7 @@ h6 {
 }
 .recipe-card .card-title {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .recipe-card .card-title {
@@ -461,13 +461,13 @@ nav ul a:hover {
 nav {
   background-color: #000;
   font-family: "Dancing Script", sans-serif;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .sidenav {
   background-color: #a39161;
   font-family: "Dancing Script", sans-serif;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .btn-icon {
@@ -507,7 +507,7 @@ nav {
 }
 .modal .title {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .modal .title {
@@ -586,7 +586,7 @@ nav {
 
 .filter-option .filter-header .filter-form-title {
   font-size: 1.8rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 @media (min-width: 600px) {
   .filter-option .filter-header .filter-form-title {
@@ -650,7 +650,7 @@ nav {
 }
 .recipe-preview-card .results-card .card-title {
   font-size: 1.5rem;
-  font-weight: bold;
+  font-weight: 700;
   padding: 0.6rem;
   height: 7.1rem;
   overflow-y: auto;
@@ -734,7 +734,7 @@ nav {
   position: absolute;
   text-align: right;
   width: 1.7rem;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* LOGIN / REGISTER */
@@ -744,18 +744,18 @@ nav {
 .login-register-wrapper .tabs .tab a {
   background-color: #262626;
   color: #a39161;
-  font-weight: bold;
+  font-weight: 700;
 }
 .login-register-wrapper .tabs .tab a.active {
   background-color: #818181;
   color: #a39161;
   text-shadow: 0.1rem 0.1rem 0.1rem #000;
-  font-weight: bold;
+  font-weight: 700;
 }
 .login-register-wrapper .tabs .tab a.active:hover {
   background-color: #818181;
   color: #a39161;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 /* PROFILE */

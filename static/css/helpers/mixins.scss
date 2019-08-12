@@ -23,7 +23,7 @@
     background-color: $color;
     font: {
         family: "Dancing Script", sans-serif;
-        weight: bold;
+        weight: 700;
     }
     @content;
 }
@@ -31,7 +31,7 @@
 @mixin fontStyle {
     font: {
         size: 1.8rem;
-        weight: bold;
+        weight: 700;
     };
     @content;
 }
