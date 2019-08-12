@@ -435,9 +435,12 @@ nav {
     margin: 15px auto; }
 
 /*-------------------------------- Pagination --------------------------------*/
+.pagination-wrapper {
+  margin-bottom: 25px; }
+
 .pagination {
   margin-top: 0;
-  margin-bottom: 25px; }
+  display: inline; }
   .pagination #previous-page:not(.disabled) i {
     color: #a39161;
     transition: all 0.35s ease-in-out;
@@ -448,10 +451,6 @@ nav {
     color: #818181; }
   .pagination #previous-page.disabled i {
     display: none; }
-  .pagination .pagination-helper {
-    color: #818181;
-    display: inline;
-    vertical-align: sub; }
   .pagination #next-page:not(.disabled) i {
     color: #a39161;
     transition: all 0.35s ease-in-out;
@@ -462,6 +461,11 @@ nav {
     color: #818181; }
   .pagination #next-page.disabled i {
     display: none; }
+
+.pagination-helper {
+  color: #818181;
+  display: inline;
+  vertical-align: sub; }
 
 /*---------------------------------- Pages ----------------------------------*/
 /*---------------------------------- Browse ----------------------------------*/

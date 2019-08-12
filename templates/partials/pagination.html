@@ -5,13 +5,17 @@
             <i class="fas fa-chevron-left" aria-hidden="true"></i>
         </a>
     </li>
-    <!--States which page the user is currently on, out of the total number of pages-->
-    <h6 class="pagination-helper bold">
-        Page 
-        <span class="pagination-count bold italic">{{ page }}</span>
-         of 
-        <span class="pagination-count bold italic">{{ total_pages }}</span>
-    </h6>
+</ul>
+
+<!--States which page the user is currently on, out of the total number of pages-->
+<h6 class="pagination-helper bold">
+    Page 
+    <span class="pagination-count bold italic">{{ page }}</span>
+     of 
+    <span class="pagination-count bold italic">{{ total_pages }}</span>
+</h6>
+
+<ul class="pagination">
     <!--Link for next page: only appears if there is a next page-->
     <li id="next-page" {% if page|int == total_pages|int %} class="disabled" {% endif %} aria-label="Next page">
         <a {% if page|int != total_pages|int %} href="{{ url_for('get_recipes', page=page|int+1) }}" {% endif %}>

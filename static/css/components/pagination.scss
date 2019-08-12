@@ -1,7 +1,11 @@
 /*-------------------------------- Pagination --------------------------------*/
+.pagination-wrapper{
+    margin-bottom: 25px;
+}
+
 .pagination {
     margin-top: 0;
-    margin-bottom: 25px;
+    display: inline;
     #previous-page:not(.disabled) {
         i {
             @include transitions {
@@ -16,11 +20,6 @@
         i {
             display: none;
         }
-    }
-    .pagination-helper {
-        color: $light-grey;
-        display: inline;
-        vertical-align: sub;
     }
     #next-page:not(.disabled) {
         i {
@@ -37,4 +36,10 @@
             display: none;
         }
     }
+}
+
+.pagination-helper {
+    color: $light-grey;
+    display: inline;
+    vertical-align: sub;
 }
