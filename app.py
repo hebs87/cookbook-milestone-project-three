@@ -2,7 +2,6 @@ import os
 import json
 import math
 import html
-# import pymongo
 import re
 from flask import (
     Flask, render_template, redirect, request,
@@ -141,7 +140,7 @@ def login():
 
         username = request.form.get('username').lower()
         password = request.form.get("password")
-        existing_user = users_coll.find_one({"username": username})
+        existing_user = get_username(username)
 
         # Check username exists and password matches hashed password
         if existing_user and check_password_hash(
@@ -175,15 +174,10 @@ def register():
         new_username = request.form.get('new_username').lower()
         new_password = request.form.get("new_password")
 
-        # Check username and password are alphanumeric
+        # Check username is alphanumeric
         for letter in new_username:
             if not letter.isalnum():
                 flash(Markup("Usernames must be alphanumeric only. \
-                                Please try another one."))
-                return redirect(url_for('register'))
-        for letter in new_password:
-            if not letter.isalnum():
-                flash(Markup("Passwords must be alphanumeric only. \
                                 Please try another one."))
                 return redirect(url_for('register'))
 
@@ -193,13 +187,14 @@ def register():
             flash(Markup("Usernames must be between 5 and 15 characters. \
                             Please try again."))
             return redirect(url_for('register'))
+
         if len(new_password) < 5 or len(new_password) > 15:
             flash(Markup("Passwords must be between 5 and 15 characters. \
                             Please try again."))
             return redirect(url_for('register'))
 
         # Check if username already exists
-        existing_user = users_coll.find_one({"username": new_username})
+        existing_user = get_username(new_username)
         if existing_user:
             flash(Markup("Sorry, \
                         <span class='message-helper bold italic'>" +
@@ -219,6 +214,7 @@ def register():
                     <span class='message-helper bold italic'>" +
                      new_username.capitalize() + "</span>, \
                      you're now logged in!"))
+
         return redirect(url_for('index', username=session["user"]))
 
     return render_template("login_register.html")
@@ -231,6 +227,7 @@ def logout():
     '''
     session.pop('user', None)
     flash(Markup("You were successfully logged out. Come back soon!"))
+
     return redirect(url_for('index'))
 
 
@@ -328,7 +325,7 @@ def delete_account(username):
         user_added_recipes = [recipe for recipe in username
                               .get("added_recipes")]
         # Update 'deleted' value to true for each recipe from recipes_coll
-        # Remove each recipe from the other users' liked list
+        # Remove each recipe from all other users' liked list
         for recipe in user_added_recipes:
             recipes_coll.update_one({"_id": ObjectId(recipe)},
                                     {"$set": {"deleted": True}})
@@ -386,6 +383,7 @@ def add_recipe():
 def insert_recipe():
     '''
     Insert the new recipe entry into the database
+    Add the recipe id into the user's added list in users_coll
     '''
     if request.method == 'POST':
         # Check if user has submitted an image
@@ -405,7 +403,7 @@ def insert_recipe():
 
         # Get session user details
         user = session['user'].lower()
-        user_id = users_coll.find_one({"username": user})["_id"]
+        user_id = get_username(user)["_id"]
 
         insert = {
             "name": request.form.get("name").lower(),
@@ -666,8 +664,7 @@ def recipe(recipe_id):
     try:
         # Get the user's liked_recipes list if a user is logged in
         user = session["user"].lower()
-        liked_recipes = users_coll.find_one(
-                        {"username": user})["liked_recipes"]
+        liked_recipes = get_username(user)["liked_recipes"]
     except:
         # Create an empty liked_recipes list if no user is logged in
         liked_recipes = []
