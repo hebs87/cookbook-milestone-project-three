@@ -1,26 +1,36 @@
-/*------------------------------ Login/Register ------------------------------*/
+/* LOGIN / REGISTER */
+
 .login-register-wrapper {
+    
     .tabs {
+        
         .indicator {
             background-color: $gold;
         }
+        
         .tab {
+            
             a {
                 background-color: $dark-grey;
                 color: $gold;
                 font-weight: bold;
             }
+            
             a.active {
                 background-color: $light-grey;
                 color: $gold;
                 text-shadow: 1px 1px 1px $black;
                 font-weight: bold;
             }
+            
             a.active:hover {
                 background-color: $light-grey;
                 color: $gold;
                 font-weight: bold;
             }
+            
         }
+        
     }
+    
 }

@@ -1,37 +1,50 @@
-/*--------------------------------- Profile ---------------------------------*/
+/* PROFILE */
+
 .collection-wrapper {
     border: none;
     margin-bottom: 0;
+    
     .collection-item.avatar {
         min-height: 60px;
         border-bottom: none;
+        
         .title {
             color: $black;
+            
             @include tablet {
                 position: relative;
                 top: 10px;
             }
+            
         }
+        
     }
+    
     .link-wrapper {
         padding: 0;
     }
+    
     .like-wrapper {
         padding: 0;
         position: relative;
         top: 12px;
     }
+    
     li#no-adds,
     li#no-likes {
         padding: 0;
         margin-top: 10px;
+        
         a {
             @include transitions {
                 color: $gold;
             }
         }
+        
         a:hover {
             color: $light-grey;
         }
+        
     }
+    
 }

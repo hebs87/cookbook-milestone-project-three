@@ -1,30 +1,40 @@
-/*---------------------------------- Links ----------------------------------*/
+/* LINKS */
+
 nav {
+    
     ul {
+        
         a {
             @include transitions {
                 color: $off-white;
             }
         }
+        
         a:hover {
             color: $gold;
         }
+        
     }
+    
 }
 
 .social-links {
+    
     a {
         @include transitions {
             margin-right: 15px;
             color: $gold;
         }
     }
+    
     a:hover {
         color: $off-white;
     }
+    
 }
 
-/*--------------------------------- Nav Bar ---------------------------------*/
+/* NAVBAR */
+
 nav {
     @include titleFont($black);
 }
@@ -43,12 +53,15 @@ nav {
 }
 
 .sidenav {
+    
     .btn-text {
         color: $black;
     }
+    
 }
 
 .sidenav {
+    
     .btn-icon {
         padding: {
             left: 17px;
@@ -56,10 +69,13 @@ nav {
         }
         color: $black;
     }
+    
 }
 
 .sidenav {
+    
     li {
         padding-top: 10px;
     }
+    
 }

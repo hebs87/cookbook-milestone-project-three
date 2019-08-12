@@ -1,4 +1,5 @@
-/*---------------------------------- Browse ----------------------------------*/
+/* BROWSE */
+
 .search-body,
 .filter-body {
     background-color: $white;
@@ -6,39 +7,51 @@
 }
 
 .filter-option {
+    
     .filter-header {
+        
         .filter-form-title {
             @include fontStyle;
+            
             @include tablet {
                 font-size: 2.5em;
             }
+            
             i {
                 color: $gold;
                 margin: 0;
+                
                 @include tablet {
                     font-size: 0.9em;
                     margin-right: 5px;
                 }
+                
             }
+            
         }
+        
     }
+    
     .filter-body {
         height: 470px;
         overflow: visible;
+        
         @include tablet {
             height: 205px;
         }
-        h6.helper {
-            
-        }
+        
         .filter-form-wrapper {
             margin-top: 65px;
             margin-bottom: 20px;
+            
             @include tablet {
                 margin-top: 30px;
             }
+            
         }
+        
     }
+    
 }
 
 #search_form,
@@ -54,20 +67,27 @@
 }
 
 .recipe-preview-card {
+    
     .results-card {
         border-radius: 1em;
         margin-bottom: 25px;
+        
         .card-image {
+            
             img {
                 @include images {
                     height: 170px;
+                    
                     @include tablet {
                         height: 96px;
                     }
+                    
                 }
                 
             }
+            
         }
+        
         .card-title {
             @include transitions {
                 font: {
@@ -79,14 +99,18 @@
                 overflow-y: auto;
                 color: $gold;
             }
+            
             @include tablet {
                 font-size: 1.1em;
                 height: 125px;
             }
+            
         }
+        
         .card-title:hover {
             color: $light-grey;
         }
+        
         .card-stats {
             padding: 10px;
             display: grid;
@@ -94,9 +118,13 @@
             background-color: $dark-grey;
             border-radius: 0 0 1em 1em;
             color: $off-white;
+            
             i {
                 color: $gold;
             }
+            
         }
+        
     }
+    
 }

@@ -1,4 +1,4 @@
-/*-------------------------------- Pagination --------------------------------*/
+/* PAGINATION */
 .pagination-wrapper{
     margin-bottom: 25px;
 }
@@ -6,36 +6,51 @@
 .pagination {
     margin-top: 0;
     display: inline;
+    
     #previous-page:not(.disabled) {
+        
         i {
             @include transitions {
                 color: $gold;
             }
         }
+        
         i:hover {
             color: $light-grey;
         }
+        
     }
+    
     #previous-page.disabled {
+        
         i {
             display: none;
         }
+        
     }
+    
     #next-page:not(.disabled) {
+        
         i {
             @include transitions {
                 color: $gold;
             }
         }
+        
         i:hover {
             color: $light-grey;
         }
+        
     }
+    
     #next-page.disabled {
+        
         i {
             display: none;
         }
+        
     }
+    
 }
 
 .pagination-helper {

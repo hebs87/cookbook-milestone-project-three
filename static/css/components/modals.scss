@@ -1,25 +1,34 @@
-/*---------------------------------- Modals ----------------------------------*/
+/* MODALS */
+
 .modal {
     border-radius: 1em;
+    
     .title {
         @include fontStyle;
+        
         @include tablet {
             font-size: 2.5em;
         }
+        
     }
+    
 }
 
 #rate_modal {
     width: 75vw;
     overflow-y: visible;
+    
     @include tablet {
         width: 50vw;
     }
+    
     @include desktop {
         width: 40vw;
     }
+    
     .select-wrapper {
         width: 90%;
         margin: 15px auto;
     }
+    
 }

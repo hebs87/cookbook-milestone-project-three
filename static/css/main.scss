@@ -1,11 +1,11 @@
-/*--------------------------------- Helpers ---------------------------------*/
+/* HELPERS */
 @import "helpers/fonts";
 @import "helpers/variables";
 @import "helpers/mixins";
 @import "helpers/media_queries";
 @import "helpers/animations";
 
-/*-------------------------------- Components --------------------------------*/
+/* COMPONENTS */
 @import "components/global";
 @import "components/buttons";
 @import "components/flash";
@@ -18,7 +18,7 @@
 @import "components/modals";
 @import "components/pagination";
 
-/*---------------------------------- Pages ----------------------------------*/
+/* PAGES */
 @import "pages/browse";
 @import "pages/recipes";
 @import "pages/log_reg";

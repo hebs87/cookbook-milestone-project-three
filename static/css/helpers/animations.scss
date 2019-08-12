@@ -1,18 +1,25 @@
-/*-------------------------------- Keyframes --------------------------------*/
+/* KEYFRAMES */
+
 @keyframes flashMessageShow {
+    
     from {
         @include flashHide;
     }
+    
     to {
         @include flashShow;
     }
+    
 }
 
 @keyframes flashMessageHide {
+    
     from {
         @include flashShow;
     }
+    
     to {
         @include flashHide;
     }
+    
 }
