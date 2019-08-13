@@ -1,0 +1,17 @@
+<!--Allows users to delete the relevant recipe-->
+<div class="modal-content center-align">
+    <h4 class="title">Are you sure you want to delete this recipe?</h4>
+    <p class="helper italic">
+        This recipe will be permanently deleted if you go ahead!
+    </p>
+    <div class="input-field col s12 modal-btn-wrapper">
+        <a class="waves-effect waves-light btn delete-yes-btn sm-md-btn" href="{{ url_for('recipes.remove_recipe', recipe_id=recipe._id) }}" aria-label="Confirm delete recipe button">
+            <i class="fas fa-check" aria-hidden="true"></i>
+            <span class="hide-on-small-and-down">Yes</span>
+        </a>
+        <a class="modal-close waves-effect waves-light btn delete-no-btn sm-md-btn" aria-label="Do not delete recipe button">
+            <i class="fas fa-times" aria-hidden="true"></i>
+            <span class="hide-on-small-and-down">No</span>
+        </a>
+    </div>
+</div>

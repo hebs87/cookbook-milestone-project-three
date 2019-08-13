@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+{% block title %}Login / Register | {% endblock %}
+{% block content %}
+
+<div class="row white z-depth-2 login-register-wrapper">
+
+    <!--Login and register tabs-->
+    <ul class="tabs tabs-fixed-width z-depth-1">
+        <li class="tab login-tab">
+            <a class="active" href="#login"  aria-label="Login tab">Login</a>
+        </li>
+        <li class="tab register-tab">
+            <a href="#register" aria-label="Register tab">Register</a>
+        </li>
+    </ul>
+
+    <!--Login form-->
+    <div id="login" class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('users.login', _anchor='login') }}">
+            <div class="login-wrapper center-align">
+                
+                <h3 class="form-title">Login</h3>
+                
+                <div class="row">
+                    <!--Username-->
+                    <div class="input-field col s12">
+                        <i class="fas fa-user prefix" aria-hidden="true"></i>
+                        <input id="username" name="username" type="text" class="form-control validate" minlength="6" maxlength="15" value="{{ request.form['username'] }}" required>
+                        <label for="username">
+                            Username
+                            <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters, alphanumeric" aria-hidden="true"></i>
+                        </label>
+                    </div>
+
+                    <!--Password-->
+                    <div class="input-field col s12">
+                        <i class="fas fa-lock prefix" aria-hidden="true"></i>
+                        <input id="password" name="password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
+                        <label for="password">
+                            Password
+                            <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!--Login Button-->
+                    <button class="btn waves-effect waves-light large-btn icon-right" type="submit" name="login"  aria-label="Login button">
+                        Login
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </div>
+        </form>
+    </div>
+
+    <!--Register form-->
+    <div id="register" class="col s12">
+        <form class="col s12" method="POST" action="{{ url_for('users.register', _anchor='register') }}">
+            <div class="register-wrapper center-align">
+                
+                <h3 class="form-title">Register</h3>
+                
+                <div class="row">
+                    <!--Username-->
+                    <div class="input-field col s12">
+                        <i class="fas fa-user prefix" aria-hidden="true"></i>
+                        <input id="new_username" name="new_username" type="text" class="form-control validate" minlength="6" maxlength="15" value="{{ request.form['new_username'] }}" required>
+                        <label for="new_username">
+                            Username
+                            <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters, alphanumeric" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                    <!--Password-->
+                    <div class="input-field col s12">
+                        <i class="fas fa-key prefix" aria-hidden="true"></i>
+                        <input id="new_password" name="new_password" type="password" class="form-control validate" minlength="6" maxlength="15" required>
+                        <label for="password">
+                            Password
+                            <i class="far fa-question-circle tooltipped" data-position="right" data-tooltip="6-15 characters" aria-hidden="true"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!--Register Button-->
+                    <button class="btn waves-effect waves-light large-btn icon-right" type="submit" name="register"  aria-label="Register button">
+                        Register
+                        <i class="fas fa-user-plus" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+            </div>    
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

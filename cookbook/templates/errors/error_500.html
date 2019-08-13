@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Page Not Found | {% endblock %}
+{% block content %}
+
+<!--404 redirect to home-->    
+<div class="row center-align">
+    
+    <!--ERROR MESSAGE-->
+    <h1 class="page-title">500</h1>
+    
+    <div class="row recipe-card card center-align z-depth-1">
+        <h3 class="card-title">
+            <i class="far fa-frown" aria-hidden="true"></i>
+            <br>
+            Oops...
+        </h3>
+        <h6 class="helper">Something went wrong...</h6>
+        <p class="helper italic">Click the image below to go back home!</p>
+    </div>
+    
+    <!--HOME PAGE IMAGE-->
+    <div class="col s12">
+        <a href="{{ url_for('main.index') }}">
+            <img class="responsive-img error-img" src="{{ url_for('static', filename='img/home-image.jpg') }}" alt="Go Home">
+        </a>
+    </div>
+
+</div>
+
+{% endblock %}
