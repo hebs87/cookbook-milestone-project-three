@@ -1,4 +1,4 @@
-# []() - Milestone Project Three
+# [Fine Dining Online Cookbook](https://online-cookbook-ms3-hebs87.herokuapp.com/) - Milestone Project Three
 
 ## Table of Contents
 
@@ -38,11 +38,19 @@
 
 ## About
 
-This application (app) is 
+This application (app) is an online cookbook - a place where users can find recipes for any occasion. Users can also create their own free account and add an unlimited number of recipes that they can share with other users and visitors.
+
+Users can rate recipes, and like recipes to add them to their 'Liked' list for easy access from their own profile page. Users can also print recipes directly from the site.
 
 ### Why This Project?
 
+I created this app for the Data Centric Development project of [Code Institute's](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which allows uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
+
+The front-end display and functionality used HTML, CSS and JavaScript.
+
 ## UX
+
+
 
 ### User Stories
 
