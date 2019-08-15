@@ -83,7 +83,11 @@ There are some differences between my wireframes and my final website. This was 
 
 ### Database Schema
 
+Before building my project, I designed the database schema for the various collections that I would use. The links to the files are below:
 
+- []()
+- []()
+- []()
 
 ## Features
 
