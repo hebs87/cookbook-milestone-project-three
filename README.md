@@ -237,37 +237,98 @@ In addition to my own testing, I also asked family members, friends and the Slac
 
 ## Deployment
 
-The hosting platform that I've used for my project is Heroku. To deploy my website to Heroku, I used the following steps:
+I used GitHub for my version control and Heroku to host the live version of my project. To deploy my website to Heroku, I used the following steps:
 
-### Repository Link
+1. Created the app in Heroku.
+2. Entered the `sudo snap install --classic heroku` command in the terminal window.
+3. Entered the `heroku login --interactive` command in the terminal window and entered my credentials to login to Heroku.
+4. Added and commited the files to Git using the `git add .` and `git commit -m ""` commands in the termial window.
+5. Linked the Heroku app as the remote master branch using the following command in the terminal window:
+
+    ```heroku git:remote -a <app-name>```
+
+6. Created a requirements.txt file using the following command in the terminal window:
+
+    ```sudo pip3 freeze --local > requirements.txt```
+
+7. Created a Procfile using the following command in the terminal window:
+
+    ```echo web: python <fileName.py> > Procfile```
+
+8. Used the `git push heroku master` command in the terminal window to push the app to Heroku.
+9. Used the `heroku: ps:scale web=1` command in the terminal windown to run the app in Heroku.
+10. Entered the following Config Var in Heroku:
+
+    ```MONGO_URI : <link to MongoDB>```
+
+I didn't need to upload the IP and PORT Config Vars in Heroku, as these were already present in my `run.py` file.
+
+The app was successfully deployed to Heroku at this stage.
+
+### Live App Link
 
 Click the link below to run my project in the live environment:
 
-[]()
+[Fine Dining](https://online-cookbook-ms3-hebs87.herokuapp.com/)
+
+### Repository Link
+
+Click the link below to visit my project's GitHub repository:
+
+[Fine Dining GitHub Repository](https://github.com/hebs87/cookbook-milestone-project-three)
 
 ### Running Code Locally
 
 To run my code locally, users can download a local copy of my code to their desktop by completing the following steps:
 
+1. Go to [my GitHub repository](https://github.com/hebs87/cookbook-milestone-project-three)
+2. Click on 'Clone or download' under the repository name.
+3. Copy the clone URL for the repository in the 'Clone with HTTPs section'.
+4. Open 'Git Bash' in your local IDE.
+5. Change the current working directory to the location where you want the cloned directory to be made.
+6. Type `git clone`, then paste the URL you copied in Step 3:
+
+    ```git clone https://github.com/USERNAME/REPOSITORY```
+
+7. Press `Enter` to complete the process and create your local clone.
+8. Create a new Database in MongoDB called *_onlineCookbook_* and use the schema as outlined in the [Database Schema Files](https://github.com/hebs87/cookbook-milestone-project-three/tree/master/cookbook/database_schema).
+9. Create collections named *_recipes_*, *_categories_*, *_rating_*, *_serves_*, *_time_* and *_userLogin_*.
+9. Navigate to the `.bashrc` terminal and add your MongoDB URI in the following format:
+
+    ```MONGO_URI="insert your mongo uri details here"```
+
+10. In the terminal, run the `pip3 install -r requirements.txt` command to install the requirements.txt file.
+11. You should now be able to run the app locally using the `python3 run.py` command.
+
 ## Credits
-
-
 
 ### Content
 
-
+- All of the code for my project was written by me.
+- I got a general idea of how to create a register and login system by watching this [Login Video](https://www.youtube.com/watch?list=PLXmMXHVSvS-Db9KK1LA7lifcyZm4c-rwj&v=vVx1737auSE&app=desktop).
+- I researched how to upload images to my local directory by reading this [Flask-Uploads](https://pythonhosted.org/Flask-Uploads/) article.
+- I read this [MongoDB Article](https://api.mongodb.com/python/current/api/pymongo/collection.html#pymongo.collection.Collection.find_one_and_update) to research the `find_one_and_update` method.
+- I watched this [Pagination Video](https://www.youtube.com/watch?v=Lnt6JqtzM7I) to give me a start with implementing pagination in my app.
+- I read this [Ordered List Article](https://www.lockedownseo.com/ordered-list-ol-different-color-for-numbers/) to learn how to add custom styles to the numbers in my lists.
+- I read this [CSS Tricks Article](https://css-tricks.com/snippets/css/complete-guide-grid/#prop-grid-template-columns-rows) to learn how to display my recipe quick stats in a grid format.
+- I read this [Flash Messages Article](https://flask.palletsprojects.com/en/1.1.x/patterns/flashing/) to learn how to create my custom flash messages.
+- I read this [Error Handlers Article](https://flask.palletsprojects.com/en/1.0.x/errorhandling/) to learn how to implement error handlers in my Python code.
+- I read this [Jinja Template Inheritance Article](https://jinja.palletsprojects.com/en/2.10.x/templates/) to learn more about Jinja templating.
+- I read this [SASS Output Styles Article](https://web-design-weekly.com/2014/06/15/different-sass-output-styles/) to learn how to create different styles of CSS files using SCSS.
+- I watched this [Flask Blueprint Video](https://www.youtube.com/watch?v=Wfx4YBzg16s&feature=youtu.be) to learn how to implement Flask Blueprint in my project to split my code into separate files.
+- I read this [Blueprint Error Handlers Article](https://stackoverflow.com/questions/12768825/flask-error-handler-for-blueprints) to learn how to resolve a bug with my error handlers once I implemented Flask Blueprint in my project.
 
 ### Media
 
-
-
-#### Sounds
-
-
+- I found the details for all recipe on my site on the [BBC Food Website](https://www.bbc.co.uk/food). This gave me inspiration for my Database Schema too.
 
 ### Acknowledgements
 
-
+- I received inspiration for the style of my project from [Heavenly Desserts](https://heavenlydesserts.co.uk/).
+- Thanks to the Slack community for their feedback, and for pointing me in the right direction of how to debug my Python code.
+- Thanks to @Eventyret_mentor for his detailed feedback on my code and app, and for pointing me in the direction of researching how to change the output of my SCSS files.
+- Thanks to my friend, Philip Hughes, for referring me to research Flask Blueprint.
+- A special mention to my mentor, Dick Vlaanderen, for his feedback on my project's scope, design and functionality.
 
 ### Disclaimer
 
