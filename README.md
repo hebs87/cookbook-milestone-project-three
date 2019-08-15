@@ -85,9 +85,9 @@ There are some differences between my wireframes and my final website. This was 
 
 Before building my project, I designed the database schema for the various collections that I would use. The links to the files are below:
 
-- []()
-- []()
-- []()
+- [Recipe Schema](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/database_schema/sample-recipe.pdf)
+- [Supporting Collections Schema](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/database_schema/supporting-collections.pdf) - These are the values for the dropdown menus used in the app.
+- [UserLogin Schema](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/database_schema/sample-user-login.pdf)
 
 ## Features
 
@@ -131,6 +131,7 @@ I added some additional features that weren't within the scope of the project, a
 - **Rate Recipe** - The Rate It button is only available if the user is logged in. Clicking the Rate it button triggers the Rate It modal. The modal has a dropdown menu from which the user can select their rating. The user can't submit the form without selecting an option. Upon form submission, the rating value is converted to an integer and is added to the recipe record's 'rating_values' list in the database, and the new average rating value and rating count are calculated and displayed on the webpage.
 - **Like Recipe** - The Like button is only available if the user is logged in. Clicking the Like button adds the recipe's ObjectID to the user's liked recipes list in the database, the button icon is filled in and the text changes to 'Liked'.
 - **Unlike Recipe** - The Liked button is only available if the user is logged in and has already liked the recipe. Clicking the button removes the recipe's ObjectID from the user's liked recipes list in the database, the button icon is no longer filled in and the text changes back to 'Like'.
+- **Custom Error Messages** - I've included custom 404 and 500 error messages and error handlers to catch these erorr messages. My custom messages allow the user to re-navigate to any of the app's pages. 
 
 ### Features Left to Implement
 
@@ -216,18 +217,23 @@ In addition to my own testing, I also asked family members, friends and the Slac
 
 ### Interesting Bugs Or Problems
 
-- **Accessing Nested list in Database** - The categories field in my recipes collection is a dictionary with a nested 
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
-- **** -
+#### Resolved Bugs
+
+- **Accessing Nested list in Database** - The categories field in my recipes collection is a dictionary with nested lists for each category. I was initially unable to work out how to access these, but after much perseverence, I managed to resolve this by passing in two parameters to the categories_dropdown function. I was then able to create separate variables to store the values of the relevant array within the categories dictionary.
+- **Displaying Image Using Relative Filepath** - I was initially unable to get the recipe image to display using Jinja templating in the HTML code. To resolve this, I had to amend the format of the relevant filepath that was stored in the database so that the Jinja template in the HTML code referenced the correct file in the correct location.
+- **Blank String Uploading When No Image Submitted** - If no image was uploaded when adding a recipe, an empty string was added to the database, instead of the relative filepath to the stock image. To resolve this bug, I had to amend my `if-else` statement to look for an empty string in the file name instead of a file.
+- **Extra** '`img`' **Stored in Filepath When Editing Recipe** - When a recipe was edited, the whole filename was being pushed to the database, and my code was configured to add `img/` before the filename to confirm with my Jinja templating. This resulted in an extra `img/` being uploaded to the image filepath. To resolve this bug, I had to slice the string using Jinja templating to remove the extra `img/` before uploading the filepath to the database.
+- **Rating Uploaded to Database as String** - When a user rated a recipe, the rating value was being stored in the form as a string, which prevented the average recipe rating from being worked out. To resolve this bug, I had to change my code from `.getlist` to `.get` instead and convert the value to an `int` before pushing it to the list in the database.
+- **Unable to Delete Newly Inserted Row** - The button to delete a particular ingredient or instruction row wasn't working on newly added rows in the Edit Recipe page. After researching this, I found that this was due to DOM bubbling, and I had to change my jQuery event listener to `$(document).on('click', ".remove-current-ing", function() {...}` instead of `$(".remove-current-ing").click(function() {...}` to resolve this bug.
+- **Views Incremented Incorrectly** - When rating, liking, unliking or editing a recipe, the View Recipe page refreshes on form submission. This resulted in the recipe's views count being incorrectly incremented by 1. To resolve this bug, I had to decrement the views count by 1 each time the user rated, liked, unliked or edited a recipe to remove the incorrect increment.
+- **Views Decremented Incorrectly When Like Removed On Profile Page** - To resolve the above bug, I decremented the views count by 1 each time the recipe was liked or unliked from the View Recipe page. When unliking the recipe from the user's profile page, the view count was decremented by 1, as it used the same function. However, as the View Recipe page wasn't involved with this process, this was incorrectly decremented. To resolve this bug, I had to use `if request.path == 'recipe':` to only decrement the view count if the recipe was unliked from the View Recipe page.
+- **Empty Div When Deleting Recipe** - When a recipe was deleted, an empty div was present on the Browse page where the recipe card originally was shown. This meant that any new recipe preview cards were added after this empty div. To resolve this bug, I had to remove the `{{ if recipe.deleted == False }}` statment from the Jinja templating in my HTML file and configure my Python code to only find recipes with `{"deleted": False}`.
+- **Error Handlers With Flask Blueprint** - My error handlers didn't work when I reconfigured my Python code to be compatible to Flask Blueprint. To resolve this bug, I had to use the `app_errorhandler` method instead of the `errorhandler` method.
+
+#### Partially or Unresolved Bugs
+
+- **Pagination for Search Results** - When searching for a recipe, I initially included pagination for the search results. However, when loading the next page, this brought up page 2 of the default values (all recipes) instead of the search results. I was unable to resolve this bug, so I removed pagination from the search results to get around this.
+- **Pagination for Filter Results** - The same bug as above was prevelant when filtering recipes. I was unable to resolve this bug or remove pagination from the filtered results, so I had to leave it unresolved due to time constraints.
 
 ## Deployment
 
