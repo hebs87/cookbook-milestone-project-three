@@ -5,7 +5,7 @@ nav,
     
     .brand-logo {
         font-size: 1.7rem;
-        @media tablet {
+        @include tablet {
             font-size: 1.9rem;
         }
         

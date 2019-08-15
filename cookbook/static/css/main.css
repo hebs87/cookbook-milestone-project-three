@@ -341,7 +341,7 @@ nav .brand-logo,
 .sidenav .brand-logo {
   font-size: 1.7rem;
 }
-@media tablet {
+@media (min-width: 600px) {
   nav .brand-logo,
   .sidenav .brand-logo {
     font-size: 1.9rem;

@@ -117,7 +117,7 @@ I added some additional features that weren't within the scope of the project, a
 - **Print Recipe Button** - On the View Recipes page, the user can print the details for that particular recipe by clicking the Print button. The Print button is available at all times, even when the user isn't logged in.
 - **Edit Recipe Button** - The Edit button is available only when the user is logged in. Clicking it takes the user to the Edit Recipe page.
 - **Edit Recipe** - Update operation. All exisiting recipe values are pre-populated in the relevant form fields, which the user is able to edit if required. Upon form submission, the recipe database record is updated with the new values. Additionally, the last edited date field in the recipe record is updated with the current date.
-- **Remove Current Ingredient/Instruction Row** - This button is shown to the right of each ingredient and instruction row in the Edit Recipe form. This button allows the user to remove that particular ingredient or recipe row when clicked
+- **Remove Current Ingredient/Instruction Row** - This button is shown to the right of each ingredient and instruction row in the Edit Recipe form. This button allows the user to remove that particular ingredient or recipe row when clicked. The button will only function if the row count is greater than 1.
 - **Cancel Button (Edit Recipe Page)** - Cancels the form submission when clicked and redirects the user back to the relevant Recipe Page.
 - **Delete Recipe** - The Delete button is only available if the user is logged in and they have added that recipe. Clicking the button triggers the Delete modal, which asks the user to confirm the deletion request. If the user presses 'YES', the 'deleted' field in the recipe's database record is updated to 'True', which ensures that the recipe is no longer displayed on the app, although the record isn't removed from the database. Additionally, the recipe is removed from the user's list of added recipes, and also from all other users' list of liked recipes.
 - **Rate Recipe** - The Rate It button is only available if the user is logged in. Clicking the Rate it button triggers the Rate It modal. The modal has a dropdown menu from which the user can select their rating. The user can't submit the form without selecting an option. Upon form submission, the rating value is converted to an integer and is added to the recipe record's 'rating_values' list in the database, and the new average rating value and rating count are calculated and displayed on the webpage.
@@ -126,31 +126,44 @@ I added some additional features that weren't within the scope of the project, a
 
 ### Features Left to Implement
 
+With more time and knowledge, I would like to implement some additional features to the app.
+
+- **Search Results Pagination** - I would like to add pagination for the search results. At present, the database doesn't have many entries, so the page doesn't get too crowded with the search results. However, as the site grows and more users add recipes, pagination would be required to improve UX.
+- **Working Pagination for Filter Results** - At present, the pagination for the filter results doesn't work as intended due to a bug (explained in the [Interesting Bugs Or Problems](#Interesting-Bugs-Or-Problems) section). This doesn't currently cause any problems with there only being a small number of recipes, but this will need to be resolved as the site grows and the filter results return more than 8 recipes.
+- **Pagination Page Numbers and Truncation ** - I would like to add a feature where users can select a page number to navigate to, rather than having to use the previous and next page buttons. Additionally, I would like to truncate this if the pagination gets too long so that it doesn't take too much space on the page. This will improve UX as the site grows and there are more recipes and pages to navigate through.
+- **Select Sort By Value** - I would like to add a feature which allows users to sort recipes or search on filter results by different categories. At present, the recipes are sorted by the most liked first, followed by the recipe name. Giving users the ability to select how the results are sorted will allow them greater flexibility to find recipes based on their needs.
+- **Change Forgotten Password** - At present, the user can only change their password when they are logged in. If a user forgets their password, they won't be able to login or reset their password. With this in mind, I would like to implement the feature to allow the user to reset their password if they have forgotten it.
 
 ## Technologies Used
 
 - [**Balsamiq**](https://balsamiq.com/)
     - I've used **Balsamiq** to create wireframes of my website/app before building it.
 - [**HTML**](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
-    - The project uses **HTML** to create the basic elements and content of my game.
+    - The project uses **HTML** to create the basic elements and content of my app.
 - [**SCSS**](https://sass-lang.com/documentation/syntax)
-    - The project uses **SCSS** to add custom styles to the elements and content of my game. I used **SCSS** instead of **CSS**, as it is more powerful and I used the logic to write some variables and mixins, which I called for my fonts and button styles.
+    - The project uses **SCSS** to add custom styles to the elements and content of my app. I used **SCSS** instead of **CSS**, as it is more powerful and I used the logic to write some variables, mixins and media queries, which I called for various features.
 - [**CSS**](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3)
-    - The project uses **CSS** to apply the custom styles created with **SCSS** to my game. The index.html file is linked directly to the main.css stylesheet.
-- [**Bootstrap**](https://getbootstrap.com/)
-    - The project uses the **Bootstrap** framework to add a responsive grid system, prebuilt components, plugins built on jQuery, and Bootstrap styles to my game, before adding my custom styles.
-- [**JavaScript**](https://www.javascript.com/)
-    - The project uses **JavaScript** from my custom script.js file to add functionality and interactivity to my game. This is the core focus of this project. The project also uses **JavaScript** from Bootstrap which is required to add functionality to the Bootstrap modal.
+    - The project uses **CSS** to apply the custom styles created with **SCSS** to my app. The base.html file is linked directly to the main.min.css stylesheet.
+- [**Materialize**](https://materializecss.com/)
+    - The project uses the **Materialize** framework to add a responsive grid system, prebuilt components, plugins built on jQuery, and Materialize styles to my app, before adding my custom styles.
 - [**jQuery**](https://jquery.com)
-    - The project uses **jQuery** to simplify DOM manipulation. This is both the standard jQuery that is built with Bootstrap components, and my custom jQuery used in my script.js file.
+    - The project uses **jQuery** as the primary JavaScript functionality. This is both the standard jQuery that is built with Materialize components, and my custom jQuery used in my script.js file.
+- [**Python**](https://www.python.org/)
+    - The project uses **Python** as the back-end programming language for my app.
+- [**PyMongo**](https://api.mongodb.com/python/current/)
+    - The project uses **PyMongo** as the Python API for MongoDB. This API enables linking the data from the back-end database to the front-end app.
+- [**Flask**](https://flask.palletsprojects.com/en/1.0.x/)
+    - The project uses **Flask**, which is a Python microframework.
+- [**Jinja**](https://jinja.palletsprojects.com/en/2.10.x/)
+    - The project uses **Jinja** for templating with Flask in the HTML code. I used **Jinja** to simplify my HTML code, avoid repetition, and allow simpler linking of the back-end to the front-end.
+- [**MongoDB**](https://cloud.mongodb.com/)
+    - The project uses **MongoDB** to store the database in the cloud. The information displayed in the front-end app is pulled from the database store.
 - [**Google Fonts**](https://fonts.google.com/)
-    - The project uses **Google Fonts** to style the text and suit my chosen theme.
+    - The project uses **Google Fonts** to style the text and suit my chosen theme. The brand logo uses the *_Dancing Script_* font and the rest of the site uses the *Roboto_* font.
 - [**Font Awesome**](https://fontawesome.com/)
-    - The project uses **Font Awesome** for the instructions and sound icons in the header of my game website/app.
-- [**Cloud9**](https://c9.io/login)
-    - I've used **Cloud9** as the development environment to write the code for my website.
-- [**Jasmine**](https://jasmine.github.io/)
-    - The project uses Test Driven Development (TDD) using the **Jasmine** framework to automate some testing of my **JavaScript** code.
+    - The project uses **Font Awesome** for the various icons in my app.
+- [**AWS Educate Cloud9**](https://aws.amazon.com/education/awseducate/)
+    - I've used **AWS Educat Cloud9** as the development environment to write the code for my website.
 
 ### Version Control
 
@@ -159,31 +172,39 @@ I added some additional features that weren't within the scope of the project, a
 - [**GitHub**](https://github.com/)
     - I've used **GitHub** as a remote repository to push and store the committed changes to my project from Git. I've also used GitHub pages to deploy my website/app in a live environment.
 
+### Hosting
+- [**Heroku**](https://www.heroku.com/)
+    - I've used **Heroku** as the hosting platform to deploy my app.
+
 ## Testing
-
-
 
 ### Testing User Stories
 
 I used my user stories and documented each of the steps that each user would need to complete to accomplish what they have stated. Below is the link to the document that contains this information:
 
-- [Testing User Stories]()
+- [Testing User Stories](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/testing/testing-user-stories.pdf)
 
-### Responsive Testing
+### Responsive and Functional Testing
 
-I used Google Chrome's Development tools to constantly test each change that I made to my project and to ensure that it appeared in the desired way on different screen sizes. I also tested my game on different screen sizes (mobile, tablet and desktop) to ensure it appeared in the desired way on different devices.
+I used Google Chrome's Development tools to constantly test each change that I made to my project and to ensure that it appeared in the desired way on different screen sizes. I also tested my app on different screen sizes (mobile, tablet and desktop) to ensure it appeared in the desired way on different devices.
+
+I created my own account and several fake user accounts to test the functionality and validation worked as expected.
 
 To test my whole app, I went through each feature and documented the results on a spreadsheet. The spreadsheet also documents any responsive features and confirms that they work and appear as intended on different screen sizes. The link to the spreadsheet it below:
 
-- [Testing Checklist]()
+- [Testing Checklist](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/testing/testing-checklist.pdfs)
 
 ### Additional Testing
 
 In addition to my own testing, I also asked family members, friends and the Slack community to test my game and provide any feedback.
 
-### HTML and CSS Validation
+### HTML, CSS, jQuery and Python Validation
 
-
+- I used the [W3C HTML Validator tool](https://validator.w3.org/#validate_by_input) to validate my HTML code.
+    - The W3C Validator tool doesn't recognise the Jinja templating, which has resulted in it showing a lot of errors in relation to the Jinja code. However, all other code is validating fine.
+- I used the [W3C CSS Validator tool](https://jigsaw.w3.org/css-validator/#validate_by_input) to validate my CSS code.
+- I used the [Esprima Syntax Validator tool](http://esprima.org/demo/validate.html) to validate my JavaScript syntax.
+- I used the [Pep8 Online tool](http://pep8online.com/) to validate my Python syntax.
 
 ### Interesting Bugs Or Problems
 

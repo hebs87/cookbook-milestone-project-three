@@ -12,12 +12,17 @@ images = UploadSet('images', IMAGES)
 # Instance of PyMongo
 mongo = PyMongo()
 
+
 def create_app(config_class=Config):
+    '''
+    Allows to pass the app configuration into the variables
+    This allows to create various instances of Flask using different config
+    '''
     # Initialize and configure the instance of Flask
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Pass the app variable into othere variables
+    # Pass the app variable into other variables
     mongo.init_app(app)
     configure_uploads(app, images)
 
