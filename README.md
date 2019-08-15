@@ -1,4 +1,4 @@
-# [Fine Dining Online Cookbook](https://online-cookbook-ms3-hebs87.herokuapp.com/) - Milestone Project Three
+# [Fine Dining](https://online-cookbook-ms3-hebs87.herokuapp.com/) - Milestone Project Three
 
 ## Table of Contents
 
@@ -44,27 +44,31 @@ Users can rate recipes, and like recipes to add them to their 'Liked' list for e
 
 ### Why This Project?
 
-I created this app for the Data Centric Development project of [Code Institute's](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which allows uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
+I created this app for the Data Centric Development project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which allows uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
 
 The front-end display and functionality used HTML, CSS and JavaScript.
 
 ## UX
 
-
-
 ### User Stories
 
-### Research
+- As a consumer, I want to browse a catalogue of recipes so that I can decide on a suitable meal for a particular occasion
+- As a chef, I want to store my own recipes on a website so that I can share them with others
+- As a chef, I want to be able to update any recipes that I can see any mistakes with, so that the consumers see the correct details for a particular recipe
+- As a blogger, I want to be able to rate recipes that I try out so that I can let others know how good/bad they are
+- As a consumer, I want to be able to search for a particular recipe by its name, so that I can access that particular recipe easily and quickly
+- As a consumer, I want to be able to filter recipes based on various categories and see a quick summary of them before I decide on which one to choose, so that I don't have to waste time going through the ingredients list for each one
+- As a consumer, I want to see a summary list of recipes based on the most liked, so that I can quickly see the most popular ones
 
 ### Style Rationale
 
-I've chosen to style my app in the way that I have, as 
+I received inspiration for the style of my app following my visit to a dessert restaurant called [**_Heavenly Desserts_**](https://heavenlydesserts.co.uk/). I thought the colour scheme of both the resetaurant and their website looked really modern and professional, and I wanted this to be mirrored in my web app too.
 
 ### Wireframes
 
-I drew my wireframes using Balsamiq. I have done separate wireframes to show my consideration of how to make my website/app responsive. The links to the files are below:
+I drew my wireframes using Balsamiq. I have done separate wireframes to show my consideration of how to make my website/app responsive. The link to a PDF file containing my wireframes is below:
 
-- []()
+- [Cookbook Wireframes]()
 
 There are some differences between my wireframes and my final website. This was due to visual preferences and feedback received from my mentor, and also other users who tested my website.
 
