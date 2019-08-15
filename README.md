@@ -1,4 +1,4 @@
-# [Fine Dining](https://online-cookbook-ms3-hebs87.herokuapp.com/) - Milestone Project Three
+# [Fine Dining Online Cookbook](https://online-cookbook-ms3-hebs87.herokuapp.com/) - Milestone Project Three
 
 ## Table of Contents
 
@@ -66,19 +66,36 @@ I received inspiration for the style of my app following my visit to a dessert r
 
 ### Wireframes
 
-I drew my wireframes using Balsamiq. I have done separate wireframes to show my consideration of how to make my website/app responsive. The link to a PDF file containing my wireframes is below:
+I drew my wireframes using Balsamiq. I have done separate wireframes to show my consideration of how to make my website/app responsive. The links to the files are below:
 
-- [Cookbook Wireframes]()
+- [Home - no user logged in (xs, sm and md)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/home-md-sm-no-login.png)
+- [Home - no user logged in (lg and xl)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/home-xl-lg-no-login.png)
+- [Home - user logged in (xs, sm and md)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/home-md-sm-logged-in.png)
+- [Home - user logged in (lg and xl)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/home-xl-lg-logged-in.png)
+- [Browse (xs, sm and md)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/browse-md-sm.png)
+- [Browse (lg and xl)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/browse-xl-lg.png)
+- [Recipe (xs, sm and md)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/recipe-md-sm.png)
+- [Recipe (lg and xl)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/recipe-xl-lg.png)
+- [Add Recipe (xs, sm and md)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/add-recipe-md-sm.png)
+- [Add Recipe (lg and xl)](https://github.com/hebs87/cookbook-milestone-project-three/blob/master/cookbook/wireframes/add-recipe-xl-lg.png)
 
 There are some differences between my wireframes and my final website. This was due to visual preferences and feedback received from my mentor, and also other users who tested my website.
 
 ## Features
 
+
+
 ### Functionality
+
+
 
 ### Existing Features
 
+
+
 ### Features Left to Implement
+
+
 
 ## Technologies Used
 
@@ -114,6 +131,8 @@ There are some differences between my wireframes and my final website. This was 
 
 ## Testing
 
+
+
 ### Testing User Stories
 
 I used my user stories and documented each of the steps that each user would need to complete to accomplish what they have stated. Below is the link to the document that contains this information:
@@ -134,7 +153,11 @@ In addition to my own testing, I also asked family members, friends and the Slac
 
 ### HTML and CSS Validation
 
+
+
 ### Interesting Bugs Or Problems
+
+
 
 ## Deployment
 
@@ -152,13 +175,23 @@ To run my code locally, users can download a local copy of my code to their desk
 
 ## Credits
 
+
+
 ### Content
+
+
 
 ### Media
 
+
+
 #### Sounds
 
+
+
 ### Acknowledgements
+
+
 
 ### Disclaimer
 
