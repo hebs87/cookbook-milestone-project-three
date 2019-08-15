@@ -44,7 +44,7 @@ Users can rate recipes, and like recipes to add them to their 'Liked' list for e
 
 ### Why This Project?
 
-I created this app for the Data Centric Development project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which allows uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
+I created this app for the Data Centric Development project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
 
 The front-end display and functionality used HTML, CSS and JavaScript.
 
@@ -83,15 +83,44 @@ There are some differences between my wireframes and my final website. This was 
 
 ## Features
 
-
-
 ### Functionality
 
+The app uses Python logic to allow users to login, or register for a free account. The app offers **CRUD** operations to allow users to create, read, update and delete food recipes. Users can search for a recipe by name, or they can filter recipes based on various categories. Additionally, users can like recipes and add them to their list for easy access.
 
+I added some additional features that weren't within the scope of the project, as I felt that they offered better interactivity for users.
 
 ### Existing Features
 
-
+- **Flash Messages** - Displayed at the top of the page below the navbar. These messages differ based on user interaction and provides helper messages for users. Each message is displayed for 3000 milliseconds.
+- **Login** - Allows existing users to login to their account. The form's username field only accepts alphanumeric values. I've included authorization checks to verify the username and password (hashed password) against the details stored in the database before users can be logged in.
+- **Register** - Allows new users to register for a free account. The form's username field only accepts alphanumeric values. I've included checks to ensure that the username doesn't already exist in the database before users are successfully registered. The passwords stored in the database are hashed for security purposes.
+- **Logout** - Allows users to logout of their account by clicking the 'Logout' link in the navbar/sidenav. Upon clicking the button, the user session ends.
+- **Profile Page** - When logged in, users can visit their profile page to view a list of their added or liked recipes, change their password or delete their account.
+- **Added Recipes List** - In the user's profile page, the 'Added Recipes' section displays a list of the user's added recipes. The user can click the image or recipe name to view the full details of that particular recipe. If the user hasn't added any recipes, a generic message is displayed which the user can click to add a recipe (redirects the user to the 'Add Recipe' page).
+- **Liked Recipes List** - In the user's profile page, the 'Liked Recipes' section displays a list of the user's liked recipes. The user can click the image or recipe name to view the full details of that particular recipe. Alternatively, the user can click the 'Liked' button to unlike the recipe and remove it from their list. If the user hasn't liked any recipes, a generic message is displayed which the user can click to browse all recipes (redirects the user to the 'Browse' page).
+- **Change Password** - In the user's profile page, the 'Change Password' button triggers a modal with a form. The form asks for the user's existing password and new password. I've included authorization checks to verify the existing password (hashed password) against the details stored in the database before the user's password is successfully changed. If the check is successful, the password in the database is updated with the new hashed password.
+- **Delete Account** - In the user's profile page, the 'Delete Account' button triggers a modal with a form. The form asks the user to confirm their existing password before deleting their account.I've included authorization checks to verify the existing password (hashed password) against the details stored in the database before the user's account is successfully deleted and their record is removed from the database. When a user's account is deleted, all their added recipes are removed from the site and from other users' liked lists too.
+- **Browse** - All recipes are initially displayed when the Browse page first loads. The recipes are displayed in cards with some of the recipe's quick stats.
+- **Search** - The user can search for a particular recipe by a keyword in the recipe name, and the results are subsequently diplayed when the user clicks the Search button. For example, if the user searches for 'chicken', the results show all recipes with 'chicken' in their name. The form field is required and the user can't submit the form without entering a value. Additionally, when the Search accordion is expanded, the Filter accordion is hidden and its form fields are reset. The Filter accordion is shown again when the Search accordion is collapsed.
+- **Filter** - The user can filter recipes based on up to 4 categories, and the results are subsequently diplayed when the user clicks the Filter button. At least one options is required and the user can't submit the form without selecting any options. Additionally, when the Filter accordion is expanded, the Search accordion is hidden and its form fields are reset. The Search accordion is shown again when the Search accordion is collapsed.
+- **Reset Button** - 
+- **Recipe Preview Cards** - 
+- **Recipe Count Helper Text** - 
+- **Pagination** - The Browse page uses pagination for the unfiltered results to display 8 recipes per page. The previous page button is only available if there is a previous page. The next page button is only available if there is a next page. *_Pagination isn't currently available for search results, and a bug currently prevents the pagination from working for filtered results_*
+- **Add Recipe** - 
+- **Add New Ingredient/Instruction Row** - 
+- **Remove New Ingredient/Instruction Row** - 
+- **Cancel Button (Add Recipe Page)** - 
+- **View Recipes** - Added date/edited date
+- **Edit Recipes** - 
+- **Remove Current Ingredient/Instruction Row** - 
+- **Cancel Button (Add Recipe Page)** - 
+- **Delete Recipe** - 
+- **Rate Recipe** - 
+- **Like Recipe** - 
+- **** - 
+- **** - 
+- **** - 
 
 ### Features Left to Implement
 
