@@ -7,10 +7,6 @@ rating_coll = mongo.db.rating
 categories_coll = mongo.db.categories
 serves_coll = mongo.db.serves
 time_coll = mongo.db.time
-types_coll = mongo.db.types
-occasions_coll = mongo.db.occasions
-cuisines_coll = mongo.db.cuisines
-main_ing_coll = mongo.db.main_ing
 users_coll = mongo.db.userLogin
 
 

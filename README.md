@@ -81,6 +81,10 @@ I drew my wireframes using Balsamiq. I have done separate wireframes to show my 
 
 There are some differences between my wireframes and my final website. This was due to visual preferences and feedback received from my mentor, and also other users who tested my website.
 
+### Database Schema
+
+
+
 ## Features
 
 ### Functionality
@@ -208,7 +212,18 @@ In addition to my own testing, I also asked family members, friends and the Slac
 
 ### Interesting Bugs Or Problems
 
-
+- **Accessing Nested list in Database** - The categories field in my recipes collection is a dictionary with a nested 
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
+- **** -
 
 ## Deployment
 
