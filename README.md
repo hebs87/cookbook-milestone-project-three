@@ -6,33 +6,30 @@
   - [Why This Project?](#Why-This-Project)
 - [**UX**](#UX)
   - [User Stories](#User-Stories)
-  - [Research](#Research)
   - [Style Rationale](#Style-Rationale)
   - [Wireframes](#Wireframes)
+  - [Database Schema](#Database-Schema)
 - [**Features**](#Features)
   - [Functionality](#Functionality)
   - [Existing Features](#Existing-Features)
-    - [Game Controls](#Game-Controls)
-    - [Modes](#Modes)
   - [Features Left To Implement](#Features-Left-To-Implement)
 - [**Technologies Used**](#Technologies-Used)
-  - [Version Control](#Version-Control) 
+  - [Version Control](#Version-Control)
+  - [Hosting](#Hosting)
 - [**Testing**](#Testing)
   - [Testing User Stories](#Testing-User-Stories)
-  - [Automated Testing](#Automated-Testing)
-    - [Run Jasmine Tests](#Run-Jasmine-Tests)
-    - [Create Jasmine Tests](#Create-Jasmine-Tests)
-  - [Responsive Testing](#Responsive-Testing)
+  - [Responsive and Functional Testing](#Responsive-and-Functional-Testing)
   - [Additional Testing](#Additional-Testing)
-  - [HTML And CSS Validation](#HTML-And-CSS-Validation)
+  - [Code Validation](#Code-Validation)
   - [Interesting Bugs Or Problems](#Interesting-Bugs-Or-Problems)
+    - [Resolved Bugs](#Resolved-Bugs)
+    - [Partially Resolved or Unresolved Bugs](#Partially-Resolved-or-Unresolved-Bugs)
 - [**Deployment**](#Deployment)
+  - [Live App Link](#Live-App-Link)
   - [Repository Link](#Repository-Link)
   - [Running Code Locally](#Running-Code-Locally)
 - [**Credits**](#Credits)
   - [Content](#Content)
-  - [Media](#Media)
-    - [Sounds](#Sounds)
   - [Acknowledgements](#Acknowledgements)
   - [Disclaimer](#Disclaimer)
 
@@ -46,7 +43,7 @@ Users can rate recipes, and like recipes to add them to their 'Liked' list for e
 
 I created this app for the Data Centric Development project of [**_Code Institute's_**](https://codeinstitute.net/) Full Stack Software Development course. The project scope was to create a web app using Python and a no-SQL database (MongoDB), which uses **CRUD** operations to allow users to easily create, read, update and delete food recipes.
 
-The front-end display and functionality used HTML, CSS and JavaScript.
+The front-end display and functionality uses HTML, CSS and JavaScript. The back-end functionality uses Python, Flask and MongoDB.
 
 ## UX
 
@@ -62,7 +59,7 @@ The front-end display and functionality used HTML, CSS and JavaScript.
 
 ### Style Rationale
 
-I received inspiration for the style of my app following my visit to a dessert restaurant called [**_Heavenly Desserts_**](https://heavenlydesserts.co.uk/). I thought the colour scheme of both the resetaurant and their website looked really modern and professional, and I wanted this to be mirrored in my web app too.
+I received inspiration for the style of my app following my visit to a dessert restaurant called [**_Heavenly Desserts_**](https://heavenlydesserts.co.uk/). I thought the colour scheme of both the restaurant and their website looked really modern and professional, and I wanted this style to be reflected in my own web app.
 
 ### Wireframes
 
@@ -207,7 +204,7 @@ To test my whole app, I went through each feature and documented the results on 
 
 In addition to my own testing, I also asked family members, friends and the Slack community to test my game and provide any feedback.
 
-### HTML, CSS, jQuery and Python Validation
+### Code Validation
 
 - I used the [W3C HTML Validator tool](https://validator.w3.org/#validate_by_input) to validate my HTML code.
     - The W3C Validator tool doesn't recognise the Jinja templating, which has resulted in it showing a lot of errors in relation to the Jinja code. However, all other code is validating fine.
@@ -230,7 +227,7 @@ In addition to my own testing, I also asked family members, friends and the Slac
 - **Empty Div When Deleting Recipe** - When a recipe was deleted, an empty div was present on the Browse page where the recipe card originally was shown. This meant that any new recipe preview cards were added after this empty div. To resolve this bug, I had to remove the `{{ if recipe.deleted == False }}` statment from the Jinja templating in my HTML file and configure my Python code to only find recipes with `{"deleted": False}`.
 - **Error Handlers With Flask Blueprint** - My error handlers didn't work when I reconfigured my Python code to be compatible to Flask Blueprint. To resolve this bug, I had to use the `app_errorhandler` method instead of the `errorhandler` method.
 
-#### Partially or Unresolved Bugs
+#### Partially Resolved or Unresolved Bugs
 
 - **Pagination for Search Results** - When searching for a recipe, I initially included pagination for the search results. However, when loading the next page, this brought up page 2 of the default values (all recipes) instead of the search results. I was unable to resolve this bug, so I removed pagination from the search results to get around this.
 - **Pagination for Filter Results** - The same bug as above was prevelant when filtering recipes. I was unable to resolve this bug or remove pagination from the filtered results, so I had to leave it unresolved due to time constraints.
@@ -315,11 +312,8 @@ To run my code locally, users can download a local copy of my code to their desk
 - I read this [Error Handlers Article](https://flask.palletsprojects.com/en/1.0.x/errorhandling/) to learn how to implement error handlers in my Python code.
 - I read this [Jinja Template Inheritance Article](https://jinja.palletsprojects.com/en/2.10.x/templates/) to learn more about Jinja templating.
 - I read this [SASS Output Styles Article](https://web-design-weekly.com/2014/06/15/different-sass-output-styles/) to learn how to create different styles of CSS files using SCSS.
-- I watched this [Flask Blueprint Video](https://www.youtube.com/watch?v=Wfx4YBzg16s&feature=youtu.be) to learn how to implement Flask Blueprint in my project to split my code into separate files.
+- I watched this [Flask Blueprint Video](https://www.youtube.com/watch?v=Wfx4YBzg16s&feature=youtu.be) to learn how to implement Flask Blueprint in my project to compartmentalise my code and make it more modular.
 - I read this [Blueprint Error Handlers Article](https://stackoverflow.com/questions/12768825/flask-error-handler-for-blueprints) to learn how to resolve a bug with my error handlers once I implemented Flask Blueprint in my project.
-
-### Media
-
 - I found the details for all recipe on my site on the [BBC Food Website](https://www.bbc.co.uk/food). This gave me inspiration for my Database Schema too.
 
 ### Acknowledgements
