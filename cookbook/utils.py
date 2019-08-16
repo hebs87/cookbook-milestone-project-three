@@ -72,5 +72,6 @@ def find_recipe(recipe_id):
 def get_username(username):
     '''
     Finds the username based on the session user
+    Converts the username to lowercase
     '''
     return users_coll.find_one({"username": username.lower()})
