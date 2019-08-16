@@ -821,4 +821,14 @@ nav {
   }
 }
 
+/* CUSTOM STYLES FOR PRINTING */
+@media print {
+  header,
+  footer,
+  .rate-btn,
+  .options-buttons-wrapper {
+    display: none;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */

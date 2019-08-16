@@ -1,0 +1,11 @@
+/* CUSTOM STYLES FOR PRINTING */ 
+header,
+footer,
+.rate-btn,
+.options-buttons-wrapper {
+    @include print {
+        display: none;
+        
+    }
+    
+}
