@@ -43,7 +43,7 @@ def serves_dropdown():
 
 def categories_dropdown(key, val):
     '''
-    Drop down menu for categories values (type, occasion, cuisine & main_ing
+    Drop down menu for categories values (type, occasion, cuisine & main_ing)
     These are arrays that are nested within categories object in the database
     Function uses key, val parameters to access the relevant nested array
     '''
