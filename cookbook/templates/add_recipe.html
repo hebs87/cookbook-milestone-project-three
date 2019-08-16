@@ -9,6 +9,41 @@
     </div>
 </div>
 
+    <!--Recipe Details Card-->
+    <div class="row recipe-card card z-depth-1">
+    
+        <div class="col s12 center-align recipe-count-wrapper">
+            <h6 class="recipe-details-text">
+                The 
+                <span class="recipe-count bold italic">
+                    image file input
+                </span>
+                 field is 
+                <span class="recipe-count bold italic">
+                    optional,
+                </span> 
+                <span class="recipe-count bold italic">
+                    all
+                </span>
+                 other fields are 
+                <span class="recipe-count bold italic">
+                    required.
+                </span>
+                <br>
+                You won't be able to 
+                <span class="recipe-count bold italic">
+                    add
+                </span>
+                 your recipe unless you complete 
+                <span class="recipe-count bold italic">
+                    all required
+                </span>
+                 fields.
+            </h6>
+        </div>
+    
+    </div>
+
 <!--ADD RECIPE FORM WITH NESTED CARDS FOR RELEVANT SECTIONS-->
 <!--enctype attribute used in form tag, as image file is being uploaded-->
 <form method="POST" action="{{ url_for('recipes.insert_recipe') }}" enctype="multipart/form-data">
