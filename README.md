@@ -319,6 +319,11 @@ To run my code locally, users can download a local copy of my code to their desk
 - I read this [Blueprint Error Handlers Article](https://stackoverflow.com/questions/12768825/flask-error-handler-for-blueprints) to learn how to resolve a bug with my error handlers once I implemented Flask Blueprint in my project.
 - I found the details for all recipe on my site on the [BBC Food Website](https://www.bbc.co.uk/food). This gave me inspiration for my Database Schema too.
 
+### Media
+
+- I found the Favicon image on Google, and I used the [Favicon Converter](https://favicon.io/favicon-converter/) to convert the image to a Favicon.
+- I found all the recipe pictures used in my site on [BBC Food Website](https://www.bbc.co.uk/food).
+
 ### Acknowledgements
 
 - I received inspiration for the style of my project from [Heavenly Desserts](https://heavenlydesserts.co.uk/).
